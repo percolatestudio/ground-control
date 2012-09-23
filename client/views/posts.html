@@ -1,0 +1,15 @@
+<template name="posts">
+  {{#each posts}}
+    {{> post}}
+  {{/each}}
+</template>
+
+<template name="post">
+  <div class="post">
+    <div class="metadata">
+      <h2>{{title}}</h2>
+      <h4>{{author}} - {{published}}</h4>
+    </div>
+    {{story}}
+  </div>
+</template>
