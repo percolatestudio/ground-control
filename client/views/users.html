@@ -1,0 +1,15 @@
+<template name="allUsers">
+  {{#if currentUser}}
+    <button class="newUser">New User</button>
+    {{#each users}}
+      {{> user}}
+    {{/each}}
+  {{else}}
+    <!-- or access denied? -->
+    {{> notFound}}
+  {{/if}}
+</template>
+
+<template name="user">
+  {{profile.name}} -- <button class="deleteUser">Delete</button>
+</template>
