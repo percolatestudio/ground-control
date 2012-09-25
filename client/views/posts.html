@@ -1,4 +1,12 @@
-<template name="posts">
+<template name="singlePost">
+  {{#if currentPost}}
+    {{> post currentPost}}
+  {{else}}
+    {{> notFound}}
+  {{/if}}
+</template>
+
+<template name="allPosts">
   {{#each posts}}
     {{> post}}
   {{/each}}
@@ -15,7 +23,7 @@
 <template name="showPost">
   <div class="post">
     <div class="metadata">
-      <h2>{{title}}</h2>
+      <h2><a href="{{url}}">{{title}}</a></h2>
       <h4>{{author}} - {{formatDate published}}</h4>
       <button class="edit">Edit</button>
     </div>

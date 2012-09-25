@@ -9,7 +9,7 @@ Meteor.startup(function() {
       title: title = 'Introducing Spark: a new live page update engine',
       author: 'David Greenspan',
       // XXX: what's the accepted way to store dates?
-      published: new Date(2012, 8, 1).valueOf(),
+      publishedAt: new Date(2012, 8, 1).valueOf(),
       slug: titleToSlug(title),
       story: ["We've just pushed Meteor 0.4.0. In this release, we're proud to introduce a major new technology: Spark, a live page update engine by David Greenspan and Geoff Schmidt. Spark replaces the old liveui package and works under the hood to enable several powerful new template features.",
        "You can think of Spark as a declarative version of jQuery. jQuery is imperative. To get work done in jQuery, you tell it to carry out a series of actions: 'Find these nodes. Add this class to them. Replace this thing with that.' Spark is declarative. You tell it how you want the page to look, and not only does it make the page look that way, it keeps the page updated as data changes. Spark weighs in at 8k gzipped and minified, including all of its dependencies, and it's easily separable from the rest of Meteor.",

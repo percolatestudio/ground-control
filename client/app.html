@@ -3,6 +3,13 @@
 </head>
 
 <body>
-  <!-- TODO: we need some kind of routing -->
-  {{> posts}}
+  {{{renderCurrentPage}}}
 </body>
+
+<template name="loading">
+  Loading...
+</template>
+
+<template name="notFound">
+  Not found!
+</template>

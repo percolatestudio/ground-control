@@ -1,4 +1,10 @@
-Template.posts.helpers({
+Template.singlePost.helpers({
+  currentPost: function() {
+    return Posts.findOne({slug: Session.get('currentPostSlug')});
+  }
+})
+
+Template.allPosts.helpers({
   posts: function() { return Posts.find(); }
 });
 
@@ -17,6 +23,10 @@ Template.post.events({
 });
 
 Template.showPost.helpers({
+  url: function() {
+    return Routes.postUrl(this);
+  },
+  
   // XXX: this should probably be global
   formatDate: function(date) {
     // XXX: format... use moment.js?
