@@ -3,8 +3,16 @@
 </head>
 
 <body>
-  {{{renderCurrentPage}}}
+  {{> body}}
 </body>
+
+<template name="body">
+  {{#if noUsers}}
+    {{> signup}}
+  {{else}}
+    {{{renderCurrentPage}}}
+  {{/if}}
+</template>
 
 <template name="loading">
   Loading...
@@ -12,4 +20,8 @@
 
 <template name="notFound">
   Not found!
+</template>
+
+<template name="signup">
+  Signup page
 </template>

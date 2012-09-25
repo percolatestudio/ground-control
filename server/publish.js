@@ -8,3 +8,10 @@ Posts.allow({
     return true;
   }
 })
+
+// XXX: resolve if this is the right way to do this
+Meteor.methods({
+  'noUsers': function() {
+    return Meteor.users.find().count() === 0;
+  }
+})
