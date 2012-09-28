@@ -29,8 +29,7 @@ Template.showPost.helpers({
   
   // XXX: this should probably be global
   formatDate: function(date) {
-    // XXX: format... use moment.js?
-    return new Date(date);
+    return new moment(date).calendar();
   }
 });
 
