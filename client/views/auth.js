@@ -4,6 +4,7 @@ Template.getStarted.preserve({
 });
 
 Template.getStarted.helpers({
+  // XXX: use Meteor.accounts.loginServicesConfigured to check if it's loaded yet.
   configured: function() {
     return !!Meteor.accounts.configuration.findOne({service: 'google'});
   }
