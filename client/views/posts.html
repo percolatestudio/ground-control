@@ -29,7 +29,7 @@
       <button class="edit">Edit</button>
       {{/if}}
     </div>
-    {{#markdown}}{{story}}{{/markdown}}
+    {{#markdown}}{{body}}{{/markdown}}
   </div>
 </template>
 
@@ -41,8 +41,8 @@
     <label for="author">Author</label>
     <input type="text" name="author" value="{{author}}"></input>
     
-    <label for="story">Story</label>
-    <textarea name="story">{{story}}</textarea>
+    <label for="story">Body</label>
+    <textarea name="story">{{body}}</textarea>
     
     <button class="cancel">Cancel</button>
     <button class="save" type="submit">Save</button>

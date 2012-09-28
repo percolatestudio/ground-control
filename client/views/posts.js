@@ -45,7 +45,7 @@ Template.editPost.events({
     var change = {}
     change.title = template.find('[name=title]').value;
     change.author = template.find('[name=author]').value;
-    change.story = template.find('[name=story]').value;
+    change.body = template.find('[name=body]').value;
     
     Posts.update(this._id, {$set: change});
     Session.set('editingPostId', null);
