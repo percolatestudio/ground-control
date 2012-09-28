@@ -80,6 +80,9 @@
       
       var post = readPostForm(template);
       post.publishedAt = new Date();
+      // XXX: should the slug be created server side? 
+      // (would stop slugs from clobbering each other)
+      // if so we need to wait until we route. That's ok though
       post.slug = titleToSlug(post.title);
       Posts.insert(post);
       
