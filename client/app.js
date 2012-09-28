@@ -11,6 +11,27 @@ Meteor.startup(function() {
   })
 });
 
+Template.body.events({
+  'click [href]': function(e) {
+    // code stolen from pages branch, not really complete
+    if (e.shiftKey || e.ctrlKey || e.metaKey) return true;
+    
+    var href = $(e.target).attr('href')
+    
+    // relativize
+    var prefix = window.location.protocol + "//" + window.location.hostname;
+    if (href && href.indexOf(prefix) === 0)
+      href = href.substring(prefix.length);
+    
+    if (href && ! /^\w+:/.exec(href)) {
+      e.preventDefault();
+      
+      if (href !== document.location.pathname)
+        Meteor.Router.navigate(href, {trigger: true});
+    }
+  }
+})
+
 Handlebars.registerHelper('appName', function() {
   return 'Houston';
 });

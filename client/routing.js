@@ -7,6 +7,7 @@ var Router = Backbone.Router.extend({
     '': 'posts',
     'users': 'users',
     'admin': 'admin',
+    'posts/new': 'newPost',
     ':year/:day/:month/:slug': 'post'
   },
   
@@ -20,6 +21,10 @@ var Router = Backbone.Router.extend({
   
   posts: function() {
     Session.set('currentPage', 'allPosts')
+  },
+  
+  newPost: function() {
+    Session.set('currentPage', 'newPost');
   },
   
   post: function(year, day, month, slug) {

@@ -33,8 +33,15 @@ Template.showPost.helpers({
   }
 });
 
-Template.editPost.events({
-  'click .cancel': function() {
+Template.newPost.helpers({
+  newPost: function() { 
+    return {author: Meteor.user().profile.name};
+  }
+})
+
+Template.postForm.events({
+  'click .cancel': function(e) {
+    e.preventDefault();
     Session.set('editingPostId', null);
   },
   
