@@ -6,11 +6,16 @@ var Router = Backbone.Router.extend({
   routes: {
     '': 'posts',
     'users': 'users',
+    'admin': 'admin',
     ':year/:day/:month/:slug': 'post'
   },
   
   users: function() {
     Session.set('currentPage', 'allUsers');
+  },
+
+  admin: function() {
+    Session.set('currentPage', 'admin')
   },
   
   posts: function() {
@@ -24,7 +29,7 @@ var Router = Backbone.Router.extend({
 });
 
 Meteor.startup(function() {
-  new Router();
+  Meteor.Router = new Router();
   Backbone.history.start({pushState: true});
 });
 

@@ -1,0 +1,7 @@
+<template name="admin">
+  {{#if loggedIn}}
+    {{redirectToHome}}
+  {{else}}
+    {{> loginButtons}}
+  {{/if}}
+</template>

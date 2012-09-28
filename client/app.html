@@ -7,11 +7,14 @@
 </body>
 
 <template name="body">
-  {{#if noUsers}}
-    {{> getStarted}}
-  {{else}}
-    {{{renderCurrentPage}}}
+  {{#if currentUser}}
+  <div id="header">
+    <button class="newPost">New Post</button>
+    {{> loginButtons}}
+  </div>
   {{/if}}
+  
+  {{{renderCurrentPage}}}
 </template>
 
 <template name="loading">

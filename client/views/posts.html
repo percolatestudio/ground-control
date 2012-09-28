@@ -7,10 +7,6 @@
 </template>
 
 <template name="allPosts">
-  {{#if currentUser}}
-    <button class="newPost">New Post</button>
-  {{/if}}
-  
   {{#each posts}}
     {{> post}}
   {{/each}}
@@ -30,7 +26,7 @@
       <h2><a href="{{url}}">{{title}}</a></h2>
       <h4>{{author}} - {{formatDate publishedAt}}</h4>
       {{#if currentUser}}
-        <button class="edit">Edit</button>
+      <button class="edit">Edit</button>
       {{/if}}
     </div>
     {{#markdown}}{{story}}{{/markdown}}

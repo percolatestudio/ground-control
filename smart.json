@@ -1,7 +1,7 @@
 {
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
-    "branch": "auth"
+    "branch": "auth-devel"
   },
   "packages": {}
 }
