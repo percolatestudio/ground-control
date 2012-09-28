@@ -1,59 +1,89 @@
-Template.singlePost.helpers({
-  currentPost: function() {
-    return Posts.findOne({slug: Session.get('currentPostSlug')});
-  }
-})
+(function() {
 
-Template.allPosts.helpers({
-  posts: function() { return Posts.find(); }
-});
+  Template.singlePost.helpers({
+    currentPost: function() {
+      return Posts.findOne({slug: Session.get('currentPostSlug')});
+    }
+  })
 
-Template.post.helpers({
-  'editing': function() { 
-    // XXX: how can we avoid using a session var for this kind of thing?
-    // can we some how use the template instance reactively?
-    return Session.equals('editingPostId', this._id);
-  }
-})
+  Template.allPosts.helpers({
+    posts: function() { return Posts.find({}, {sort: {publishedAt: -11}}); }
+  });
 
-Template.post.events({
-  'click .edit': function(e, instance) { 
-    Session.set('editingPostId', this._id);
-  }
-});
+  Template.post.helpers({
+    'editing': function() { 
+      // XXX: how can we avoid using a session var for this kind of thing?
+      // can we some how use the template instance reactively?
+      return Session.equals('editingPostId', this._id);
+    }
+  })
 
-Template.showPost.helpers({
-  url: function() {
-    return Routes.postUrl(this);
-  },
+  Template.post.events({
+    'click .edit': function(e, instance) { 
+      Session.set('editingPostId', this._id);
+    }
+  });
+
+  Template.showPost.helpers({
+    url: function() {
+      return Routes.postUrl(this);
+    },
   
-  // XXX: this should probably be global
-  formatDate: function(date) {
-    return new moment(date).calendar();
-  }
-});
+    // XXX: this should probably be global
+    formatDate: function(date) {
+      return new moment(date).calendar();
+    }
+  });
 
-Template.newPost.helpers({
-  newPost: function() { 
-    return {author: Meteor.user().profile.name};
+  /////// edit/new post stuff
+  // read the three values out of the form
+  var readPostForm = function(template) {
+    var post = {}
+    post.title = template.find('[name=title]').value;
+    post.author = template.find('[name=author]').value;
+    post.body = template.find('[name=body]').value;
+    
+    return post;
   }
-})
-
-Template.postForm.events({
-  'click .cancel': function(e) {
-    e.preventDefault();
-    Session.set('editingPostId', null);
-  },
   
-  'submit form': function(e, template) {
-    e.preventDefault();
+  Template.editPost.events({
+    'click .cancel': function(e) {
+      e.preventDefault();
+      Session.set('editingPostId', null);
+    },
     
-    var change = {}
-    change.title = template.find('[name=title]').value;
-    change.author = template.find('[name=author]').value;
-    change.body = template.find('[name=body]').value;
+    'submit form': function(e, template) {
+      e.preventDefault();
+      
+      var change = readPostForm(template);
+      Posts.update(this._id, {$set: change});
+      
+      // perhaps we should be routing around here as well..
+      Session.set('editingPostId', null);
+    }
+  });
+
+  Template.newPost.helpers({
+    newPost: function() { 
+      return {author: Meteor.user().profile && Meteor.user().profile.name};
+    }
+  });
+
+  Template.newPost.events({
+    'click .cancel': function(e) {
+      e.preventDefault();
+      Meteor.Router.navigate('/', {trigger: true});
+    },
     
-    Posts.update(this._id, {$set: change});
-    Session.set('editingPostId', null);
-  }
-})
+    'submit form': function(e, template) {
+      e.preventDefault();
+      
+      var post = readPostForm(template);
+      post.publishedAt = new Date();
+      post.slug = titleToSlug(post.title);
+      Posts.insert(post);
+      
+      Meteor.Router.navigate(Routes.postUrl(post), {trigger: true});
+    }
+  });
+}());

@@ -2,11 +2,17 @@ Meteor.publish('posts', function() {
   return Posts.find();
 });
 
-// XXX: do auth properly
 Posts.allow({
-  'update': function() { 
-    return true;
+  insert: function(userId) { 
+    return !! userId;
+  },
+  update: function(userId) { 
+    return !! userId;
+  },
+  remove: function(userId) { 
+    return !! userId;
   }
+
 })
 
 // XXX: resolve if this is the right way to do this
