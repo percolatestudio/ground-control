@@ -1,7 +1,8 @@
 <template name="admin">
-  {{#if loggedIn}}
-    {{redirectToHome}}
-  {{else}}
-    {{> loginButtons}}
-  {{/if}}
+  <h1>Admin</h1>
+  {{#if loggedIn}}{{redirectToHome}}{{/if}}
+  
+  <p>Please setup your google app and login here. If you can't login, ensure you've set the correct email filter in <code>server/configuration.js</code>.</p>
+  
+  {{> loginButtons}}
 </template>

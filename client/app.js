@@ -2,15 +2,14 @@ Meteor.subscribe('posts');
 
 Meteor.startup(function() {
   Meteor.call('noUsers', function(err, none) {
-    Session.set('noUsers', none);
+    if (none) {
+      // XXX: how to unset this when they sign in?
+      Session.set('noUsers', true);
+      
+      Meteor.Router.navigate('/admin', {trigger: true});
+    } 
   })
 });
-
-Template.body.helpers({
-  'noUsers': function() {
-    return Session.get('noUsers');
-  }
-})
 
 Handlebars.registerHelper('appName', function() {
   return 'Houston';
