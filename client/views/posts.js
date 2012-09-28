@@ -19,8 +19,13 @@
   })
 
   Template.post.events({
-    'click .edit': function(e, instance) { 
+    'click .edit': function() { 
       Session.set('editingPostId', this._id);
+    },
+    
+    'click .delete': function() {
+      if (confirm('Are you sure you want to delete "' + this.title + '"?'))
+        Posts.remove(this._id)
     }
   });
 
