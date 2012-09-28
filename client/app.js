@@ -1,6 +1,5 @@
 Meteor.subscribe('posts');
 
-
 Meteor.startup(function() {
   Meteor.call('noUsers', function(err, none) {
     Session.set('noUsers', none);
@@ -12,3 +11,7 @@ Template.body.helpers({
     return Session.get('noUsers');
   }
 })
+
+Handlebars.registerHelper('appName', function() {
+  return 'Houston';
+});

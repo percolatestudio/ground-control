@@ -1,5 +1,20 @@
-<template name="signup">
-  Signup page
+<template name="getStarted">
+  <h1>Signup page</h1>
+  <p>Welcome to {{appName}}. Let's get started!</p>
   
-  <button class="signup">Signup with Google</button>
+  {{> configureLoginServicesDialogForGoogle}}
+  
+  {{#if configured}}
+    <button class="signup">Signup with Google</button>
+  {{else}}
+    <form class="configureGoogle">
+      <label for="clientId">Client ID</label>
+      <input type="text" name="clientId" placeholder="Something ending in 'googleusercontent.com'"></input>
+      
+      <label for="clientSecret">Client Secret</label>
+      <input type="text" name="clientSecret" placeholder="A 24 character hash"></input>
+      
+      <button type="submit">Configure Google API Access</button>
+    </form>
+  {{/if}}
 </template>

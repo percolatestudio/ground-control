@@ -9,24 +9,37 @@ body {
   line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: bold;
-  margin-bottom: 1.5em;
-}
-
 h1 {
+  font-weight: bold;
   font-size: 32px
 }
 
 h2 { 
+  font-weight: bold;
   font-size: 24px;
 }
 
-p, ul, ol {
+h1, h2, h3, h4, h5, h6, p, ul, ol {
   margin-bottom: 0.5em;
 }
 
 code {
   font-family: Monaco, monospace;
   background: #eee;
+}
+
+form {
+  width: 400px;
+  
+  label, input {
+    display: block;
+  }
+  
+  input {
+    width: 100%;
+  }
+  
+  button {
+    float: right;
+  }
 }
