@@ -6,39 +6,39 @@
   {{#if nextPost}}
     <a href="{{postUrl nextPost}}">Read older posts</a>
   {{/if}}
-  
-  {{> postList}}
 </template>
 
 <template name="singlePost">
   {{#if currentPost}}
-    {{> post currentPost}}
+    <div class="post">
+      {{> post currentPost}}
     
-    {{#if previousPost}}
-    <div class="previousPost">
-      ⪻ {{> postLink previousPost}}
+      {{#if nextPost}}
+      <div class="nextPost">
+        {{> postLink nextPost}} ⪼
+      </div>
+      {{/if}}
+      
+      {{#if previousPost}}
+      <div class="previousPost">
+        ⪻ {{> postLink previousPost}}
+      </div>
+      {{/if}}
     </div>
-    {{/if}}
-    
-    {{#if nextPost}}
-    <div class="nextPost">
-      {{> postLink nextPost}} ⪼
-    </div>
-    {{/if}}
-    
-    {{> postList}}    
   {{else}}
     {{> notFound}}
   {{/if}}
 </template>
 
 <template name="postList">
-  <h2><a href="/">The Meteor blog<a/></h2>
-  <ul class="posts">
-    {{#each allPosts}}
-    <li>{{formatDateShort publishedAt}} {{> postLink}}</li>
-    {{/each}}
-  </ul>
+  <div id="footer">
+    <h2><a href="/">The Meteor blog<a/></h2>
+    <ul class="posts">
+      {{#each allPosts}}
+      <li>{{formatDateShort publishedAt}} {{> postLink}}</li>
+      {{/each}}
+    </ul>
+  </div>
 </template>
 
 <template name="post">
@@ -50,17 +50,15 @@
 </template>
 
 <template name="showPost">
-  <div class="post">
-    <div class="metadata">
-      <h2>{{> postLink}}</h2>
-      <h4>{{author}} - {{formatDate publishedAt}}</h4>
-      {{#if currentUser}}
-      <button class="edit">Edit</button>
-      <button class="delete">Delete</button>
-      {{/if}}
-    </div>
-    {{#markdown}}{{{body}}}{{/markdown}}
+  <div class="metadata">
+    <h2>{{> postLink}}</h2>
+    <h4>{{author}} - {{formatDate publishedAt}}</h4>
+    {{#if currentUser}}
+    <button class="edit">Edit</button>
+    <button class="delete">Delete</button>
+    {{/if}}
   </div>
+  {{#markdown}}{{{body}}}{{/markdown}}
 </template>
 
 <template name="editPost">

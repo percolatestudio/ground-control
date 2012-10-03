@@ -7,14 +7,17 @@
 </body>
 
 <template name="body">
-  {{#if currentUser}}
   <div id="header">
+    <h2><a href="/">The Meteor blog<a/></h2>
+    {{#if currentUser}}
     <button class="newPost" href="/posts/new">New Post</button>
     {{> loginButtons}}
+    {{/if}}
   </div>
-  {{/if}}
   
   {{{renderCurrentPage}}}
+  
+  {{> postList}}
 </template>
 
 <template name="loading">
