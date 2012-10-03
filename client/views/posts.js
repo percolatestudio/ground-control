@@ -12,6 +12,22 @@
   Template.singlePost.helpers({
     currentPost: function() {
       return Posts.findOne({slug: Session.get('currentPostSlug')});
+    },
+    
+    nextPost: function() {
+      var currentPost = Posts.findOne({slug: Session.get('currentPostSlug')});
+      return Posts.findOne(
+        {publishedAt: {$lt: currentPost.publishedAt}},
+        {sort: {publishedAt: -1}}
+      );
+    },
+    
+    previousPost: function() {
+      var currentPost = Posts.findOne({slug: Session.get('currentPostSlug')});
+      return Posts.findOne(
+        {publishedAt: {$gt: currentPost.publishedAt}},
+        {sort: {publishedAt: 1}}
+      );
     }
   })
   
@@ -24,12 +40,8 @@
       // XXX: how can we avoid using a session var for this kind of thing?
       // can we some how use the template instance reactively?
       return Session.equals('editingPostId', this._id);
-    },
-    
-    nextPost: function() {
-      // Posts.find({publishedAt: {$gt: }})
     }
-  })
+  });
 
   Template.post.events({
     'click .edit': function() { 

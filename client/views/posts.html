@@ -14,12 +14,16 @@
   {{#if currentPost}}
     {{> post currentPost}}
     
-    {{#if lastPost}}
-      ⪻ {{> postLink lastPost}}
+    {{#if previousPost}}
+    <div class="previousPost">
+      ⪻ {{> postLink previousPost}}
+    </div>
     {{/if}}
     
     {{#if nextPost}}
+    <div class="nextPost">
       {{> postLink nextPost}} ⪼
+    </div>
     {{/if}}
     
     {{> postList}}    
@@ -29,7 +33,7 @@
 </template>
 
 <template name="postList">
-  <h2>The Meteor blog</h2>
+  <h2><a href="/">The Meteor blog<a/></h2>
   <ul class="posts">
     {{#each allPosts}}
     <li>{{formatDateShort publishedAt}} {{> postLink}}</li>
