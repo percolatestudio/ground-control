@@ -1,20 +1,33 @@
 (function() {
-
+  Template.allPosts.helpers({
+    visiblePosts: function() {
+      return allPosts().fetch().slice(0,3);
+    },
+    nextPost: function() {
+      return (allPosts().count() > 3) && allPosts().fetch()[3];
+    }
+  });
+  
+  
   Template.singlePost.helpers({
     currentPost: function() {
       return Posts.findOne({slug: Session.get('currentPostSlug')});
     }
   })
-
-  Template.allPosts.helpers({
-    posts: function() { return Posts.find({}, {sort: {publishedAt: -11}}); }
+  
+  Template.postList.helpers({
+    allPosts: function() { return allPosts(); }
   });
-
+  
   Template.post.helpers({
-    'editing': function() { 
+    editing: function() { 
       // XXX: how can we avoid using a session var for this kind of thing?
       // can we some how use the template instance reactively?
       return Session.equals('editingPostId', this._id);
+    },
+    
+    nextPost: function() {
+      // Posts.find({publishedAt: {$gt: }})
     }
   })
 
@@ -26,17 +39,6 @@
     'click .delete': function() {
       if (confirm('Are you sure you want to delete "' + this.title + '"?'))
         Posts.remove(this._id)
-    }
-  });
-
-  Template.showPost.helpers({
-    url: function() {
-      return Routes.postUrl(this);
-    },
-  
-    // XXX: this should probably be global
-    formatDate: function(date) {
-      return new moment(date).calendar();
     }
   });
 
@@ -93,5 +95,5 @@
       
       Meteor.Router.navigate(Routes.postUrl(post), {trigger: true});
     }
-  });
+  });  
 }());

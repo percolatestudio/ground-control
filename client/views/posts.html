@@ -1,15 +1,40 @@
+<template name="allPosts">
+  {{#each visiblePosts}}
+    {{> post}}
+  {{/each}}
+  
+  {{#if nextPost}}
+    <a href="{{postUrl nextPost}}">Read older posts</a>
+  {{/if}}
+  
+  {{> postList}}
+</template>
+
 <template name="singlePost">
   {{#if currentPost}}
     {{> post currentPost}}
+    
+    {{#if lastPost}}
+      ⪻ {{> postLink lastPost}}
+    {{/if}}
+    
+    {{#if nextPost}}
+      {{> postLink nextPost}} ⪼
+    {{/if}}
+    
+    {{> postList}}    
   {{else}}
     {{> notFound}}
   {{/if}}
 </template>
 
-<template name="allPosts">
-  {{#each posts}}
-    {{> post}}
-  {{/each}}
+<template name="postList">
+  <h2>The Meteor blog</h2>
+  <ul class="posts">
+    {{#each allPosts}}
+    <li>{{formatDateShort publishedAt}} {{> postLink}}</li>
+    {{/each}}
+  </ul>
 </template>
 
 <template name="post">
@@ -23,7 +48,7 @@
 <template name="showPost">
   <div class="post">
     <div class="metadata">
-      <h2><a href="{{url}}">{{title}}</a></h2>
+      <h2>{{> postLink}}</h2>
       <h4>{{author}} - {{formatDate publishedAt}}</h4>
       {{#if currentUser}}
       <button class="edit">Edit</button>
@@ -56,4 +81,8 @@
     <button class="cancel">Cancel</button>
     <button class="save" type="submit">Save</button>
   </form>
+</template>
+
+<template name="postLink">
+  <a href="{{postUrl this}}">{{title}}</a>
 </template>

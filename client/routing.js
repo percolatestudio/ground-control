@@ -48,6 +48,10 @@ Routes = {
   }
 }
 
+Handlebars.registerHelper('postUrl', function(post) {
+  return Routes.postUrl(post);
+});
+
 // a handlebars helper to render the correct page
 Handlebars.registerHelper('renderCurrentPage', function() {
   var name = Session.get('currentPage');

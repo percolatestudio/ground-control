@@ -35,5 +35,14 @@ Meteor.startup(function() {
         " - Find-by-selector: It's now easy to find DOM nodes by selector within a template. Event handlers take a second argument, 'template', which provides `template.find(selector)` and `template.findAll(selector)`. In template callbacks, they are available as `this.find` and `this.findAll`."
       ].join('\n\n')
     });
+    for (var i = 0; i < 10; i++) {
+      Posts.insert({
+        title: title = 'Another Post #' + i,
+        slug: titleToSlug(title),
+        author: 'David Greenspan',
+        publishedAt: new Date(2012, 7, i),
+        body: "Simple body\n\nThat's it."
+      }); 
+    }
   }
 });
