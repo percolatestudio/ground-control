@@ -23,15 +23,15 @@ Meteor.methods({
 })
 
 // user account validation. Set this value in server/configuration.js
-Meteor.accounts.validateNewUser(function(proposedUser) {
+Accounts.validateNewUser(function(proposedUser) {
   var email = proposedUser.services.google.email;
   
   function endsWith(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
   }
   
-  if (_.isRegExp(Meteor.accounts.allowedEmails))
-    return Meteor.accounts.allowedEmails.test(email);
+  if (_.isRegExp(Accounts.allowedEmails))
+    return Accounts.allowedEmails.test(email);
   else
     return endsWith(email, Meteor.accounts.allowedEmails);
 });
