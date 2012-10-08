@@ -30,8 +30,8 @@ Accounts.validateNewUser(function(proposedUser) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
   }
   
-  if (_.isRegExp(Accounts.allowedEmails))
-    return Accounts.allowedEmails.test(email);
+  if (_.isRegExp(Settings.allowedEmails))
+    return Settings.allowedEmails.test(email);
   else
-    return endsWith(email, Meteor.accounts.allowedEmails);
+    return endsWith(email, Settings.allowedEmails);
 });
