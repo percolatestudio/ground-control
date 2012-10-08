@@ -33,5 +33,5 @@ Accounts.validateNewUser(function(proposedUser) {
   if (_.isRegExp(Accounts.allowedEmails))
     return Accounts.allowedEmails.test(email);
   else
-    return endsWith(email, Meteor.accounts.allowedEmails);
+    return endsWith(email, Accounts.allowedEmails);
 });
