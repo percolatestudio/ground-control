@@ -1,4 +1,4 @@
-// code lifted from: https://github.com/dylang/node-xml/blob/master/lib/util.js
+// code lifted from: https://github.com/dylang/node-xml
 // note: streaming stuff isn't going to work.
 // 
 // (The MIT License)
