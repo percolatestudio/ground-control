@@ -34,8 +34,17 @@ form {
   width: 600px;
   margin: 0 auto;
   
+  label {
+    float: left;
+  }
+  .field_error {
+    float: right;
+    color: red;
+  }
+  
   label, input {
     display: block;
+    clear: both
   }
   
   input, textarea {
@@ -46,7 +55,7 @@ form {
     height: 400px;
   }
   
-  button {
+  fieldset.buttons {
     float: right;
   }
 }

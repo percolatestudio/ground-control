@@ -17,7 +17,7 @@
   
   {{{renderCurrentPage}}}
   
-  {{> postList}}
+  {{> footer}}
 </template>
 
 <template name="loading">
@@ -26,4 +26,15 @@
 
 <template name="notFound">
   Not found!
+</template>
+
+<template name="footer">
+  <div id="footer">
+    <h2><a href="/">The Meteor blog<a/></h2>
+    <ul class="posts">
+      {{#each allPosts}}
+      <li>{{formatDateShort publishedAt}} {{> postLink}}</li>
+      {{/each}}
+    </ul>
+  </div>
 </template>

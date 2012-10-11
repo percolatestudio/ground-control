@@ -8,7 +8,7 @@
   {{/if}}
 </template>
 
-<template name="singlePost">
+<template name="showPost">
   {{#if currentPost}}
     <div class="post">
       {{> post currentPost}}
@@ -30,58 +30,44 @@
   {{/if}}
 </template>
 
-<template name="postList">
-  <div id="footer">
-    <h2><a href="/">The Meteor blog<a/></h2>
-    <ul class="posts">
-      {{#each allPosts}}
-      <li>{{formatDateShort publishedAt}} {{> postLink}}</li>
-      {{/each}}
-    </ul>
-  </div>
-</template>
-
-<template name="post">
-  {{#if editing}}
-    {{> editPost}}
-  {{else}}
-    {{> showPost}}
-  {{/if}}
-</template>
-
-<template name="showPost">
-  <div class="metadata">
-    <h2>{{> postLink}}</h2>
-    <h4>{{author}} - {{formatDate publishedAt}}</h4>
-    {{#if currentUser}}
-    <button class="edit">Edit</button>
-    <button class="delete">Delete</button>
-    {{/if}}
-  </div>
-  {{#markdown}}{{{body}}}{{/markdown}}
-</template>
-
 <template name="editPost">
-  {{> postForm}}
+  {{> postForm currentPost}}
 </template>
 
 <template name="newPost">
   {{> postForm newPost}}
 </template>
+
+<template name="post">
+  <div class="metadata">
+    <h2>{{> postLink}}</h2>
+    <h4>{{author}} - {{formatDate publishedAt}}</h4>
+    {{#if currentUser}}
+    <button class="edit" href="{{editPostUrl this}}">Edit</button>
+    <button class="delete">Delete</button>
+    {{/if}}
+  </div>
+  {{#markdown}}{{{body}}}{{/markdown}}
+</template>
   
 <template name="postForm">
   <form class="post">
     <label for="title">Title</label>
+    <div class="field_error">{{errors.title}}</div>
     <input type="text" name="title" value="{{title}}"></input>
     
     <label for="author">Author</label>
+    <div class="field_error">{{errors.author}}</div>
     <input type="text" name="author" value="{{author}}"></input>
     
     <label for="body">Body (Markdown)</label>
+    <div class="field_error">{{errors.body}}</div>
     <textarea name="body">{{body}}</textarea>
     
-    <button class="cancel">Cancel</button>
-    <button class="save" type="submit">Save</button>
+    <fieldset class="buttons">
+      <a class="cancel">Cancel</a>
+      <button class="save" type="submit">Save</button>
+    </fieldset>
   </form>
 </template>
 

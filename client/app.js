@@ -11,6 +11,12 @@ Meteor.startup(function() {
   })
 });
 
+// XXX: put this somewhere
+Handlebars.registerHelper('appName', function() {
+  return 'Houston';
+});
+
+
 Template.body.events({
   'click [href]': function(e) {
     // code stolen from pages branch, not really complete
@@ -32,6 +38,8 @@ Template.body.events({
   }
 })
 
-Handlebars.registerHelper('appName', function() {
-  return 'Houston';
+
+Template.footer.helpers({
+  allPosts: function() { return allPosts(); }
 });
+  

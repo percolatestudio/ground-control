@@ -8,6 +8,7 @@ var Router = Backbone.Router.extend({
     'users': 'users',
     'admin': 'admin',
     'posts/new': 'newPost',
+    ':year/:day/:month/:slug/edit': 'editPost',
     ':year/:day/:month/:slug': 'post'
   },
   
@@ -27,8 +28,13 @@ var Router = Backbone.Router.extend({
     Session.set('currentPage', 'newPost');
   },
   
+  editPost: function(year, day, month, slug) {
+    Session.set('currentPage', 'editPost');
+    Session.set('currentPostSlug', slug);
+  },
+  
   post: function(year, day, month, slug) {
-    Session.set('currentPage', 'singlePost');
+    Session.set('currentPage', 'showPost');
     Session.set('currentPostSlug', slug);
   }
 });
@@ -45,11 +51,17 @@ Routes = {
     var date = new Date(post.publishedAt);
     date = date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate();
     return '/' + date + '/' + post.slug;
+  },
+  editPostUrl: function(post) {
+    return Routes.postUrl(post) + '/edit';
   }
 }
 
 Handlebars.registerHelper('postUrl', function(post) {
   return Routes.postUrl(post);
+});
+Handlebars.registerHelper('editPostUrl', function(post) {
+  return Routes.editPostUrl(post);
 });
 
 // a handlebars helper to render the correct page

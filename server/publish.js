@@ -2,11 +2,13 @@ Meteor.publish('posts', function() {
   return Posts.find();
 });
 
+// anyone can edit any post, but you do need to be logged in
 Posts.allow({
   insert: function(userId) { 
     return !! userId;
   },
   update: function(userId) { 
+    // XXX: it'd be nice to check that the posts are valid here, but it's THB
     return !! userId;
   },
   remove: function(userId) { 
