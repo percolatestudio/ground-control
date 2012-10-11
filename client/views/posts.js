@@ -62,16 +62,14 @@ Template.editPost.events({
   },
     
   'submit form': function(e, template) {
-    console.log('save');
     e.preventDefault();
       
-    var newPost = readPostForm(template);
-    var errors = validatePost(newPost);
-    
+    var changes = readPostForm(template);
+    var errors = validatePost(changes);
     if (! _.isEmpty(errors))
       return Session.set('postForm.errors', errors);
     
-    Posts.update(this._id, {$set: newPost});
+    Posts.update(this._id, {$set: changes});
     Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
   }
 });
@@ -92,10 +90,14 @@ Template.newPost.events({
     e.preventDefault();
       
     var post = readPostForm(template);
+    var errors = validatePost(post);
+    if (! _.isEmpty(errors))
+      return Session.set('postForm.errors', errors);
+    
     post.publishedAt = new Date();
     // XXX: should the slug be created server side? 
     // (would stop slugs from clobbering each other)
-    // if so we need to wait until we route. That's ok though
+    // if so we need to spin until we route. That's ok though
     post.slug = titleToSlug(post.title);
     Posts.insert(post);
       
