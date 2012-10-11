@@ -93,19 +93,21 @@ Template.newPost.events({
       
     var changes = readPostForm(template);
     _.extend(this, changes);
-
+    
     var errors = validatePost(this);
     if (! _.isEmpty(errors))
       return Session.set('postForm.errors', errors);
     
-    this.publishedAt = new Date();
-    // XXX: should the slug be created server side? 
-    // (would stop slugs from clobbering each other)
-    // if so we need to spin until we route. That's ok though
-    this.slug = titleToSlug(this.title);
-    Posts.insert(this);
-      
-    Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
+    // XXX: show a spinner
+    
+    Meteor.call('post', this, function(err) {
+      if (err) {
+        // XXX: what errors are possible here?
+        console.log(err.reason);
+      } else {
+        Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
+      }
+    })
   }
 });  
 
