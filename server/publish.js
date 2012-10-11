@@ -13,9 +13,10 @@ Posts.allow({
   },
   remove: function(userId) { 
     return !! userId;
-  }
-
+  },
+  fetch: []
 })
+
 
 // XXX: resolve if this is the right way to do this
 Meteor.methods({

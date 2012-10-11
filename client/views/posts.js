@@ -65,7 +65,9 @@ Template.editPost.events({
     e.preventDefault();
       
     var changes = readPostForm(template);
-    var errors = validatePost(changes);
+    _.extend(this, changes);
+    
+    var errors = validatePost(this);
     if (! _.isEmpty(errors))
       return Session.set('postForm.errors', errors);
     
@@ -89,22 +91,27 @@ Template.newPost.events({
   'submit form': function(e, template) {
     e.preventDefault();
       
-    var post = readPostForm(template);
-    var errors = validatePost(post);
+    var changes = readPostForm(template);
+    _.extend(this, changes);
+
+    var errors = validatePost(this);
     if (! _.isEmpty(errors))
       return Session.set('postForm.errors', errors);
     
-    post.publishedAt = new Date();
+    this.publishedAt = new Date();
     // XXX: should the slug be created server side? 
     // (would stop slugs from clobbering each other)
     // if so we need to spin until we route. That's ok though
-    post.slug = titleToSlug(post.title);
-    Posts.insert(post);
+    this.slug = titleToSlug(this.title);
+    Posts.insert(this);
       
-    Meteor.Router.navigate(Routes.postUrl(post), {trigger: true});
+    Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
   }
 });  
 
+Template.postForm.created = function() {
+  Session.set('postForm.errors', {});
+}
 Template.postForm.helpers({
   errors: function() {
     return Session.get('postForm.errors')

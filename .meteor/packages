@@ -8,3 +8,4 @@ showdown
 backbone
 accounts-ui
 stylus
+preserve-inputs
