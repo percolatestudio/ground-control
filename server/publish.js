@@ -15,6 +15,13 @@ Posts.allow({
     return !! userId;
   },
   fetch: []
+});
+
+// can't change slug
+Posts.deny({
+  insert: function(userId, docs, fields) {
+    return _.contain(fields, 'slug');
+  }
 })
 
 
