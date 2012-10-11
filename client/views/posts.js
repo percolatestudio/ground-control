@@ -89,23 +89,24 @@ Template.newPost.events({
   },
     
   'submit form': function(e, template) {
+    var self = this;
+    
     e.preventDefault();
       
     var changes = readPostForm(template);
-    _.extend(this, changes);
+    _.extend(self, changes);
     
-    var errors = validatePost(this);
+    var errors = validatePost(self);
     if (! _.isEmpty(errors))
       return Session.set('postForm.errors', errors);
     
     // XXX: show a spinner
-    
-    Meteor.call('post', this, function(err) {
+    Meteor.call('post', self, function(err) {
       if (err) {
         // XXX: what errors are possible here?
         console.log(err.reason);
       } else {
-        Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
+        Meteor.Router.navigate(Routes.postUrl(self), {trigger: true});
       }
     })
   }
