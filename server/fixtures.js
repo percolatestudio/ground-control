@@ -8,7 +8,9 @@ Meteor.startup(function() {
     Posts.insert({
       title: title = 'Meteor 0.4.1: Sending email and Node 0.8',
       slug: titleToSlug(title),
+      // XXX: we'll need to figure out authorId when we actually use it
       author: 'Matt DeBergalis',
+      authorGravatarHash: '182ca8f6769f9e589ccfe4c15b9a130a',
       publishedAt: new Date(2012, 8, 25),
       body: [
         "We are hard at work polishing up Meteor Accounts, our full-featured auth system that supports login with Facebook and Google, or with secure passwords. Many Meteor developers are already using it on our pre-release [`auth`](https://github.com/meteor/meteor/tree/auth) branch and contributing code: we've merged pull requests for Twitter and Weibo login services, with more on the way. See the [Getting Started with Auth](https://github.com/meteor/meteor/wiki/Getting-Started-with-Auth) page on our wiki and the email traffic on [the meteor-core list](https://groups.google.com/forum/?fromgroups#!forum/meteor-core) if you want to get an early look.",
@@ -23,6 +25,7 @@ Meteor.startup(function() {
       title: title = 'Introducing Spark: a new live page update engine',
       slug: titleToSlug(title),
       author: 'David Greenspan',
+      authorGravatarHash: '696549174910acff6ad306a38ed8c1fc',
       publishedAt: new Date(2012, 8, 1),
       body: [
         "We've just pushed Meteor 0.4.0. In this release, we're proud to introduce a major new technology: Spark, a live page update engine by David Greenspan and Geoff Schmidt. Spark replaces the old `liveui` package and works under the hood to enable several powerful new template features.",
@@ -39,7 +42,8 @@ Meteor.startup(function() {
       Posts.insert({
         title: title = 'Another Post #' + i,
         slug: titleToSlug(title),
-        author: 'David Greenspan',
+        author: 'Matt DeBergalis',
+        authorGravatarHash: '182ca8f6769f9e589ccfe4c15b9a130a',
         publishedAt: new Date(2012, 7, i),
         body: "Simple body\n\nThat's it."
       }); 

@@ -1,6 +1,8 @@
 <template name="allPosts">
   {{#each visiblePosts}}
-    {{> post}}
+    <div class="post">
+      {{> post}}
+    </div>
   {{/each}}
   
   {{#if nextPost}}
@@ -40,6 +42,7 @@
 
 <template name="post">
   <div class="metadata">
+    <img class="avatar" src="{{gravatarURL authorGravatarHash}}"/>
     <h2>{{> postLink}}</h2>
     <h4>{{author}} - {{formatDate publishedAt}}</h4>
     {{#if currentUser}}
