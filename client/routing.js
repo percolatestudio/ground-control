@@ -4,7 +4,7 @@ Session.set('currentPage', 'loading');
 
 var Router = Backbone.Router.extend({
   routes: {
-    '': 'posts',
+    '': 'home',
     'users': 'users',
     'admin': 'admin',
     'posts/new': 'newPost',
@@ -20,21 +20,22 @@ var Router = Backbone.Router.extend({
     Session.set('currentPage', 'admin')
   },
   
-  posts: function() {
+  home: function() {
     Session.set('currentPage', 'allPosts')
+    Session.set('currentPostSlug', null);
   },
   
   newPost: function() {
-    Session.set('currentPage', 'newPost');
+    Session.set('currentPage', 'allPosts')
   },
   
   editPost: function(year, day, month, slug) {
-    Session.set('currentPage', 'editPost');
+    Session.set('currentPage', 'allPosts')
     Session.set('currentPostSlug', slug);
   },
   
   post: function(year, day, month, slug) {
-    Session.set('currentPage', 'showPost');
+    Session.set('currentPage', 'allPosts')
     Session.set('currentPostSlug', slug);
   }
 });

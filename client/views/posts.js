@@ -7,28 +7,17 @@ Template.allPosts.helpers({
   }
 });
   
-  
-Template.showPost.helpers({
+Template.post.helpers({
   currentPost: function() {
-    return Posts.findOne({slug: Session.get('currentPostSlug')});
-  },
-    
-  nextPost: function() {
-    var currentPost = Posts.findOne({slug: Session.get('currentPostSlug')});
-    return Posts.findOne(
-      {publishedAt: {$lt: currentPost.publishedAt}},
-      {sort: {publishedAt: -1}}
-    );
-  },
-    
-  previousPost: function() {
-    var currentPost = Posts.findOne({slug: Session.get('currentPostSlug')});
-    return Posts.findOne(
-      {publishedAt: {$gt: currentPost.publishedAt}},
-      {sort: {publishedAt: 1}}
-    );
+    // no current post set and we are the first post
+    // XXX: better way to figure out if we are the first post?
+    if (Session.equals('currentPostSlug', null)) {
+      return Posts.findOne()._id === this._id;
+    } else {
+      return Session.equals('currentPostSlug', this.slug);
+    }
   }
-})
+});
 
 Template.post.events({
   'click .delete': function() {
@@ -36,6 +25,13 @@ Template.post.events({
       Posts.remove(this._id)
   }
 });
+
+
+
+
+
+
+
 
 /////// edit/new post stuff
 // read the three values out of the form
@@ -48,33 +44,27 @@ var readPostForm = function(template) {
   return post;
 }
 
-Template.editPost.helpers({
-  currentPost: function() { 
-    return Posts.findOne({slug: Session.get('currentPostSlug')});
-  }
-});
-
-Template.editPost.events({
-  'click .cancel': function(e) {
-    // XXX: check changes
-    e.preventDefault();
-    Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
-  },
-    
-  'submit form': function(e, template) {
-    e.preventDefault();
-      
-    var changes = readPostForm(template);
-    _.extend(this, changes);
-    
-    var errors = validatePost(this);
-    if (! _.isEmpty(errors))
-      return Session.set('postForm.errors', errors);
-    
-    Posts.update(this._id, {$set: changes});
-    Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
-  }
-});
+// Template.editPost.events({
+//   'click .cancel': function(e) {
+//     // XXX: check changes
+//     e.preventDefault();
+//     Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
+//   },
+//     
+//   'submit form': function(e, template) {
+//     e.preventDefault();
+//       
+//     var changes = readPostForm(template);
+//     _.extend(this, changes);
+//     
+//     var errors = validatePost(this);
+//     if (! _.isEmpty(errors))
+//       return Session.set('postForm.errors', errors);
+//     
+//     Posts.update(this._id, {$set: changes});
+//     Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
+//   }
+// });
 
 Template.newPost.helpers({
   newPost: function() { 

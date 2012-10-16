@@ -1,36 +1,31 @@
 <template name="allPosts">
   {{#each visiblePosts}}
-    <div class="post">
-      {{> post}}
-    </div>
+    {{> post}}
   {{/each}}
-  
-  {{#if nextPost}}
-    <a href="{{postUrl nextPost}}">Read older posts</a>
-  {{/if}}
 </template>
 
-<template name="showPost">
-  {{#if currentPost}}
-    <div class="post">
-      {{> post currentPost}}
-    
-      {{#if nextPost}}
-      <div class="nextPost">
-        {{> postLink nextPost}} ⪼
-      </div>
-      {{/if}}
-      
-      {{#if previousPost}}
-      <div class="previousPost">
-        ⪻ {{> postLink previousPost}}
-      </div>
-      {{/if}}
+<template name="post">
+  <div class="post">
+    <div class="header">
+      {{> postMeta}}
     </div>
-  {{else}}
-    {{> notFound}}
-  {{/if}}
+    {{#if currentPost}}
+    <div class="body">
+      {{> postMeta}}
+      {{#markdown}}{{{body}}}{{/markdown}}
+    </div>
+    {{/if}}
+  </div>
 </template>
+
+<template name="postMeta">
+  <div class="metadata">
+    <h2>{{> postLink}}</h2>
+    <h4>{{author}} - {{formatDate publishedAt}}</h4>
+  </div>
+</template>
+
+
 
 <template name="editPost">
   {{> postForm currentPost}}
@@ -38,19 +33,6 @@
 
 <template name="newPost">
   {{> postForm newPost}}
-</template>
-
-<template name="post">
-  <div class="metadata">
-    <img class="avatar" src="{{gravatarURL authorGravatarHash}}"/>
-    <h2>{{> postLink}}</h2>
-    <h4>{{author}} - {{formatDate publishedAt}}</h4>
-    {{#if currentUser}}
-    <button class="edit" href="{{editPostUrl this}}">Edit</button>
-    <button class="delete">Delete</button>
-    {{/if}}
-  </div>
-  {{#markdown}}{{{body}}}{{/markdown}}
 </template>
   
 <template name="postForm">

@@ -38,8 +38,3 @@ Template.body.events({
   }
 })
 
-
-Template.footer.helpers({
-  allPosts: function() { return allPosts(); }
-});
-  
