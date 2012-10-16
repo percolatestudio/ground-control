@@ -7,17 +7,21 @@
 </body>
 
 <template name="body">
-  <div id="header">
-    <h2><a href="/">The Meteor blog<a/></h2>
-    {{#if currentUser}}
-    <button class="newPost" href="/posts/new">New Post</button>
-    {{> loginButtons}}
-    {{/if}}
+  <div id="wrapper">
+    <div id="content">
+      <div id="header">
+        <h1><a href="/">Meteor blog<a/></h1>
+        {{#if currentUser}}
+        <button class="newPost" href="/posts/new">New Post</button>
+        {{> loginButtons}}
+        {{/if}}
+      </div>
+  
+      {{{renderCurrentPage}}}
+    </div>
+  
+    {{> sidebar}}
   </div>
-  
-  {{{renderCurrentPage}}}
-  
-  {{> footer}}
 </template>
 
 <template name="loading">
@@ -28,13 +32,28 @@
   Not found!
 </template>
 
-<template name="footer">
-  <div id="footer">
-    <h2><a href="/">The Meteor blog<a/></h2>
-    <ul class="posts">
-      {{#each allPosts}}
-      <li>{{formatDateShort publishedAt}} {{> postLink}}</li>
-      {{/each}}
+<template name="sidebar">
+  <div id="sidebar">
+    <div class="about">
+      <h3>About</h3>
+      <p>
+        Meteor is an open-source platform for building top-quality web apps in a fraction of the time, whether you're an expert developer or just getting started.
+      </p>
+    </div>
+    
+    <form class="join">
+      <p>Join the mailing list</p>
+      <input name="email" placeholder="Your email address"></input>
+    </form>
+    
+    <ul class="links">
+      <li><a href="http://meteor.com">Meteor.com</a></li>
+      <li><a href="..">@meteorjs</a></li>
+      <li><a href="..">Github</a></li>
     </ul>
+    
+    <p class="attribution">
+      Crafted by Percolate
+    </p>
   </div>
 </template>
