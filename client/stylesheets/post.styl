@@ -1,11 +1,41 @@
 .post {
-  overflow: hidden;
-  
-  .avatar {
-    float: left;
-    margin: 10px
+  list-style-type: none
+  .header, .body {
+    padding: 20px;
   }
-  .nextPost {
-    float: right;
+  
+  .body {
+    background: #fff;
+  }
+  
+  .metadata {
+    .title, .byline {
+      font-weight: normal;
+    }
+    .byline {
+      font-family: 'Raleway', Helvetica, sans-serif;
+      text-transform: uppercase;
+    }
+  }
+  
+}
+
+// colors 
+.post:nth-child(3n + 1) {
+  background: rgb(157, 206, 198); // GREEN
+}
+.post:nth-child(3n + 2) {
+  background: rgb(207, 185, 150); // BROWN
+}
+.post:nth-child(3n + 3) {
+  background: rgb(154, 190, 211); // BLUE
+}
+
+// transition
+.post.open {
+  .header {
+    height: 0;
+    padding: 10px 0 0;
+    overflow: hidden;
   }
 }

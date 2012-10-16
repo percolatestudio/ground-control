@@ -1,11 +1,13 @@
 <template name="allPosts">
-  {{#each visiblePosts}}
-    {{> post}}
-  {{/each}}
+  <ul class="posts">
+    {{#each visiblePosts}}
+      {{> post}}
+    {{/each}}
+  </ul>
 </template>
 
 <template name="post">
-  <div class="post">
+  <li class="post {{openClass}}">
     <div class="header">
       {{> postMeta}}
     </div>
@@ -15,13 +17,14 @@
       {{#markdown}}{{{body}}}{{/markdown}}
     </div>
     {{/if}}
-  </div>
+  </li>
 </template>
 
 <template name="postMeta">
   <div class="metadata">
-    <h2>{{> postLink}}</h2>
-    <h4>{{author}} - {{formatDate publishedAt}}</h4>
+    <a class="permalink" href="{{postUrl this}}"></a>    
+    <h2 class="title">{{title}}</h2>
+    <h4 class="byline">{{formatDate publishedAt}} {{author}}</h4>
   </div>
 </template>
 
@@ -54,8 +57,4 @@
       <button class="save" type="submit">Save</button>
     </fieldset>
   </form>
-</template>
-
-<template name="postLink">
-  <a href="{{postUrl this}}">{{title}}</a>
 </template>

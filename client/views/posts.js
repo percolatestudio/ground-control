@@ -6,17 +6,20 @@ Template.allPosts.helpers({
     return (allPosts().count() > 3) && allPosts().fetch()[3];
   }
 });
-  
-Template.post.helpers({
-  currentPost: function() {
-    // no current post set and we are the first post
-    // XXX: better way to figure out if we are the first post?
-    if (Session.equals('currentPostSlug', null)) {
-      return Posts.findOne()._id === this._id;
-    } else {
-      return Session.equals('currentPostSlug', this.slug);
-    }
+
+var isCurrentPost = function(post) {
+  // no current post set and we are the first post
+  // XXX: better way to figure out if we are the first post?
+  if (Session.equals('currentPostSlug', null)) {
+    return Posts.findOne()._id === post._id;
+  } else {
+    return Session.equals('currentPostSlug', post.slug);
   }
+}
+
+Template.post.helpers({
+  currentPost: function() { return isCurrentPost(this); },
+  openClass: function() { return isCurrentPost(this) && 'open'; }
 });
 
 Template.post.events({
