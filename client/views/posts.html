@@ -11,12 +11,11 @@
     <div class="header">
       {{> postMeta}}
     </div>
-    {{#if currentPost}}
+    {{! XXX: only render the body if the post is visible}}
     <div class="body">
       {{> postMeta}}
       {{#markdown}}{{{body}}}{{/markdown}}
     </div>
-    {{/if}}
   </li>
 </template>
 

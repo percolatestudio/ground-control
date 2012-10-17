@@ -1,14 +1,17 @@
+@import 'nib';
+
 .post {
   list-style-type: none
-  .header, .body {
-    padding: 20px;
-  }
-  
   .body {
     background: #fff;
+    
+    > *:not(.metadata) {
+      margin: 20px;
+    }
   }
   
   .metadata {
+    padding: 20px;
     .title, .byline {
       font-weight: normal;
     }
@@ -17,25 +20,91 @@
       text-transform: uppercase;
     }
   }
-  
 }
 
 // colors 
-.post:nth-child(3n + 1) {
+.post:nth-child(4n + 1) {
+  background: rgb(251, 144, 103); // ORANGE
+}
+.post:nth-child(4n + 2) {
   background: rgb(157, 206, 198); // GREEN
 }
-.post:nth-child(3n + 2) {
+.post:nth-child(4n + 3) {
   background: rgb(207, 185, 150); // BROWN
 }
-.post:nth-child(3n + 3) {
+.post:nth-child(4n + 4) {
   background: rgb(154, 190, 211); // BLUE
 }
 
-// transition
-.post.open {
-  .header {
-    height: 0;
-    padding: 10px 0 0;
+
+.post {
+  .header, .body {
     overflow: hidden;
   }
+  .body {
+    max-height: 0px;
+        
+    animation-name: slidedown;
+    animation-duration: 1s;
+    animation-direction: reverse;
+  }
+  .header {
+    animation-name: slidedown-header;
+    animation-duration: 1s;
+  }
 }
+
+.post.open {
+  .header {
+    max-height: 10px;
+    
+    animation-name: slidedown-header;
+    animation-duration: 1s;
+    animation-direction: reverse;
+  }
+  .body { 
+    max-height: none;
+    
+    animation-name: slidedown;
+    animation-duration: 1s;
+    animation-direction: normal;
+  }
+}
+
+@keyframes slidedown-header {
+  from {
+    max-height: 10px;
+  }
+  to  {
+    max-height: 120px
+  }
+}
+
+@keyframes slidedown {
+  from {
+    max-height: 0px;
+  }
+  to {
+    max-height: 600px;
+  }
+}
+
+// transition -- first attempt at rotation, not very good
+// .post .body {
+//   transform: rotateX(-90deg);
+// }
+// 
+// .post.open {
+//   transform: rotateX(90deg);
+//   .body {
+//     height: auto
+//   }
+// }
+// transition-time = 1000ms;
+// .post {
+//   transition: all transition-time linear 0;
+//   transform-style: preserve-3d;
+//   .body {
+//     transition: height 0 linear transition-time;
+//   }
+// }

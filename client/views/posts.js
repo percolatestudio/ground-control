@@ -17,22 +17,23 @@ var isCurrentPost = function(post) {
   }
 }
 
+Template.post.preserve(['.post', '.post .header', '.post .body']);
+
 Template.post.helpers({
   currentPost: function() { return isCurrentPost(this); },
-  openClass: function() { return isCurrentPost(this) && 'open'; }
+  openClass: function() { return isCurrentPost(this) ? 'open' : ''; }
 });
 
 Template.post.events({
+  'click': function() {
+    Session.set('currentPostSlug', this.slug);
+  },
+  
   'click .delete': function() {
     if (confirm('Are you sure you want to delete "' + this.title + '"?'))
       Posts.remove(this._id)
   }
 });
-
-
-
-
-
 
 
 
