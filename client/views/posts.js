@@ -1,9 +1,6 @@
 Template.allPosts.helpers({
   visiblePosts: function() {
-    return allPosts().fetch().slice(0,3);
-  },
-  nextPost: function() {
-    return (allPosts().count() > 3) && allPosts().fetch()[3];
+    return allPosts();
   }
 });
 
