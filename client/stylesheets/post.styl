@@ -37,6 +37,7 @@
 }
 
 
+animation-time = 300ms;
 .post {
   .header, .body {
     overflow: hidden;
@@ -45,12 +46,12 @@
     max-height: 0px;
         
     animation-name: slidedown;
-    animation-duration: 1s;
+    animation-duration: animation-time;
     animation-direction: reverse;
   }
   .header {
     animation-name: slidedown-header;
-    animation-duration: 1s;
+    animation-duration: animation-time;
   }
 }
 
@@ -59,14 +60,14 @@
     max-height: 10px;
     
     animation-name: slidedown-header;
-    animation-duration: 1s;
+    animation-duration: animation-time;
     animation-direction: reverse;
   }
   .body { 
     max-height: none;
     
     animation-name: slidedown;
-    animation-duration: 1s;
+    animation-duration: animation-time;
     animation-direction: normal;
   }
 }
@@ -85,7 +86,7 @@
     max-height: 0px;
   }
   to {
-    max-height: 600px;
+    max-height: 1000px;
   }
 }
 
