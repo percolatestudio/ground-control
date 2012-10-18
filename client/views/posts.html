@@ -8,6 +8,10 @@
 
 <template name="post">
   <li class="post {{openClass}} {{animatingClass}}">
+    {{#if editing}}
+    {{> editPost}}
+
+    {{else}}
     <div class="header">
       <div class="slider"></div>
       {{> postMeta}}
@@ -15,21 +19,25 @@
     {{! XXX: only render the body if the post is visible}}
     <div class="body">
       {{#markdown}}{{{body}}}{{/markdown}}
-    </div>
+    </div>    
+    {{/if}}
   </li>
 </template>
 
 <template name="postMeta">
   <a class="permalink">Permalink</a>    
+  
   <h2 class="title">{{title}}</h2>
+  
   {{#if currentUser}}
   <button class="edit">Edit</button>
   {{/if}}
+  
   <h4 class="byline">{{formatDate publishedAt}} {{author}}</h4>
 </template>
 
 <template name="editPost">
-  {{> postForm currentPost}}
+  {{> postForm}}
 </template>
 
 <template name="newPost">
@@ -37,6 +45,7 @@
 </template>
   
 <template name="postForm">
+  <div class="header"><div class="slider"></div></div>
   <form class="post">
     <label for="title">Title</label>
     <div class="field_error">{{errors.title}}</div>

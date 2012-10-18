@@ -8,6 +8,18 @@ var isOpen = function(post) {
   return Session.equals('post-opened-' + post.slug, true);
 }
 
+var setOpen = function(post, value) {
+  Session.set('post-opened-' + post.slug, value);;
+}
+
+var isEditing = function(post) {
+  return Session.equals('post-editing-' + post.slug, true);
+}
+
+var setEditing = function(post, value) {
+  Session.set('post-editing-' + post.slug, value);
+}
+
 Template.post.preserve(['.post', '.post .header', '.post .body']);
 
 Template.post.rendered = function() {
@@ -17,7 +29,8 @@ Template.post.rendered = function() {
 Template.post.helpers({
   open: function() { return isOpen(this); },
   openClass: function() { return isOpen(this) ? 'open' : ''; },
-  animatingClass: function() { return this._rendered ? 'animating' : '';}
+  animatingClass: function() { return this._rendered ? 'animating' : ''; },
+  editing: function() { return isEditing(this); }
 });
 
 Template.post.events({
@@ -26,17 +39,21 @@ Template.post.events({
     Meteor.Router.navigate(Routes.postUrl(this));
   },
   
-  'click .slider': function(event, template) {
+  'click .slider': function(event) {
     if (isOpen(this)) {
-      Session.set('post-opened-' + this.slug, false)
+      setOpen(this, false);
       event.stopImmediatePropagation();
     }
   },
   
+  'click .edit': function(event) {
+    event.preventDefault();
+    Meteor.Router.navigate(Routes.editPostUrl(this));
+    setEditing(this, true);
+  },
+  
   'click': function() {
-    if (! isOpen(this)) {
-      Session.set('post-opened-' + this.slug, true);
-    }
+    isOpen(this) || setOpen(this, true);
   },
   
   'click .delete': function() {
@@ -45,7 +62,9 @@ Template.post.events({
   }
 });
 
-
+Template.postMeta.helpers({
+  editing: function() { return isEditing(this); }
+})
 
 /////// edit/new post stuff
 // read the three values out of the form
@@ -58,27 +77,32 @@ var readPostForm = function(template) {
   return post;
 }
 
-// Template.editPost.events({
-//   'click .cancel': function(e) {
-//     // XXX: check changes
-//     e.preventDefault();
-//     Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
-//   },
-//     
-//   'submit form': function(e, template) {
-//     e.preventDefault();
-//       
-//     var changes = readPostForm(template);
-//     _.extend(this, changes);
-//     
-//     var errors = validatePost(this);
-//     if (! _.isEmpty(errors))
-//       return Session.set('postForm.errors', errors);
-//     
-//     Posts.update(this._id, {$set: changes});
-//     Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
-//   }
-// });
+Template.editPost.events({
+  'click .cancel': function(e) {
+    // XXX: check changes
+    e.preventDefault();
+    Meteor.Router.navigate(Routes.postUrl(this));
+    
+    // prevent redrawing, XXX: probably a better way to do this
+    this._rendered = false;
+    setEditing(this, false);
+  },
+    
+  'submit form': function(e, template) {
+    e.preventDefault();
+      
+    var changes = readPostForm(template);
+    _.extend(this, changes);
+    
+    var errors = validatePost(this);
+    if (! _.isEmpty(errors))
+      return Session.set('postForm.errors', errors);
+    
+    Posts.update(this._id, {$set: changes});
+    Meteor.Router.navigate(Routes.postUrl(this));
+    setEditing(this, false);
+  }
+});
 
 Template.newPost.helpers({
   newPost: function() { 
