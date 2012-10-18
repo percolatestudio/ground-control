@@ -13,7 +13,7 @@ Meteor.startup(function() {
 
 // XXX: put this somewhere
 Handlebars.registerHelper('appName', function() {
-  return 'Houston';
+  return 'Ground Control';
 });
 
 
