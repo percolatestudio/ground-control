@@ -59,24 +59,31 @@ animation-time = 500ms;
   }
   .body {
     max-height: 0px;
-        
-    animation: slidedown animation-time ease-in 0 1 reverse;
   }
-  .header .slider {
-    animation: slidedown-header animation-time ease-in;
+  &.animating {
+    .body {
+      animation: slidedown animation-time ease-in 0 1 reverse;
+    }
+    .header .slider {
+      animation: slidedown-header animation-time ease-in;
+    }
   }
 }
 
 .post.open {
   .body { 
     max-height: none;
-    
-    animation: slidedown animation-time ease-in;
   }
   .header .slider {
     max-height: 10px;
-    
-    animation: slidedown-header animation-time ease-in 0 1 reverse;
+  }
+  &.animating {
+    .body {
+      animation: slidedown animation-time ease-in;
+    }
+    .header .slider {
+      animation: slidedown-header animation-time ease-in 0 1 reverse;
+    }
   }
 }
 

@@ -19,9 +19,14 @@ var isCurrentPost = function(post) {
 
 Template.post.preserve(['.post', '.post .header', '.post .body']);
 
+Template.post.rendered = function() {
+  this.data._rendered = true;
+}
+
 Template.post.helpers({
   currentPost: function() { return isCurrentPost(this); },
-  openClass: function() { return isCurrentPost(this) ? 'open' : ''; }
+  openClass: function() { return isCurrentPost(this) ? 'open' : ''; },
+  animatingClass: function() { return this._rendered ? 'animating' : '';}
 });
 
 Template.post.events({
