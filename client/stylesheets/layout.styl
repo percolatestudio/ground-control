@@ -1,3 +1,5 @@
+@import nib;
+
 // layout
 contentMaxWidth = 800px;
 
@@ -5,10 +7,16 @@ html {
   height: 100%;
 }
 
+body {
+  height: 100%;
+}
+
 #wrapper {
   margin: 0 auto;
   position: relative;
+  min-height: 100%;
   max-width: contentMaxWidth * 2;
+  
   background: #eee;
 }
 
@@ -19,7 +27,7 @@ html {
 }
 
 #sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -27,4 +35,16 @@ html {
   
   padding: 10px 20px;
   background: #ddd;
+  
+  .about {
+    margin-top: 20px;
+    
+    h3 {
+      text-transform: uppercase;
+    }
+  }
+  
+  .attribution {
+    absolute: bottom 10px left 20px;
+  }
 }
