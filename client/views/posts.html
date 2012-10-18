@@ -1,4 +1,7 @@
 <template name="allPosts">
+  {{#if creatingNew}}
+  {{> newPost}}
+  {{/if}}
   <ul class="posts">
     {{#each posts}}
       {{> post}}
@@ -41,7 +44,9 @@
 </template>
 
 <template name="newPost">
-  {{> postForm newPost}}
+  <li class="post open animating">
+    {{> postForm newPost}}
+  </li>
 </template>
   
 <template name="postForm">

@@ -24,8 +24,8 @@ var Router = Backbone.Router.extend({
     Session.set('currentPage', 'allPosts')
     // wait for the posts to load, then open up the first one
     Meteor.autorun(function() {
-      var post = Posts.findOne();
-      post && Session.set('post-opened-' + post.slug, true);
+      var posts = allPosts().fetch();
+      posts[0] && setOpen(posts[0], true);
     });
   },
   

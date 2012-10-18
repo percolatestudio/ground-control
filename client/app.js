@@ -18,6 +18,10 @@ Handlebars.registerHelper('appName', function() {
 
 
 Template.body.events({
+  'click .newPost': function() {
+    Session.set('creatingNew', true);
+  },
+  
   'click [href]': function(e) {
     // code stolen from pages branch, not really complete
     if (e.shiftKey || e.ctrlKey || e.metaKey) return true;

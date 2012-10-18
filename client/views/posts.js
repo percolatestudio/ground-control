@@ -1,7 +1,6 @@
 Template.allPosts.helpers({
-  posts: function() {
-    return allPosts();
-  }
+  posts: function() { return allPosts(); },
+  creatingNew: function() { return Session.get('creatingNew'); }
 });
 
 var isOpen = function(post) {
@@ -113,7 +112,7 @@ Template.newPost.helpers({
 Template.newPost.events({
   'click .cancel': function(e) {
     e.preventDefault();
-    Meteor.Router.navigate('/', {trigger: true});
+    Session.set('creatingNew', false);
   },
     
   'submit form': function(e, template) {
@@ -134,7 +133,9 @@ Template.newPost.events({
         // XXX: what errors are possible here?
         console.log(err.reason);
       } else {
-        Meteor.Router.navigate(Routes.postUrl(self), {trigger: true});
+        Meteor.Router.navigate(Routes.postUrl(self));
+        Session.set('creatingNew', false);
+        setOpen(self, true);
       }
     })
   }
