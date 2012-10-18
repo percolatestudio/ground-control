@@ -1,17 +1,11 @@
 Template.allPosts.helpers({
-  visiblePosts: function() {
+  posts: function() {
     return allPosts();
   }
 });
 
-var isCurrentPost = function(post) {
-  // no current post set and we are the first post
-  // XXX: better way to figure out if we are the first post?
-  if (Session.equals('currentPostSlug', null)) {
-    return Posts.findOne()._id === post._id;
-  } else {
-    return Session.equals('currentPostSlug', post.slug);
-  }
+var isOpen = function(post) {
+  return Session.equals('post-opened-' + post.slug, true);
 }
 
 Template.post.preserve(['.post', '.post .header', '.post .body']);
@@ -21,14 +15,15 @@ Template.post.rendered = function() {
 }
 
 Template.post.helpers({
-  currentPost: function() { return isCurrentPost(this); },
-  openClass: function() { return isCurrentPost(this) ? 'open' : ''; },
+  open: function() { return isOpen(this); },
+  openClass: function() { return isOpen(this) ? 'open' : ''; },
   animatingClass: function() { return this._rendered ? 'animating' : '';}
 });
 
 Template.post.events({
   'click': function() {
-    Session.set('currentPostSlug', this.slug);
+    var key = 'post-opened-' + this.slug;
+    Session.set(key, ! Session.get(key));
   },
   
   'click .delete': function() {

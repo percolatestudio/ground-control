@@ -1,6 +1,6 @@
 <template name="allPosts">
   <ul class="posts">
-    {{#each visiblePosts}}
+    {{#each posts}}
       {{> post}}
     {{/each}}
   </ul>
@@ -24,8 +24,6 @@
   <h2 class="title">{{title}}</h2>
   <h4 class="byline">{{formatDate publishedAt}} {{author}}</h4>
 </template>
-
-
 
 <template name="editPost">
   {{> postForm currentPost}}

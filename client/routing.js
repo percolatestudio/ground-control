@@ -22,7 +22,11 @@ var Router = Backbone.Router.extend({
   
   home: function() {
     Session.set('currentPage', 'allPosts')
-    Session.set('currentPostSlug', null);
+    // wait for the posts to load, then open up the first one
+    Meteor.autorun(function() {
+      var post = Posts.findOne();
+      post && Session.set('post-opened-' + post.slug, true);
+    });
   },
   
   newPost: function() {
@@ -31,7 +35,7 @@ var Router = Backbone.Router.extend({
   
   editPost: function(year, day, month, slug) {
     Session.set('currentPage', 'allPosts')
-    Session.set('currentPostSlug', slug);
+    Session.set('post-opened-' + slug, true);
   },
   
   post: function(year, day, month, slug) {
