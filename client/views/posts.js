@@ -21,6 +21,12 @@ Template.post.helpers({
 });
 
 Template.post.events({
+  'click .permalink': function(event) {
+    event.preventDefault();
+    event.stopImmediatePropagation()
+    Meteor.Router.navigate(Routes.postUrl(this));
+  },
+  
   'click': function() {
     var key = 'post-opened-' + this.slug;
     Session.set(key, ! Session.get(key));

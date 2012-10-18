@@ -33,14 +33,15 @@ var Router = Backbone.Router.extend({
     Session.set('currentPage', 'allPosts')
   },
   
-  editPost: function(year, day, month, slug) {
+  post: function(year, day, month, slug) {
     Session.set('currentPage', 'allPosts')
     Session.set('post-opened-' + slug, true);
   },
   
-  post: function(year, day, month, slug) {
+  editPost: function(year, day, month, slug) {
     Session.set('currentPage', 'allPosts')
-    Session.set('currentPostSlug', slug);
+    Session.set('post-opened-' + slug, true);
+    Session.set('post-editing-' + slug, true);
   }
 });
 

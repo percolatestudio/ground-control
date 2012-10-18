@@ -12,7 +12,7 @@
   
   .header {
     .permalink {
-      display: none;
+      float: right;
     }
     .title, .byline {
       font-weight: normal;
@@ -23,6 +23,12 @@
     }
   }
 }
+
+// TEMP: only show the permalink whilst it's open
+.post:not(.open) .permalink {
+  display: none;
+}
+
 
 // colors 
 with-slider(color) {
