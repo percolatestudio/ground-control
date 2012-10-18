@@ -9,22 +9,20 @@
 <template name="post">
   <li class="post {{openClass}}">
     <div class="header">
+      <div class="slider"></div>
       {{> postMeta}}
     </div>
     {{! XXX: only render the body if the post is visible}}
     <div class="body">
-      {{> postMeta}}
       {{#markdown}}{{{body}}}{{/markdown}}
     </div>
   </li>
 </template>
 
 <template name="postMeta">
-  <div class="metadata">
-    <a class="permalink" href="{{postUrl this}}"></a>    
-    <h2 class="title">{{title}}</h2>
-    <h4 class="byline">{{formatDate publishedAt}} {{author}}</h4>
-  </div>
+  <a class="permalink" href="{{postUrl this}}"></a>    
+  <h2 class="title">{{title}}</h2>
+  <h4 class="byline">{{formatDate publishedAt}} {{author}}</h4>
 </template>
 
 
