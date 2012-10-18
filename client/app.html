@@ -13,10 +13,10 @@
         <h1><a href="/"><span class="first-word">Meteor</span> Blog<a/></h1>
         {{#if currentUser}}
         <button class="newPost" href="/posts/new">New Post</button>
-        {{> loginButtons}}
+        {{loginButtons}}
         {{/if}}
       </div>
-  
+      
       {{{renderCurrentPage}}}
     </div>
   
