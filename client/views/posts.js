@@ -23,13 +23,20 @@ Template.post.helpers({
 Template.post.events({
   'click .permalink': function(event) {
     event.preventDefault();
-    event.stopImmediatePropagation()
     Meteor.Router.navigate(Routes.postUrl(this));
   },
   
+  'click .slider': function(event, template) {
+    if (isOpen(this)) {
+      Session.set('post-opened-' + this.slug, false)
+      event.stopImmediatePropagation();
+    }
+  },
+  
   'click': function() {
-    var key = 'post-opened-' + this.slug;
-    Session.set(key, ! Session.get(key));
+    if (! isOpen(this)) {
+      Session.set('post-opened-' + this.slug, true);
+    }
   },
   
   'click .delete': function() {
