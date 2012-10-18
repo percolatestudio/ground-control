@@ -52,7 +52,7 @@ with-slider(color) {
 }
 
 
-animation-time = 300ms;
+animation-time = 500ms;
 .post {
   .header, .body {
     overflow: hidden;
@@ -60,13 +60,10 @@ animation-time = 300ms;
   .body {
     max-height: 0px;
         
-    animation-name: slidedown;
-    animation-duration: animation-time;
-    animation-direction: reverse;
+    animation: slidedown animation-time ease-in 0 1 reverse;
   }
   .header .slider {
-    animation-name: slidedown-header;
-    animation-duration: animation-time;
+    animation: slidedown-header animation-time ease-in;
   }
 }
 
@@ -74,16 +71,12 @@ animation-time = 300ms;
   .body { 
     max-height: none;
     
-    animation-name: slidedown;
-    animation-duration: animation-time;
-    animation-direction: normal;
+    animation: slidedown animation-time ease-in;
   }
   .header .slider {
     max-height: 10px;
     
-    animation-name: slidedown-header;
-    animation-duration: animation-time;
-    animation-direction: reverse;
+    animation: slidedown-header animation-time ease-in 0 1 reverse;
   }
 }
 
