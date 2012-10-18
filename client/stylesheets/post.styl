@@ -11,8 +11,11 @@
   }
   
   .header {
-    .permalink {
+    .permalink, .edit {
       float: right;
+    }
+    .edit {
+      margin-top: 0;
     }
     .title, .byline {
       font-weight: normal;
@@ -24,9 +27,15 @@
   }
 }
 
-// TEMP: only show the permalink whilst it's open
-.post:not(.open) .permalink {
-  display: none;
+.post:not(.open) {
+  // XXX: only show the permalink whilst it's open
+  // we'll end up just restyling this to be more subtle
+  .permalink {
+    display: none;
+  }
+  .edit {
+    display: none;
+  }
 }
 
 

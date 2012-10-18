@@ -22,6 +22,9 @@
 <template name="postMeta">
   <a class="permalink">Permalink</a>    
   <h2 class="title">{{title}}</h2>
+  {{#if currentUser}}
+  <button class="edit">Edit</button>
+  {{/if}}
   <h4 class="byline">{{formatDate publishedAt}} {{author}}</h4>
 </template>
 
