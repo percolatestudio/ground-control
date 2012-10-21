@@ -60,7 +60,7 @@ Template.post.helpers({
     return isOpen(this);
   },
   openClass: function() {
-    return isOpen(this) ? 'open' : '';
+    return isOpen(this) && ! this._isPrev && ! this._isNext ? 'open' : '';
   },
   selectedClass: function() {
     return isSelected(this) ? 'selected' : '';
