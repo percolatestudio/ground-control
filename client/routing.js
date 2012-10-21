@@ -27,6 +27,8 @@ var Router = Backbone.Router.extend({
     Meteor.autorun(function() {
       var posts = allPosts().fetch();
       posts[0] && setOpen(posts[0], true);
+      posts[1] && setOpen(posts[1], true);
+      posts[2] && setOpen(posts[2], true);
     });
   },
   
