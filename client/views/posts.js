@@ -53,26 +53,25 @@ Template.post.helpers({
 });
 
 Template.post.events({
-  'click .permalink': function(event) {
+  'click': function(event) {
     event.preventDefault();
     Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
   },
   
-  'click .slider': function(event) {
-    if (isOpen(this)) {
-      setOpen(this, false);
-      event.stopImmediatePropagation();
-    }
-  },
+  // 'click .slider': function(event) {
+  //   if (isOpen(this)) {
+  //     setOpen(this, false);
+  //     event.stopImmediatePropagation();
+  //   }
+  // },
+  // 'click': function() {
+  //   isOpen(this) || setOpen(this, true);
+  // },
   
   'click .edit': function(event) {
     event.preventDefault();
     Meteor.Router.navigate(Routes.editPostUrl(this));
     setEditing(this, true);
-  },
-  
-  'click': function() {
-    isOpen(this) || setOpen(this, true);
   },
   
   'click .delete': function() {

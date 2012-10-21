@@ -78,11 +78,11 @@ animation-time = 700ms;
   .header, .body {
     overflow: hidden;
   }
-  .header .slider, .body {
-    .animating & {
-      transition: max-height animation-time ease-in 0;
-    }
-  }
+  // .header .slider, .body {
+  //   .animating & {
+  //     transition: max-height animation-time ease-in 0;
+  //   }
+  // }
   .body {
     max-height: 0px;
   }
@@ -93,18 +93,18 @@ animation-time = 700ms;
 
 .post.open {
   .body { 
-    max-height: 300px;
+    max-height: none;
   }
   .header .slider {
     max-height: 10px;
   }
 }
 
-.post.selected {
-  .body {
-    max-height: 2000px;
-  }
-}
+// .post.selected {
+//   .body {
+//     max-height: 2000px;
+//   }
+// }
 
 .anySelected .post:not(.selected) {
   .body, .header {
