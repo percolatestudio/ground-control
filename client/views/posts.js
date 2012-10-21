@@ -1,55 +1,80 @@
-Template.allPosts.rendered = function() { 
-  if (allPosts().count() > 0) {
-    Meteor.setTimeout(function() {
-      Session.set('animationBegun', true)
-    }, 1000);
-  }
-}
+// Template.allPosts.rendered = function() { 
+//   if (allPosts().count() > 0) {
+//     Meteor.setTimeout(function() {
+//       Session.set('animationBegun', true)
+//     }, 0);
+//   }
+// }
 
 Template.allPosts.helpers({
-  posts: function() { return allPosts(); },
-  anySelectedClass: function() { return anySelected() ? 'anySelected' : ''; },
+  posts: function() {
+    return allPosts();
+  },
+  anySelected: function() {
+    return anySelected();
+  },
+  anySelectedClass: function() {
+    return anySelected() ? 'anySelected' : '';
+  },
   animatingClass: function() { 
     return Session.get('animationBegun') ? 'animating' : ''; 
   },
-  creatingNew: function() { return Session.get('creatingNew'); }
+  creatingNew: function() {
+    return Session.get('creatingNew');
+  },
+  nextPost: function() {
+    var current = getSelected(), next, found = false;
+    
+    allPosts().forEach(function(post) {
+      if (found && ! next)
+        next = post;
+        
+      if (post._id === current._id)
+        found = true;
+    });
+    
+    next && (next._isNext = true);
+    return next;
+  },
+  prevPost: function() {
+    var current = getSelected(), prev, found = false;
+    
+    allPosts().forEach(function(post) {
+      if (post._id === current._id)
+        found = true;
+        
+      if (!found)
+        prev = post;
+    });
+    
+    prev && (prev._isPrev = true);
+    return prev;
+  }
 });
 
-var isOpen = function(post) {
-  return Session.equals('post-opened-' + post.slug, true);
-}
-
-var setOpen = function(post, value) {
-  Session.set('post-opened-' + post.slug, value);;
-}
-
-var isEditing = function(post) {
-  return Session.equals('post-editing-' + post.slug, true);
-}
-
-var setEditing = function(post, value) {
-  Session.set('post-editing-' + post.slug, value);
-}
-
-var anySelected = function() {
-  return !! Session.get('selected-post-slug');
-}
-
-var isSelected = function(post) {
-  return Session.equals('selected-post-slug', post.slug);
-}
-
-var setSelected = function(post) {
-  Session.set('selected-post-slug', post.slug);
-}
 
 Template.post.preserve(['.post', '.post .header', '.post .header .slider', '.post .body']);
 
 Template.post.helpers({
-  open: function() { return isOpen(this); },
-  openClass: function() { return isOpen(this) ? 'open' : ''; },
-  selectedClass: function() { return isSelected(this) ? 'selected' : ''; },
-  editing: function() { return isEditing(this); }
+  open: function() {
+    return isOpen(this);
+  },
+  openClass: function() {
+    return isOpen(this) ? 'open' : '';
+  },
+  selectedClass: function() {
+    return isSelected(this) ? 'selected' : '';
+  },
+  editing: function() {
+    return isEditing(this);
+  },
+  nextPrevClass: function() {
+    console.log(this);
+    if (this._isPrev)
+      return 'prev';
+    if (this._isNext)
+      return 'next';
+  }
 });
 
 Template.post.events({

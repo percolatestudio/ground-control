@@ -7,10 +7,16 @@
       {{> post}}
     {{/each}}
   </ul>
+  
+  {{#if anySelected}}
+  {{> post prevPost}}
+  {{> post nextPost}}
+  {{/if}}
 </template>
 
 <template name="post">
-  <li class="post {{openClass}} {{selectedClass}}">
+  {{#if this}}
+  <li class="post {{openClass}} {{selectedClass}} {{nextPrevClass}}">
     {{#if editing}}
     {{> editPost}}
 
@@ -22,9 +28,10 @@
     {{! XXX: only render the body if the post is visible}}
     <div class="body">
       {{#markdown}}{{{body}}}{{/markdown}}
-    </div>    
+    </div>
     {{/if}}
   </li>
+  {{/if}}
 </template>
 
 <template name="postMeta">
