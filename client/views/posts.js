@@ -69,7 +69,6 @@ Template.post.helpers({
     return isEditing(this);
   },
   nextPrevClass: function() {
-    console.log(this);
     if (this._isPrev)
       return 'prev';
     if (this._isNext)
