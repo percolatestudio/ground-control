@@ -16,6 +16,19 @@ Handlebars.registerHelper('appName', function() {
   return 'Ground Control';
 });
 
+Template.body.created = function() {
+  $(window).scroll(_.throttle(function() {
+    // if the banner is no longer visible, we have scrolled enough
+    var bannerBottom = $('#banner').offset().top + $('#banner').height();
+    Session.set('scrolledEnough', $(window).scrollTop() > bannerBottom);
+  }, 100));
+}
+
+Template.body.helpers({
+  scrolledEnoughClass: function() { 
+    return Session.get('scrolledEnough') ? 'scrolledEnough' : '';
+  }
+});
 
 Template.body.events({
   'click .newPost': function() {

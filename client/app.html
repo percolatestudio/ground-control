@@ -9,12 +9,18 @@
 <template name="body">
   <div id="wrapper">
     <div id="content">
-      <div id="header">
-        <h1><a href="/"><span class="first-word">Meteor</span> Blog<a/></h1>
+      <div id="header" class="{{scrolledEnoughClass}}">
+        <h1>Meteor Blog</h1>
+        <a class="top">Top</a>
+        
         {{#if currentUser}}
         <button class="newPost">New Post</button>
         {{loginButtons}}
         {{/if}}
+      </div>
+      
+      <div id="banner">
+        <h1><a href="/"><span class="first-word">Meteor</span> Blog<a/></h1>
       </div>
       
       {{{renderCurrentPage}}}
