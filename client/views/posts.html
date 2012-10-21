@@ -2,7 +2,7 @@
   {{#if creatingNew}}
   {{> newPost}}
   {{/if}}
-  <ul class="posts">
+  <ul class="posts {{animatingClass}} {{anySelectedClass}}">
     {{#each posts}}
       {{> post}}
     {{/each}}
@@ -10,7 +10,7 @@
 </template>
 
 <template name="post">
-  <li class="post {{openClass}} {{animatingClass}}">
+  <li class="post {{openClass}} {{selectedClass}}">
     {{#if editing}}
     {{> editPost}}
 

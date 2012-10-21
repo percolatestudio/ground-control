@@ -1,5 +1,17 @@
+Template.allPosts.rendered = function() { 
+  if (allPosts().count() > 0) {
+    Meteor.setTimeout(function() {
+      Session.set('animationBegun', true)
+    }, 1000);
+  }
+}
+
 Template.allPosts.helpers({
   posts: function() { return allPosts(); },
+  anySelectedClass: function() { return anySelected() ? 'anySelected' : ''; },
+  animatingClass: function() { 
+    return Session.get('animationBegun') ? 'animating' : ''; 
+  },
   creatingNew: function() { return Session.get('creatingNew'); }
 });
 
@@ -19,23 +31,31 @@ var setEditing = function(post, value) {
   Session.set('post-editing-' + post.slug, value);
 }
 
-Template.post.preserve(['.post', '.post .header', '.post .body']);
-
-Template.post.rendered = function() {
-  this.data._rendered = true;
+var anySelected = function() {
+  return !! Session.get('selected-post-slug');
 }
+
+var isSelected = function(post) {
+  return Session.equals('selected-post-slug', post.slug);
+}
+
+var setSelected = function(post) {
+  Session.set('selected-post-slug', post.slug);
+}
+
+Template.post.preserve(['.post', '.post .header', '.post .header .slider', '.post .body']);
 
 Template.post.helpers({
   open: function() { return isOpen(this); },
   openClass: function() { return isOpen(this) ? 'open' : ''; },
-  animatingClass: function() { return this._rendered ? 'animating' : ''; },
+  selectedClass: function() { return isSelected(this) ? 'selected' : ''; },
   editing: function() { return isEditing(this); }
 });
 
 Template.post.events({
   'click .permalink': function(event) {
     event.preventDefault();
-    Meteor.Router.navigate(Routes.postUrl(this));
+    Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
   },
   
   'click .slider': function(event) {

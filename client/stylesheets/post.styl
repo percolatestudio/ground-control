@@ -73,56 +73,43 @@ with-slider(color) {
 }
 
 
-animation-time = 500ms;
+animation-time = 700ms;
 .post {
   .header, .body {
     overflow: hidden;
   }
+  .header .slider, .body {
+    .animating & {
+      transition: max-height animation-time ease-in 0;
+    }
+  }
   .body {
     max-height: 0px;
   }
-  &.animating {
-    .body {
-      animation: slidedown animation-time ease-in 0 1 reverse;
-    }
-    .header .slider {
-      animation: slidedown-header animation-time ease-in;
-    }
+  .header .slider {
+    max-height: 140px;
   }
 }
 
 .post.open {
   .body { 
-    max-height: none;
+    max-height: 300px;
   }
   .header .slider {
     max-height: 10px;
   }
-  &.animating {
-    .body {
-      animation: slidedown animation-time ease-in;
-    }
-    .header .slider {
-      animation: slidedown-header animation-time ease-in 0 1 reverse;
-    }
+}
+
+.post.selected {
+  .body {
+    max-height: 2000px;
   }
 }
 
-@keyframes slidedown-header {
-  from {
-    max-height: 10px;
-  }
-  to  {
-    max-height: 120px
-  }
-}
-
-@keyframes slidedown {
-  from {
-    max-height: 0px;
-  }
-  to {
-    max-height: 1000px;
+.anySelected .post:not(.selected) {
+  .body, .header {
+    min-height: 0;
+    max-height: 0;
   }
 }
 
