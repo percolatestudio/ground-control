@@ -84,14 +84,15 @@
       border-bottom: 1px solid $c-low;
     }
     .body {
+      box-sizing: border-box; /* repeat due to an animation quirk */
       height: 100%;
       min-height: 100%;
       opacity: 1;
       padding: 0 24px 3em;
-
     }
   }
   &:not(.selected) {
+    cursor: pointer;
     margin-bottom: 1px;
     & + .selected {
       margin-top: -1px;
@@ -141,6 +142,12 @@ with-slider(color) {
     positioning(absolute, 0, 0, auto, 0, 100%);
     background: color;
     z-index: -1;
+  }
+  &:hover .slider{
+    background-image: linear-gradient(top, rgba(lighten(color, 10%), .7), rgba(darken(color, 10%), .7) 100%);
+  }
+  &:active .slider{
+    background-image: linear-gradient(top, rgba(darken(color, 10%), .7), rgba(lighten(color, 10%), .7) 100%);
   }
 }
 
