@@ -1,6 +1,6 @@
 ## Ground Control
 
-Ground control is an experimental blogging platform, built in [Meteor](http://meteor.com).
+Ground control is an experimental blogging platform, built in [Meteor](http://meteor.com). See an example of it in action at http://groundcontrol.meteor.com.
 
 ### Install
 
