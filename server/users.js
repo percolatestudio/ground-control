@@ -13,10 +13,10 @@ Accounts.validateNewUser(function(proposedUser) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
   }
   
-  if (_.isRegExp(Accounts.allowedEmails))
-    return Accounts.allowedEmails.test(email);
+  if (_.isRegExp(GroundControlConfig.allowedEmails))
+    return GroundControlConfig.allowedEmails.test(email);
   else
-    return endsWith(email, Accounts.allowedEmails);
+    return endsWith(email, GroundControlConfig.allowedEmails);
 });
 
 // calculate a gravatar hash from the user's email address

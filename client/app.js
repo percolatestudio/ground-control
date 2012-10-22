@@ -11,11 +11,6 @@ Meteor.startup(function() {
   })
 });
 
-// XXX: put this somewhere
-Handlebars.registerHelper('appName', function() {
-  return 'Ground Control';
-});
-
 Template.body.created = function() {
   $(window).scroll(_.throttle(function() {
     // if the banner is no longer visible, we have scrolled enough

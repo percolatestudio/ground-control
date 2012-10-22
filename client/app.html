@@ -1,5 +1,5 @@
 <head>
-  <title>Meteor Blogging Platform</title>
+  <title>A Ground Control Blog</title>
 </head>
 
 <body>
@@ -10,7 +10,7 @@
   <div id="wrapper">
     <div id="content">
       <div id="header" class="{{scrolledEnoughClass}}">
-        <h1>Meteor Blog</h1>
+        <h1>{{blogName}}</h1>
         <a class="top">Top</a>
         
         {{#if currentUser}}
@@ -20,7 +20,7 @@
       </div>
       
       <div id="banner">
-        <h1><a href="/"><span class="first-word">Meteor</span> Blog<a/></h1>
+        <h1><a href="/">{{blogName}}</a></h1>
       </div>
       
       {{{renderCurrentPage}}}
