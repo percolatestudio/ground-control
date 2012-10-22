@@ -135,6 +135,36 @@
   }
 }
 
+// next / before links on individual post page
+.post.next, .post.previous {
+  overflow: hidden;
+  .header {
+    height: 150px;
+  }
+  
+  h2.title {
+    font-size: 1em;
+  }
+  h4.nextPrev {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 100;
+  }
+  .metadata, .edit {
+    display: none;
+  }
+}
+
+.post.previous {
+  width: 30%;
+  float: left;
+}
+
+.post.next {
+  width: 70%
+  float: right;
+}
+
 
 .post form {
   padding: 20px;
