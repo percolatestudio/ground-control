@@ -11,25 +11,6 @@ Meteor.startup(function() {
   })
 });
 
-Template.body.preserve(['#header']);
-var checkBanner = function() {
-  // if the banner is no longer visible, we have scrolled enough
-  var bannerBottom = $('#banner').offset().top + $('#banner').height();
-  Session.set('scrolledEnough', $(window).scrollTop() > bannerBottom);
-};
-Template.body.created = function() {
-  $(window).scroll(_.throttle(checkBanner, 100));
-}
-Template.body.rendered = function() {
-  checkBanner();
-}
-
-Template.body.helpers({
-  scrolledEnoughClass: function() { 
-    return Session.get('scrolledEnough') ? 'scrolledEnough' : '';
-  }
-});
-
 Template.body.events({
   'click .newPost': function() {
     Session.set('creatingNew', true);
@@ -55,3 +36,21 @@ Template.body.events({
   }
 })
 
+Template.header.preserve(['#header']);
+var checkBanner = function() {
+  // if the banner is no longer visible, we have scrolled enough
+  var bannerBottom = $('#banner').offset().top + $('#banner').height();
+  Session.set('scrolledEnough', $(window).scrollTop() > bannerBottom);
+};
+Template.header.created = function() {
+  $(window).scroll(_.throttle(checkBanner, 100));
+}
+Template.header.rendered = function() {
+  checkBanner();
+}
+
+Template.header.helpers({
+  scrolledEnoughClass: function() { 
+    return Session.get('scrolledEnough') ? 'scrolledEnough' : '';
+  }
+});
