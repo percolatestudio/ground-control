@@ -1,23 +1,42 @@
-// base styles
+@import 'include/all';
 
 body {
-  font-family: 'Vollkorn', Helvetica, sans-serif;
+  font-family: $f-primary;
   font-size: 16px;
   line-height: 1.5;
+  font();
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+p, ul, ol {
+  margin-bottom: 0.75em;
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 32px
+  h1(no);
+}
+h2 {
+  h2(no);
+}
+h3 {
+  h3(no);
+}
+h4 {
+  h4();
+}
+.small {
+  small(no);
 }
 
-h2 { 
-  font-weight: bold;
-  font-size: 24px;
-}
-
-h1, h2, h3, h4, h5, h6, p, ul, ol {
-  margin-bottom: 0.5em;
+a {
+  color: $c-primary;
+  text-decoration: none;
+  transition: all ease-out 200ms;
 }
 
 code {
@@ -29,7 +48,7 @@ code {
 
 form {
   margin: 0 auto;
-  
+
   label {
     float: left;
   }
@@ -37,20 +56,20 @@ form {
     float: right;
     color: red;
   }
-  
+
   label, input {
     display: block;
     clear: both
   }
-  
+
   input, textarea {
     width: 100%;
   }
-  
+
   textarea {
     height: 400px;
   }
-  
+
   fieldset.buttons {
     float: right;
   }
@@ -58,4 +77,8 @@ form {
 
 li {
   list-style-position: inside;
+}
+
+.alt-type {
+  font-family: $f-secondary;
 }

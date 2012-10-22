@@ -1,4 +1,4 @@
-@import nib;
+@import 'include/all';
 
 // layout
 contentMaxWidth = 800px;
@@ -13,38 +13,22 @@ body {
 
 #wrapper {
   margin: 0 auto;
-  position: relative;
-  min-height: 100%;
   max-width: contentMaxWidth * 2;
-  
-  background: #eee;
-}
-
-#content {
-  min-height: 100%;
-  width: 50%
-  margin: 0 35% 0 15%
-}
-
-#sidebar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 20%;
-  
-  padding: 10px 20px;
-  background: #ddd;
-  
-  .about {
-    margin-top: 20px;
-    
-    h3 {
-      text-transform: uppercase;
-    }
+  position: relative;
+  #content {
+    max-width: 800px;
   }
-  
-  .attribution {
-    absolute: bottom 10px left 20px;
+  #sidebar {
+    box-sizing: border-box;
+    padding: 3em 1.5em;
+    positioning(fixed, 0, 0, auto, auto, 280px, 100%);
+    .about {
+      h3 {
+        text-transform: uppercase;
+      }
+    }
+    .attribution {
+      positioning(absolute, auto, auto, 1.5em, 1.5em);
+    }
   }
 }
