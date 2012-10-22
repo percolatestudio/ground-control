@@ -1,5 +1,5 @@
 WebFontConfig = {
-  google: { families: [ 'Vollkorn::latin', 'Raleway::latin' ] }
+  google: { families: [ 'Vollkorn::latin' ] }
 };
 (function() {
   var wf = document.createElement('script');
