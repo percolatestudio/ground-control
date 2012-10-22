@@ -54,3 +54,11 @@ Template.header.helpers({
     return Session.get('scrolledEnough') ? 'scrolledEnough' : '';
   }
 });
+
+Template.header.events({
+  'click .top': function(event) {
+    event.preventDefault();
+    
+    $.smoothScroll({scrollTarget: 0});
+  }
+})
