@@ -7,3 +7,12 @@ positioning($type, $top = auto, $right = auto, $bottom = auto, $left = auto, $wi
   width: $width;
   height: $height;
 }
+link($rest = $c-primary, $hover = $c-secondary, $active = $c-tertiary){
+  color: $c-primary;
+  &:hover {
+    color: $c-secondary;
+  }
+  &:active {
+    color: $c-tertiary;
+  }
+}
