@@ -69,7 +69,7 @@
   .permalink {
     transition: all ease-out 300ms;
   }
-  &.selected {
+  &.open, &.selected {
     .slider {
       height: .5em;
       min-height: .5em;
@@ -91,7 +91,8 @@
       overflow: auto;
     }
   }
-  &:not(.selected) {
+  // XXX: can't this just go above?
+  &:not(.open):not(.selected) {
     cursor: pointer;
     margin-bottom: 1px;
     & + .selected {
@@ -127,6 +128,10 @@
         margin: 0;
       }
     }
+  }
+  .posts.anySelected &:not(.selected) {
+    max-height: 0;
+    overflow: hidden;
   }
 }
 
