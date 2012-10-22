@@ -59,7 +59,6 @@
   .body {
     box-sizing: border-box;
     max-width: 85%;
-    overflow: hidden;
   }
 
   /* Transitions/state */
@@ -88,7 +87,8 @@
       height: 100%;
       min-height: 100%;
       opacity: 1;
-      padding: 0 24px 3em;
+      padding: 0 0 3em 24px;
+      overflow: auto;
     }
   }
   &:not(.selected) {
@@ -122,6 +122,7 @@
       height: 0;
       min-height: 0;
       opacity: 0;
+      overflow: hidden;
       p {
         margin: 0;
       }
