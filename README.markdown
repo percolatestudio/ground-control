@@ -25,6 +25,7 @@ To do any meaningful customization, fork this repository and have fun! Pull Requ
 ### TODO
 
 Ground Control is very much a work in progress. In the near future, expect to see:
+
 1. RSS, SEO support, and other server side assets
 2. A richer user experience in the default theme.
 3. More configuration options.
