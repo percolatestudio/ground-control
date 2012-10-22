@@ -1,0 +1,29 @@
+$font-size = 16;
+$line = $font-size * 1.5;
+
+$h1 = $font-size * 3;
+$h2 = $font-size + 12;
+$h3 = $font-size + 8;
+$h4 = $font-size;
+$small = $font-size - 2;
+
+h1(){
+  font-size: ($h1 / $font-size) * 1em ;
+  line-height: ($line * 2) / $h1 * 1em;
+}
+h2(){
+  font-size: ($h2 / $font-size) * 1em ;
+  line-height: ($line / $h2)  * 1em;
+}
+h3(){
+  font-size: ($h3 / $font-size) * 1em ;
+  line-height: ($line / $h3) * 1em;
+}
+h4(){
+  font-size: ($h4 / $font-size) * 1em;
+  line-height: ($line / $h4) * 1em;
+}
+small(){
+  font-size: ($small / $font-size) * 1em ;
+  line-height: ($line / $small) * 1em;
+}

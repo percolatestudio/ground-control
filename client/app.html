@@ -8,14 +8,15 @@
 
 <template name="body">
   <div id="wrapper">
-    <div id="content">
-      <div id="header" class="{{scrolledEnoughClass}}">
-        <h1>{{blogName}}</h1>
+    <div id="content" class="{{scrolledEnoughClass}}">
+      <div id="header">
+        <h1 class="alt-type"><a href="/">Meteor Blog</a></h1>
+        <img src="/img/satellite-940x480.jpg" alt="ground control to major tom" width="940" height="480" />
         <a class="top">Top</a>
-        
+
         {{#if currentUser}}
-        <button class="newPost">New Post</button>
-        {{loginButtons}}
+          <button class="newPost">New Post</button>
+          {{loginButtons}}
         {{/if}}
       </div>
       
@@ -25,7 +26,7 @@
       
       {{{renderCurrentPage}}}
     </div>
-  
+
     {{> sidebar}}
   </div>
 </template>
@@ -39,27 +40,27 @@
 </template>
 
 <template name="sidebar">
-  <div id="sidebar">
+  <div id="sidebar" class="alt-type">
     <div class="about">
       <h3>About</h3>
-      <p>
-        Meteor is an open-source platform for building top-quality web apps in a fraction of the time, whether you're an expert developer or just getting started.
-      </p>
+      <p>Meteor is an open-source platform for building top-quality web apps in a fraction of the time, whether you're an expert developer or just getting started.</p>
     </div>
-    
+
     <form class="join">
       <p>Join the mailing list</p>
       <input name="email" placeholder="Your email address"></input>
     </form>
-    
+
     <ul class="links">
       <li><a href="http://meteor.com">Meteor.com</a></li>
       <li><a href="..">@meteorjs</a></li>
       <li><a href="..">Github</a></li>
     </ul>
-    
+
     <p class="attribution">
-      Crafted by Percolate
+      Created with Ground Control
+      <br/>
+      <span><span class="icon-percolate"> Design by Percolate</span></span>
     </p>
   </div>
 </template>

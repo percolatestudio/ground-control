@@ -1,43 +1,135 @@
-@import 'nib';
+@import 'include/all';
 
 .post {
-  list-style-type: none
   background: #fff;
-  
-  .body, .header {
-    > *:not(.slider) {
-      margin: 20px;
-    }
+  box-sizing: border-box;
+  list-style-type: none
+  position: relative;
+  &:after { /* right border that needs to be flush with the slider */
+    content: '';
+    positioning(absolute, 0, 0, 0, auto, 1px, auto);
+    background: $c-low;
   }
-  
   .header {
-    min-height: 10px;
-    .permalink, .edit {
-      float: right;
+    padding: 2em 1.5em 0;
+    position: relative;
+    z-index: 1;
+    .edit,
+    .permalink {
+      background: $c-medium;
+      border-radius: 12px;
+      color: white;
+      font-size: 12px;
+      line-height: 24px;
+      positioning(absolute, 24px, 24px, auto, auto, 24px, 24px);
+      text-align: center;
     }
     .edit {
       margin-top: 0;
     }
-    .title, .byline {
-      font-weight: normal;
+    .title {
+      line-height: 32px;
+      max-width: 85%;
+      text-shadow: rgba(white, .5) 0 1px 0;
     }
-    .byline {
-      font-family: 'Raleway', Helvetica, sans-serif;
+    .metadata {
+      box-sizing: border-box;
+      line-height: 3em;
+      margin: 1em -24px 0;
+      padding: 0 24px;
       text-transform: uppercase;
+      .avatar {
+        display: inline-block;
+        height: 20px;
+        margin-right: 8px;
+        vertical-align: text-bottom;
+        width: 20px;
+      }
+      >span {
+        color: $c-medium-high;
+        font-size: ($small / $font-size) * 1em ;
+        margin-right: 32px;
+        [class^="icon-"]:before,
+        [class*=" icon-"]:before {
+          color: $c-medium;
+        }
+      }
+    }
+  }
+  .body {
+    box-sizing: border-box;
+    max-width: 85%;
+  }
+
+  /* Transitions/state */
+  .slider,
+  .body,
+  .metadata span,
+  .edit,
+  .permalink {
+    transition: all ease-out 300ms;
+  }
+  &.selected {
+    .slider {
+      height: .5em;
+      min-height: .5em;
+    }
+    .edit,
+    .permalink {
+      opacity: 1;
+    }
+    .metadata {
+      border-top: 1px solid $c-low;
+      border-bottom: 1px solid $c-low;
+    }
+    .body {
+      box-sizing: border-box; /* repeat due to an animation quirk */
+      height: 100%;
+      min-height: 100%;
+      opacity: 1;
+      padding: 0 0 3em 24px;
+      overflow: auto;
+    }
+  }
+  &:not(.selected) {
+    cursor: pointer;
+    margin-bottom: 1px;
+    & + .selected {
+      margin-top: -1px;
+    }
+    .slider {
+      height: 100%;
+      min-height: 100%;
+    }
+    .header{
+      padding-top: 1.5em;
+    }
+    .edit,
+    .permalink {
+      opacity: 0;
+    }
+    .metadata {
+      margin-top: 0;
+      >span {
+        color: white;
+        [class^="icon-"]:before,
+        [class*=" icon-"]:before {
+          color: white;
+        }
+      }
+    }
+    .body {
+      height: 0;
+      min-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      p {
+        margin: 0;
+      }
     }
   }
 }
 
-.post:not(.open) {
-  // XXX: only show the permalink whilst it's open
-  // we'll end up just restyling this to be more subtle
-  .permalink {
-    display: none;
-  }
-  .edit {
-    display: none;
-  }
-}
 
 .post form {
   padding: 20px;
@@ -45,90 +137,54 @@
 }
 
 
-// colors 
+// colors
 with-slider(color) {
-  position: relative
-  z-index: 0;
   & .slider {
-    content: '';
-    absolute: top left;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    positioning(absolute, 0, 0, auto, 0, 100%);
     background: color;
+    z-index: -1;
+  }
+  &:hover .slider{
+    background-image: linear-gradient(top, rgba(lighten(color, 10%), .7), rgba(darken(color, 10%), .7) 100%);
+  }
+  &:active .slider{
+    background-image: linear-gradient(top, rgba(darken(color, 10%), .7), rgba(lighten(color, 10%), .7) 100%);
   }
 }
 
 .post:nth-child(4n + 1) .header {
-  with-slider: rgb(251, 144, 103); // ORANGE
+  with-slider: $c-1;
 }
 .post:nth-child(4n + 2) .header {
-  with-slider: rgb(157, 206, 198); // GREEN
+  with-slider: $c-2;
 }
 .post:nth-child(4n + 3) .header {
-  with-slider: rgb(207, 185, 150); // BROWN
+  with-slider: $c-3;
 }
 .post:nth-child(4n + 4) .header {
-  with-slider: rgb(154, 190, 211); // BLUE
+  with-slider: $c-4;
+}
+.post:nth-child(4n + 5) .header {
+  with-slider: $c-5;
+}
+.post:nth-child(4n + 5) .header {
+  with-slider: $c-6;
 }
 
 
-animation-time = 700ms;
-.post {
-  .header, .body {
-    overflow: hidden;
+/* Post typography */
+.post .body{
+  /* lists */
+  ul, ol {
+    padding: 0 1.5em;
+    li {
+      list-style-position: outside;
+    }
   }
-  // .header .slider, .body {
-  //   .animating & {
-  //     transition: max-height animation-time ease-in 0;
-  //   }
-  // }
-  .body {
-    max-height: 0px;
-  }
-  .header .slider {
-    max-height: 140px;
-  }
-}
-
-.post.open, .post.selected {
-  .body { 
-    max-height: none;
-  }
-  .header .slider {
-    max-height: 10px;
+  li {
+    list-style-type: disc;
+    > ul li{
+      list-style-type: circle;
+    }
   }
 }
-
-// .post.selected {
-//   .body {
-//     max-height: 2000px;
-//   }
-// }
-
-.anySelected .post:not(.selected) {
-  .body, .header {
-    min-height: 0;
-    max-height: 0;
-  }
-}
-
-// transition -- first attempt at rotation, not very good
-// .post .body {
-//   transform: rotateX(-90deg);
-// }
-// 
-// .post.open {
-//   transform: rotateX(90deg);
-//   .body {
-//     height: auto
-//   }
-// }
-// transition-time = 1000ms;
-// .post {
-//   transition: all transition-time linear 0;
-//   transform-style: preserve-3d;
-//   .body {
-//     transition: height 0 linear transition-time;
-//   }
-// }

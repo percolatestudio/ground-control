@@ -7,7 +7,7 @@
       {{> post}}
     {{/each}}
   </ul>
-  
+
   {{#if anySelected}}
   {{> post prevPost}}
   {{> post nextPost}}
@@ -35,17 +35,18 @@
 </template>
 
 <template name="postMeta">
-  <a class="permalink">Permalink</a>    
-  
+  <a class="permalink"><span class="icon-link"></span></a>
+
   <h2 class="title">{{title}}</h2>
-  
+
   {{#if currentUser}}
   <button class="edit">Edit</button>
   {{/if}}
-  
-  <img class="avatar" src="{{gravatarURL authorGravatarHash size="20"}}"/>
-  
-  <h4 class="byline">{{formatDate publishedAt}} {{author}}</h4>
+
+  <div class="metadata alt-type">
+    <span><img class="avatar" src="{{gravatarURL authorGravatarHash size="20"}}"/>{{author}}</span>
+    <span><span class="icon-clock"></span> {{formatDate publishedAt}}</span>
+  </div>
 </template>
 
 <template name="editPost">
@@ -57,22 +58,22 @@
     {{> postForm newPost}}
   </li>
 </template>
-  
+
 <template name="postForm">
   <div class="header"><div class="slider"></div></div>
   <form class="post">
     <label for="title">Title</label>
     <div class="field_error">{{errors.title}}</div>
     <input type="text" name="title" value="{{title}}"></input>
-    
+
     <label for="author">Author</label>
     <div class="field_error">{{errors.author}}</div>
     <input type="text" name="author" value="{{author}}"></input>
-    
+
     <label for="body">Body (Markdown)</label>
     <div class="field_error">{{errors.body}}</div>
     <textarea name="body">{{body}}</textarea>
-    
+
     <fieldset class="buttons">
       <a class="cancel">Cancel</a>
       <button class="save" type="submit">Save</button>
