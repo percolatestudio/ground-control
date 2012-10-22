@@ -28,22 +28,46 @@
       margin-top: -50%;
     }
   }
+  #controls {
+    background: white;
+    height: 40px;
+    h1 {
+      text-align: center;
+      font-size: 30px;
+      line-height: 40px;
+      text-transform: uppercase;
+      font-family: $f-secondary;
+      a {
+        color: black;
+      }
+    }
+    .top {
+      cursor: pointer;
+      
+      float: right;
+      margin: 5px 20px;
+      border-radius: 5px;
+      padding: 5px 8px;
+      
+      background: #888;
+      color: #eee;
+      font-size: 0.6em;
+      text-transform: uppercase;
+    }
+  }
+  
   // XXX: style these
   #login-buttons {
     float: right
   }
   
+  /* controls are hidden until the header isn't visible */
   #controls {
     display: none;
   }
   &.scrolledEnough {
     #controls {
       display: block;
-      fixed: top left;
-      width: 100%;
-      z-index: 1
-      
-      background: white;
     }
   }
 }

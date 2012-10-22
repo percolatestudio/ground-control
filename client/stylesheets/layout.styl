@@ -16,7 +16,13 @@ body {
   max-width: contentMaxWidth * 2;
   position: relative;
   #content {
-    max-width: 800px;
+    max-width: contentMaxWidth;
+  }
+  #header #controls {
+    fixed: top left;
+    width: 100%
+    max-width: contentMaxWidth;
+    z-index: 2;
   }
   #sidebar {
     box-sizing: border-box;
