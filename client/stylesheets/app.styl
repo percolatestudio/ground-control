@@ -1,34 +1,50 @@
 @import 'include/all';
 
 #header {
-  box-sizing: border-box;
-  height: 9em;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  &:after {
-    background-image: linear-gradient(top, rgba(black, .3), rgba(black, 0) 50%, rgba(black, .5) 100% );
-    content: '';
-    positioning(absolute, 0,0,0,0);
-  }
-  h1 {
-    font-size: 48px;
-    line-height: 48px;
-    margin-top: -24px;
-    positioning(absolute, 50%, auto, auto, 32px);
-    text-transform: uppercase;
-    z-index: 1;
-    a {
-      color: white;
+  #banner {
+    box-sizing: border-box;
+    height: 9em;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    &:after {
+      background-image: linear-gradient(top, rgba(black, .3), rgba(black, 0) 50%, rgba(black, .5) 100% );
+      content: '';
+      positioning(absolute, 0,0,0,0);
     }
-  }
-  img {
-    positioning(absolute, 25%, auto, auto, auto, 100%, auto);
-    margin-top: -50%;
+    h1 {
+      font-size: 48px;
+      line-height: 48px;
+      margin-top: -24px;
+      positioning(absolute, 50%, auto, auto, 32px);
+      text-transform: uppercase;
+      z-index: 1;
+      a {
+        color: white;
+      }
+    }
+    img {
+      positioning(absolute, 25%, auto, auto, auto, 100%, auto);
+      margin-top: -50%;
+    }
   }
   // XXX: style these
   #login-buttons {
     float: right
+  }
+  
+  #controls {
+    display: none;
+  }
+  &.scrolledEnough {
+    #controls {
+      display: block;
+      fixed: top left;
+      width: 100%;
+      z-index: 1
+      
+      background: white;
+    }
   }
 }
 
