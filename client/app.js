@@ -67,6 +67,6 @@ Template.header.events({
   
   'click .back': function(event) {
     event.preventDefault();
-    window.history.back();
+    Meteor.Router.navigate('/', {trigger: true});
   }
 })
