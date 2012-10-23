@@ -25,7 +25,7 @@
     }
     img {
       positioning(absolute, 25%, auto, auto, auto, 100%, auto);
-      margin-top: -50%;
+      margin-top: -25%;
     }
   }
   #controls {
@@ -85,17 +85,26 @@
     float: right
   }
 
-  /* controls are hidden until the header isn't visible */
+  /* controls are hidden until the header isn't visible or we're on a single page */
   #controls {
     opacity:0;
     min-height: 0;
     transition: all ease-out 800ms;
   }
-  &.scrolledEnough {
+  &.scrolledEnough,
+  &.single {
     #controls {
       opacity: 1;
       min-height: auto;
       transition: opacity ease-out 800ms;
+    }
+  }
+  &.single{
+    #banner {
+      opacity:0;
+      min-height: 0;
+      height: 3em;
+      transition: all ease-out 800ms;
     }
   }
 }

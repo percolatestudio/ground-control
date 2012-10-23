@@ -26,7 +26,7 @@
 </template>
 
 <template name="header">
-  <div id="header" class="{{scrolledEnoughClass}}">
+  <div id="header" class="{{scrolledEnoughClass}}{{#if anySelected}} single{{/if}}">
     <div id="banner">
       <h1 class="alt-type"><a href="/">Meteor Blog</a></h1>
       <img src="/img/satellite-940x480.jpg" alt="ground control to major tom" width="940" height="480" />
