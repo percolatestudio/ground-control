@@ -43,6 +43,7 @@ var Router = Backbone.Router.extend({
   
   editPost: function(year, day, month, slug) {
     Session.set('currentPage', 'allPosts')
+    Session.set('selected-post-slug', slug);
     Session.set('post-editing-' + slug, true);
   }
 });
