@@ -1,10 +1,12 @@
 @import 'nib';
 
+background-blue = rgb(2, 16, 55);
+
 global-reset()
 
 body {
   color: white;
-  background: rgb(2, 16, 55);
+  background: background-blue;
 }
 a {
   color: white;
@@ -21,4 +23,27 @@ a {
 
 h1 {
   text-transform: uppercase;
+}
+
+// ORBIT STYLES
+orbit-diameter = 500px;
+.orbit, .orbit-shadow {
+  absolute: left 50% top 50%;
+  margin: -0.5 * orbit-diameter 0 0 -0.5 * orbit-diameter;
+  
+  width: orbit-diameter;
+  height: orbit-diameter;
+  border: 3px dashed white;
+  border-radius: orbit-diameter;
+  
+  transform: skew(-70deg, 30deg);
+}
+
+.orbit-shadow {
+  width: orbit-diameter - 3px;
+  height: orbit-diameter - 3px;
+  background-color: rgba(2, 16, 55, 0.5);
+  // background-color: red;
+  border: none;
+  margin-top: -0.5 * orbit-diameter +2px;
 }

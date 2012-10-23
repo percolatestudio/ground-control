@@ -9,3 +9,5 @@ a{color:#fff}
 #main{max-width:800px;margin:200px auto 0}
 #footer{position:absolute;bottom:0;right:0}
 h1{text-transform:uppercase}
+.orbit,.orbit-shadow{position:absolute;left:50%;top:50%;margin:-250px 0 0 -250px;width:500px;height:500px;border:3px dashed #fff;-webkit-border-radius:500px;border-radius:500px;-webkit-transform:skew(-70deg,30deg);-moz-transform:skew(-70deg,30deg);-o-transform:skew(-70deg,30deg);-ms-transform:skew(-70deg,30deg);transform:skew(-70deg,30deg)}
+.orbit-shadow{width:497px;height:497px;background-color:rgba(2,16,55,0.5);border:none;margin-top:-248px}
