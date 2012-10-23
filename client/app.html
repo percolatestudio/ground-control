@@ -31,15 +31,16 @@
       <h1 class="alt-type"><a href="/">Meteor Blog</a></h1>
       <img src="/img/satellite-940x480.jpg" alt="ground control to major tom" width="940" height="480" />
     </div>
-        
+
     <div id="controls">
       {{#if anySelected}}
         <a class="back">Back</a>
       {{/if}}
-      <a class="top"><span class="icon-arrow-up"></span>Top</a>
-      <h1><a href="/">{{blogName}}</a></h1>
+      <a class="btn top"><span class="icon-arrow-up"></span> Top</a>
+      <span class="control-title">{{blogName}}</span>
+      <div class="shadow"></div>
     </div>
-        
+
     {{#if currentUser}}
       <button class="newPost">New Post</button>
       {{loginButtons}}

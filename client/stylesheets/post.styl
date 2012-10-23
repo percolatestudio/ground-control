@@ -91,7 +91,7 @@
       overflow: auto;
     }
   }
-  // XXX: can't this just go above?
+  // XXX: cant this just go above?
   &:not(.open):not(.selected) {
     cursor: pointer;
     margin-bottom: 1px;
@@ -136,34 +136,42 @@
 }
 
 // next / before links on individual post page
-.post.next, .post.previous {
-  overflow: hidden;
-  .header {
-    height: 150px;
+.single-nav {
+  background: $c-low;
+  height: 10.5em;
+  .post.next,
+  .post.previous {
+    overflow: hidden;
+    .header {
+      box-sizing: border-box;
+      height: 10.5em;
+    }
+    h2.title {
+      font-size: 1.25em;
+      line-height: 1.5em;
+      max-height: 4.5em;
+      overflow: hidden;
+    }
+    h4.nextPrev {
+      color: white;
+      text-transform: uppercase;
+      margin-bottom: .5em;
+    }
+    .metadata, .edit {
+      display: none;
+    }
   }
-  
-  h2.title {
-    font-size: 1em;
+  .post.previous {
+    width: 30%;
+    float: left;
   }
-  h4.nextPrev {
-    color: white;
-    text-transform: uppercase;
-    font-weight: 100;
-  }
-  .metadata, .edit {
-    display: none;
+  .post.next {
+    width: 70%
+    float: right;
   }
 }
 
-.post.previous {
-  width: 30%;
-  float: left;
-}
 
-.post.next {
-  width: 70%
-  float: right;
-}
 
 
 .post form {

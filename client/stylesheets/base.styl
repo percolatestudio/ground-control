@@ -18,25 +18,43 @@ p, ul, ol {
 }
 
 h1 {
-  h1(no);
+  h1();
 }
 h2 {
-  h2(no);
+  h2();
 }
 h3 {
-  h3(no);
+  h3();
 }
 h4 {
   h4();
 }
 .small {
-  small(no);
+  small();
 }
 
 a {
   link();
   text-decoration: none;
   transition: all ease-out 200ms;
+}
+
+.btn{
+  cursor: pointer;
+  background: #999;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: white;
+  padding: 8px 10px;
+  font-size: $small * 1px;
+  font-family: $f-secondary;
+  line-height: 1em;
+  [class^="icon-"]:before,
+  [class*=" icon-"]:before {
+    font-size: .7em;
+    line-height: 1em;
+    vertical-align: baseline;
+  }
 }
 
 code {

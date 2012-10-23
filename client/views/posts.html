@@ -9,8 +9,10 @@
   </ul>
 
   {{#if anySelected}}
-  {{> post prevPost}}
-  {{> post nextPost}}
+    <ul class="single-nav">
+      {{> post prevPost}}
+      {{> post nextPost}}
+    </ul>
   {{/if}}
 </template>
 
@@ -23,7 +25,7 @@
     {{else}}
     <div class="header">
       {{#if nextPrev}}
-      <h4 class="nextPrev">{{nextPrev}}</h4>
+      <h4 class="nextPrev alt-type">{{nextPrev}}</h4>
       {{/if}}
       <div class="slider"></div>
       {{> postMeta}}
