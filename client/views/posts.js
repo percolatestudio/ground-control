@@ -80,6 +80,7 @@ Template.post.events({
   'click': function(event) {
     event.preventDefault();
     Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
+    $.smoothScroll({scrollTarget: 0});
   },
   
   // 'click .slider': function(event) {
