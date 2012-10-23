@@ -1,5 +1,5 @@
 WebFontConfig = {
-  google: { families: [ 'Vollkorn::latin' ] }
+  google: { families: [ 'Vollkorn::latin', 'PT+Sans+Narrow::latin ] }
 };
 (function() {
   var wf = document.createElement('script');

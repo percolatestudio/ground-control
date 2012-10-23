@@ -1,7 +1,8 @@
 @import 'include/all';
 
 // layout
-contentMaxWidth = 800px;
+wrapperMaxWidth = 960px
+contentMaxWidth = 720px;
 
 html {
   height: 100%;
@@ -13,24 +14,26 @@ body {
 
 #wrapper {
   margin: 0 auto;
-  max-width: contentMaxWidth * 2;
+  max-width: wrapperMaxWidth;
   position: relative;
   #content {
     max-width: contentMaxWidth;
     overflow: hidden;
   }
   #header #controls {
-    fixed: top left;
+    position: fixed;
+    top: 0;
     width: 100%
     max-width: contentMaxWidth;
     z-index: 2;
   }
   #sidebar {
     box-sizing: border-box;
-    padding: 3em 1.5em;
-    positioning(fixed, 0, 0, auto, auto, 280px, 100%);
+    padding: 0em 1.5em;
+    positioning(fixed, 0, 0, auto, 50%, (wrapperMaxWidth - contentMaxWidth) , 100%);
+    margin-left: (wrapperMaxWidth - contentMaxWidth);
     .attribution {
-      positioning(absolute, auto, auto, 1.5em, 1.5em);
+      positioning(absolute, auto, auto, .75em, 1.5em);
     }
   }
 }

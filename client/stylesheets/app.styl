@@ -53,6 +53,17 @@
         color: black;
       }
     }
+    .btn.back {
+      positioning(absolute, 8px, auto, auto, 24px);
+      text-transform: uppercase;
+      &:after {
+        border-color: transparent $c-medium transparent transparent;
+        border-style: solid;
+        border-width: 12px 7px 12px 5px;
+        content: '';
+        positioning(absolute, 3px, auto, auto, -12px, 0, 0);
+      }
+    }
     .btn.top {
       positioning(absolute, 8px, 24px);
       text-transform: uppercase;
@@ -84,21 +95,45 @@
 }
 
 #sidebar {
-  .about {
-    font-family: $f-primary;
-    color: #666;
+  position: relative;
+  &:after {
+    content: '';
+    background: $c-low;
+    positioning(absolute, 0, 0, 0, auto, 1px);
   }
-  .links li {
-    list-style-type: none;
-    float: left;
-    margin: 10px;
-    font-size: 2em
+  .about {
+    color: #666;
+    border-bottom: 1px solid $c-low;
+    p {
+      font-family: $f-primary;
+    }
+  }
+  .links {
+    box-sizing: border-box;
+    margin: 0 -1.5em 1.5em;
+    padding: 0 1.5em;
+    position: relative;
+    &:after {
+      background: $c-low;
+      content: '';
+      positioning(absolute, auto, 0,0,0, auto, 1px);
+    }
     a {
-      color: #333;
+      color: $c-medium-high;
+      display: inline-block;
+      font-size: 24px;
+      line-height: 48px;
+      height: 48px;
+      + a {
+        margin-left: .5em;
+      }
     }
   }
   form {
     clear: left;
+  }
+  .attribution{
+    color: $c-medium-low;
   }
 }
 

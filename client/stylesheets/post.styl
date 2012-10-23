@@ -5,6 +5,11 @@
   box-sizing: border-box;
   list-style-type: none
   position: relative;
+  &:before { /* left border that needs to be flush with the slider */
+    content: '';
+    positioning(absolute, 0, auto, 0, 0, 1px, auto);
+    background: $c-low;
+  }
   &:after { /* right border that needs to be flush with the slider */
     content: '';
     positioning(absolute, 0, 0, 0, auto, 1px, auto);
@@ -14,15 +19,22 @@
     padding: 2em 1.5em 0;
     position: relative;
     z-index: 1;
-    .edit,
     .permalink {
       background: $c-medium;
       border-radius: 12px;
       color: white;
+      cursor: pointer;
       font-size: 12px;
       line-height: 24px;
       positioning(absolute, 24px, 24px, auto, auto, 24px, 24px);
       text-align: center;
+      &:hover {
+        background: $c-medium-high;
+      }
+      &:active {
+        background: $c-medium-high;
+        box-shadow: rgba(black, .2) 0 1px 3px 0 inset;
+      }
     }
     .edit {
       margin-top: 0;
@@ -47,7 +59,6 @@
       }
       >span {
         color: $c-medium-high;
-        font-size: ($small / $font-size) * 1em ;
         margin-right: 32px;
         [class^="icon-"]:before,
         [class*=" icon-"]:before {
@@ -58,7 +69,6 @@
   }
   .body {
     box-sizing: border-box;
-    max-width: 85%;
   }
 
   /* Transitions/state */
@@ -87,7 +97,7 @@
       height: 100%;
       min-height: 100%;
       opacity: 1;
-      padding: 0 0 3em 24px;
+      padding: .5em 1.5em 3em 1.5em;
       overflow: auto;
     }
   }
@@ -132,6 +142,7 @@
   .posts.anySelected &:not(.selected) {
     max-height: 0;
     overflow: hidden;
+    margin-bottom: 0;
   }
 }
 

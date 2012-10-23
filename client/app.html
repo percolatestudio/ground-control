@@ -34,7 +34,7 @@
 
     <div id="controls">
       {{#if anySelected}}
-        <a class="back">Back</a>
+        <a class="btn back">Back</a>
       {{/if}}
       <a class="btn top"><span class="icon-arrow-up"></span> Top</a>
       <span class="control-title">{{blogName}}</span>
@@ -50,26 +50,22 @@
 
 <template name="sidebar">
   <div id="sidebar" class="alt-type">
-    <div class="about">
-      <h3>About</h3>
-      <p>Meteor is an open-source platform for building top-quality web apps in a fraction of the time, whether you're an expert developer or just getting started.</p>
+    <div class="links">
+      <a href="http://meteor.com" alt="website"><span class="icon-globe"></span></a>
+      <a href="https://twitter.com/meteorjs" alt="twitter"><span class="icon-twitter"></span></a>
+      <a href="https://github.com/meteor/meteor" alt="github"><span class="icon-github"></span></a>
     </div>
 
-    <ul class="links">
-      <li><a href="http://meteor.com" alt="website"><span class="icon-globe"></span></a></li>
-      <li><a href="https://twitter.com/meteorjs" alt="twitter"><span class="icon-twitter"></span></a></li>
-      <li><a href="https://github.com/meteor/meteor" alt="github"><span class="icon-github"></span></a></li>
-    </ul>
+    <div class="about">
+      <h3>About</h3>
+      <p><a href="http://meteor.com" alt="website">Meteor</a> is an open-source platform for building top-quality web apps in a fraction of the time, whether you're an expert developer or just getting started.</p>
+    </div>
 
     <form class="join">
       <p>Join the mailing list</p>
       <input name="email" placeholder="Your email address"></input>
     </form>
 
-    <p class="attribution">
-      Created with Ground Control
-      <br/>
-      <span><span class="icon-percolate"> Design by Percolate</span></span>
-    </p>
+    <div class="attribution">Created with <b>Ground Control</b></div>
   </div>
 </template>
