@@ -52,6 +52,9 @@ Template.header.rendered = function() {
 Template.header.helpers({
   scrolledEnoughClass: function() { 
     return Session.get('scrolledEnough') ? 'scrolledEnough' : '';
+  },
+  anySelected: function() {
+    return anySelected();
   }
 });
 
@@ -60,5 +63,10 @@ Template.header.events({
     event.preventDefault();
     
     $.smoothScroll({scrollTarget: 0});
+  },
+  
+  'click .back': function(event) {
+    event.preventDefault();
+    window.history.back();
   }
 })
