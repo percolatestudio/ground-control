@@ -27,47 +27,60 @@ h1 {
 
 // ORBIT STYLES
 orbit-diameter = 500px;
+border-width = 3px;
+orbit-skew = skew(-70deg, 30deg);
+
+dot-diameter = 10px;
+cos40 = 0.76604444311;
+sin40 = 0.64278760968;
+
 .orbit, .orbit-line, .orbit-shadow {
   absolute: left 50% top 50%;
   margin: -0.5 * orbit-diameter 0 0 -0.5 * orbit-diameter;
   
   width: orbit-diameter;
   height: orbit-diameter;
+  border-radius: orbit-diameter;
   
-  // transform: skew(-70deg, 30deg);
+  transform: orbit-skew;
 }
 
 .orbit-line {
-  border: 3px dashed white;
-  border-radius: orbit-diameter;
+  border: border-width dashed white;
 }
 
 .orbit-shadow {
-  width: orbit-diameter - 3px;
-  height: orbit-diameter - 3px;
+  width: orbit-diameter - border-width;
+  height: orbit-diameter - border-width;
   background-color: rgba(2, 16, 55, 0.5);
-  // background-color: red;
   border: none;
   margin-top: -0.5 * orbit-diameter +2px;
 }
 
 .orbit {
-  width: orbit-diameter + 6px;
-  height: orbit-diameter + 6px;
+  width: orbit-diameter + border-width * 2;
+  height: orbit-diameter + border-width;
+  z-index: 1;
+  border-top: border-width solid white;
+  
   animation: rotate 10000ms linear 0 infinite;
   .spaceship {
-    absolute: top left 50%;
-    width: 5px
-    height: 5px
+    absolute: top (1 - cos40) * 50% left (1 - sin40) * 50%;
+    margin: -0.5 * dot-diameter - border-width 0 0 -0.5 * dot-diameter - border-width;
+    
+    width: dot-diameter;
+    height: dot-diameter;
+    border-radius: dot-diameter;
+    
     background: red;
   }
 }
 
 @keyframes rotate {
   from {
-    transform: rotateZ(0);
+    transform: orbit-skew rotateZ(0);
   }
   to {
-    transform: rotateZ(360deg);
+    transform:  orbit-skew rotateZ(-360deg);
   }
 }
