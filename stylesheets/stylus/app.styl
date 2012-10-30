@@ -4,6 +4,14 @@ background-blue = rgb(2, 16, 55);
 
 global-reset()
 
+centered(width, height) {
+  absolute: top 50% left 50%;
+  width: width;
+  height: height;
+  margin: -0.5 * width -0.5 * height;
+}
+
+
 body {
   color: white;
   background: background-blue;
@@ -29,8 +37,9 @@ h1 {
 orbit-diameter = 500px;
 border-width = 3px;
 orbit-skew = skew(-70deg, 30deg);
+reverse-orbit-skew = skew(70deg, -30deg);
 
-dot-diameter = 10px;
+dot-diameter = 5px;
 cos40 = 0.76604444311;
 sin40 = 0.64278760968;
 
@@ -63,16 +72,29 @@ sin40 = 0.64278760968;
   z-index: 1;
   border-top: border-width solid white;
   
-  animation: rotate 10000ms linear 0 infinite;
+  // animation: rotate 10000ms linear 0 infinite;
   .spaceship {
     absolute: top (1 - cos40) * 50% left (1 - sin40) * 50%;
-    margin: -0.5 * dot-diameter 0 0 -0.5 * dot-diameter;
+    margin: -2.5 * dot-diameter 0 0 -2.5 * dot-diameter;
+    width: dot-diameter * 5;
+    height: dot-diameter * 5;
+    border-radius: dot-diameter * 5;
+    overflow: hidden;
     
-    width: dot-diameter;
-    height: dot-diameter;
-    border-radius: dot-diameter;
+    transform: reverse-orbit-skew;
     
-    background: red;
+    .rings {
+      background: -webkit-repeating-radial-gradient(
+        50% 50%, rgba(23, 93, 143, 0.1) 0, rgba(23, 93, 143, 1.0) 20%
+      );
+      animation: pulse 1000ms linear 0 infinite;
+    }
+    
+    .dot {
+      centered(dot-diameter, dot-diameter);
+      border-radius: dot-diameter;
+      background: red;
+    }
   }
 }
 
@@ -82,5 +104,19 @@ sin40 = 0.64278760968;
   }
   to {
     transform:  orbit-skew rotateZ(-360deg);
+  }
+}
+
+@keyframes pulse {
+  from {
+    width: 50%;
+    height: 50%;
+    border-radius: 100%;
+    margin: 25% 25%;
+  }
+  to {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
   }
 }
