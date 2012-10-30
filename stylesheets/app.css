@@ -9,5 +9,19 @@ a{color:#fff}
 #main{max-width:800px;margin:200px auto 0}
 #footer{position:absolute;bottom:0;right:0}
 h1{text-transform:uppercase}
-.orbit,.orbit-shadow{position:absolute;left:50%;top:50%;margin:-250px 0 0 -250px;width:500px;height:500px;border:3px dashed #fff;-webkit-border-radius:500px;border-radius:500px;-webkit-transform:skew(-70deg,30deg);-moz-transform:skew(-70deg,30deg);-o-transform:skew(-70deg,30deg);-ms-transform:skew(-70deg,30deg);transform:skew(-70deg,30deg)}
+.orbit,.orbit-line,.orbit-shadow{position:absolute;left:50%;top:50%;margin:-250px 0 0 -250px;width:500px;height:500px}
+.orbit-line{border:3px dashed #fff;-webkit-border-radius:500px;border-radius:500px}
 .orbit-shadow{width:497px;height:497px;background-color:rgba(2,16,55,0.5);border:none;margin-top:-248px}
+.orbit{width:506px;height:506px;-webkit-animation:rotate 10000ms linear 0 infinite;-moz-animation:rotate 10000ms linear 0 infinite;-o-animation:rotate 10000ms linear 0 infinite;-ms-animation:rotate 10000ms linear 0 infinite;animation:rotate 10000ms linear 0 infinite;}
+.orbit .spaceship{position:absolute;top:0;left:50%;width:5px;height:5px;background:#f00}
+@-moz-keyframes rotate{0%{-webkit-transform:rotateZ(0);-moz-transform:rotateZ(0);-o-transform:rotateZ(0);-ms-transform:rotateZ(0);transform:rotateZ(0)}
+100%{-webkit-transform:rotateZ(360deg);-moz-transform:rotateZ(360deg);-o-transform:rotateZ(360deg);-ms-transform:rotateZ(360deg);transform:rotateZ(360deg)}
+}@-webkit-keyframes rotate{0%{-webkit-transform:rotateZ(0);-moz-transform:rotateZ(0);-o-transform:rotateZ(0);-ms-transform:rotateZ(0);transform:rotateZ(0)}
+100%{-webkit-transform:rotateZ(360deg);-moz-transform:rotateZ(360deg);-o-transform:rotateZ(360deg);-ms-transform:rotateZ(360deg);transform:rotateZ(360deg)}
+}@-o-keyframes rotate{0%{-webkit-transform:rotateZ(0);-moz-transform:rotateZ(0);-o-transform:rotateZ(0);-ms-transform:rotateZ(0);transform:rotateZ(0)}
+100%{-webkit-transform:rotateZ(360deg);-moz-transform:rotateZ(360deg);-o-transform:rotateZ(360deg);-ms-transform:rotateZ(360deg);transform:rotateZ(360deg)}
+}@-ms-keyframes rotate{0%{-webkit-transform:rotateZ(0);-moz-transform:rotateZ(0);-o-transform:rotateZ(0);-ms-transform:rotateZ(0);transform:rotateZ(0)}
+100%{-webkit-transform:rotateZ(360deg);-moz-transform:rotateZ(360deg);-o-transform:rotateZ(360deg);-ms-transform:rotateZ(360deg);transform:rotateZ(360deg)}
+}@keyframes rotate{0%{-webkit-transform:rotateZ(0);-moz-transform:rotateZ(0);-o-transform:rotateZ(0);-ms-transform:rotateZ(0);transform:rotateZ(0)}
+100%{-webkit-transform:rotateZ(360deg);-moz-transform:rotateZ(360deg);-o-transform:rotateZ(360deg);-ms-transform:rotateZ(360deg);transform:rotateZ(360deg)}
+}

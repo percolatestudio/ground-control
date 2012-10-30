@@ -27,16 +27,19 @@ h1 {
 
 // ORBIT STYLES
 orbit-diameter = 500px;
-.orbit, .orbit-shadow {
+.orbit, .orbit-line, .orbit-shadow {
   absolute: left 50% top 50%;
   margin: -0.5 * orbit-diameter 0 0 -0.5 * orbit-diameter;
   
   width: orbit-diameter;
   height: orbit-diameter;
+  
+  // transform: skew(-70deg, 30deg);
+}
+
+.orbit-line {
   border: 3px dashed white;
   border-radius: orbit-diameter;
-  
-  transform: skew(-70deg, 30deg);
 }
 
 .orbit-shadow {
@@ -46,4 +49,25 @@ orbit-diameter = 500px;
   // background-color: red;
   border: none;
   margin-top: -0.5 * orbit-diameter +2px;
+}
+
+.orbit {
+  width: orbit-diameter + 6px;
+  height: orbit-diameter + 6px;
+  animation: rotate 10000ms linear 0 infinite;
+  .spaceship {
+    absolute: top left 50%;
+    width: 5px
+    height: 5px
+    background: red;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateZ(0);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
 }
