@@ -12,7 +12,7 @@ h1{text-transform:uppercase}
 .orbit,.orbit-line,.orbit-shadow{position:absolute;left:50%;top:50%;margin:-250px 0 0 -250px;width:500px;height:500px;-webkit-border-radius:500px;border-radius:500px;-webkit-transform:skew(-70deg,30deg);-moz-transform:skew(-70deg,30deg);-o-transform:skew(-70deg,30deg);-ms-transform:skew(-70deg,30deg);transform:skew(-70deg,30deg)}
 .orbit-line{border:3px dashed #fff}
 .orbit-shadow{width:497px;height:497px;background-color:rgba(2,16,55,0.5);border:none;margin-top:-248px}
-.orbit{width:506px;height:503px;z-index:1;border-top:3px solid #fff;}
+.orbit{width:506px;height:503px;z-index:1;border-top:3px solid #fff;-webkit-animation:rotate 30000ms linear 0 infinite;-moz-animation:rotate 30000ms linear 0 infinite;-o-animation:rotate 30000ms linear 0 infinite;-ms-animation:rotate 30000ms linear 0 infinite;animation:rotate 30000ms linear 0 infinite;}
 .orbit .spaceship{position:absolute;top:11.697777844500001%;left:17.860619516%;margin:-12.5px 0 0 -12.5px;width:25px;height:25px;-webkit-border-radius:25px;border-radius:25px;overflow:hidden;-webkit-transform:skew(70deg,-30deg);-moz-transform:skew(70deg,-30deg);-o-transform:skew(70deg,-30deg);-ms-transform:skew(70deg,-30deg);transform:skew(70deg,-30deg);}
 .orbit .spaceship .rings{background:-webkit-repeating-radial-gradient(50% 50%,rgba(23,93,143,0.1) 0,#175d8f 20%);-webkit-animation:pulse 1000ms linear 0 infinite;-moz-animation:pulse 1000ms linear 0 infinite;-o-animation:pulse 1000ms linear 0 infinite;-ms-animation:pulse 1000ms linear 0 infinite;animation:pulse 1000ms linear 0 infinite}
 .orbit .spaceship .dot{position:absolute;top:50%;left:50%;width:5px;height:5px;margin:-2.5px -2.5px;-webkit-border-radius:5px;border-radius:5px;background:#f00}
