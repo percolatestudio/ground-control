@@ -13,7 +13,7 @@ Meteor.startup(function() {
 
 Template.body.events({
   'click .newPost': function() {
-    Session.set('creatingNew', true);
+    Meteor.Router.navigate('posts/new', {trigger: true});
   },
   
   'click [href]': function(e) {

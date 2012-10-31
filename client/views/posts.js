@@ -14,13 +14,16 @@ Template.allPosts.helpers({
     return anySelected();
   },
   anySelectedClass: function() {
-    return anySelected() ? 'anySelected' : '';
+    return anySelected() || Session.get('creating-post') ? 'anySelected' : '';
   },
   animatingClass: function() { 
     return Session.get('animationBegun') ? 'animating' : ''; 
   },
   creatingNew: function() {
-    return Session.get('creatingNew');
+    return Session.get('creating-post');
+  },
+  showNav: function() {
+    return anySelected() && ! inEditMode();
   },
   nextPost: function() {
     var current = getSelected(), next, found = false;
@@ -77,26 +80,18 @@ Template.post.helpers({
 });
 
 Template.post.events({
-  'click .title': function(event) {
+  'click .title, click .post:not(.open)': function(event) {
+    console.log('in here');
     event.preventDefault();
     Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
     $.smoothScroll({scrollTarget: 0});
   },
   
-  // 'click .slider': function(event) {
-  //   if (isOpen(this)) {
-  //     setOpen(this, false);
-  //     event.stopImmediatePropagation();
-  //   }
-  // },
-  // 'click': function() {
-  //   isOpen(this) || setOpen(this, true);
-  // },
-  
   'click .edit': function(event) {
+    console.log('here');
     event.preventDefault();
-    Meteor.Router.navigate(Routes.editPostUrl(this));
-    setEditing(this, true);
+    Meteor.Router.navigate(Routes.editPostUrl(this), {trigger: true});
+    $.smoothScroll({scrollTarget: 0});
   },
   
   'click .delete': function() {
@@ -124,11 +119,7 @@ Template.editPost.events({
   'click .cancel': function(e) {
     // XXX: check changes
     e.preventDefault();
-    Meteor.Router.navigate(Routes.postUrl(this));
-    
-    // prevent redrawing, XXX: probably a better way to do this
-    this._rendered = false;
-    setEditing(this, false);
+    Meteor.Router.navigate(Routes.postUrl(this), trigger = true);
   },
     
   'submit form': function(e, template) {

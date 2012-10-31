@@ -23,7 +23,7 @@ var Router = Backbone.Router.extend({
   home: function() {
     Session.set('currentPage', 'allPosts')
     Session.set('selected-post-slug', null);
-    // wait for the posts to load, then open up the first one
+    // wait for the posts to load, then open up the first three
     Meteor.autorun(function() {
       var posts = allPosts().fetch();
       posts[0] && setOpen(posts[0], true);
@@ -34,17 +34,21 @@ var Router = Backbone.Router.extend({
   
   newPost: function() {
     Session.set('currentPage', 'allPosts')
+    Session.set('selected-post-slug', null);
+    Session.set('creating-post', true);
   },
   
   post: function(year, day, month, slug) {
     Session.set('currentPage', 'allPosts')
     Session.set('selected-post-slug', slug);
+    Session.set('editing-post', false);
+    Session.set('creating-post', false);
   },
   
   editPost: function(year, day, month, slug) {
     Session.set('currentPage', 'allPosts')
     Session.set('selected-post-slug', slug);
-    Session.set('post-editing-' + slug, true);
+    Session.set('editing-post', true);
   }
 });
 
