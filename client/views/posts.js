@@ -77,7 +77,7 @@ Template.post.helpers({
 });
 
 Template.post.events({
-  'click': function(event) {
+  'click .title': function(event) {
     event.preventDefault();
     Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
     $.smoothScroll({scrollTarget: 0});
