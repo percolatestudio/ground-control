@@ -34,89 +34,162 @@ h1 {
 }
 
 // ORBIT STYLES
+svg-width= 1500px;
+svg-height= 500px;
 orbit-diameter = 500px;
-border-width = 3px;
-orbit-skew = skew(-70deg, 30deg);
-reverse-orbit-skew = skew(70deg, -30deg);
+orbit-stroke = 1px;
+x-skew = -70deg;
+y-skew = 30deg;
 
-dot-diameter = 5px;
+tan70 = 2.74747;
+tan30 = 0.57735;
+
+animation-time = 30000ms;
+
+dot-diameter = 3px;
 cos40 = 0.76604444311;
 sin40 = 0.64278760968;
 
-.orbit, .orbit-line, .orbit-shadow {
-  absolute: left 50% top 50%;
-  margin: -0.5 * orbit-diameter 0 0 -0.5 * orbit-diameter;
-  
-  width: orbit-diameter;
-  height: orbit-diameter;
-  border-radius: orbit-diameter;
-  
-  transform: orbit-skew;
-}
 
-.orbit-line {
-  border: border-width dashed white;
-}
-
-.orbit-shadow {
-  width: orbit-diameter - border-width;
-  height: orbit-diameter - border-width;
-  background-color: rgba(2, 16, 55, 0.5);
-  border: none;
-  margin-top: -0.5 * orbit-diameter +2px;
+.orbitGroup {
+  transform: translate(svg-width/2, svg-height/2) skew(x-skew, y-skew);
+  // transform: translate(svg-width/2, svg-height/2);
 }
 
 .orbit {
-  width: orbit-diameter + border-width * 2;
-  height: orbit-diameter + border-width;
-  z-index: 1;
-  border-top: border-width solid white;
-  
-  animation: rotate 30000ms linear 0 infinite;
-  .spaceship {
-    absolute: top (1 - cos40) * 50% left (1 - sin40) * 50%;
-    margin: -2.5 * dot-diameter 0 0 -2.5 * dot-diameter;
-    width: dot-diameter * 5;
-    height: dot-diameter * 5;
-    border-radius: dot-diameter * 5;
-    overflow: hidden;
-    
-    transform: reverse-orbit-skew;
-    
-    .rings {
-      background: -webkit-repeating-radial-gradient(
-        50% 50%, rgba(23, 93, 143, 0.1) 0, rgba(23, 93, 143, 1.0) 20%
-      );
-      animation: pulse 1000ms linear 0 infinite;
-    }
-    
-    .dot {
-      centered(dot-diameter, dot-diameter);
-      border-radius: dot-diameter;
-      background: red;
-    }
-  }
+  fill: none;
+  stroke: white;
+  stroke-width: orbit-stroke;
+  stroke-dasharray: 5 3;
+}
+
+.rotatingGroup {
+  animation: rotate animation-time linear 0 infinite;
+  // transform: rotateZ(45deg);
+  // transform: rotateZ(90deg);
+}
+
+.trail {
+  stroke: white;
+  stroke-width: orbit-stroke;
+  fill: none;
+}
+
+.dot {
+  fill: red;
+  transform-origin: 0 -200px;
+  animation: unskew animation-time linear 0 infinite;
 }
 
 @keyframes rotate {
   from {
-    transform: orbit-skew rotateZ(0);
+    transform: rotateZ(0);
   }
   to {
-    transform:  orbit-skew rotateZ(-360deg);
+    transform:  rotateZ(360deg);
   }
 }
 
-@keyframes pulse {
+@keyframes unskew {
   from {
-    width: 50%;
-    height: 50%;
-    border-radius: 100%;
-    margin: 25% 25%;
+    transform: rotateZ(0) skew(-1 * x-skew, -1 * y-skew);
   }
   to {
-    width: 100%;
-    height: 100%;
-    border-radius: 100%;
+    transform: rotateZ(-360deg) skew(-1 * x-skew, -1 * y-skew);
   }
+  // 0% {
+  //   transform: skew(-1 * x-skew, -1 * y-skew);
+  // }
+  // 25% {
+  //   transform: skew(y-skew, x-skew);
+  // }
+  // 50% {
+  //   transform: skew(-1 * x-skew, -1 * y-skew);
+  // }
+  // 75% {
+  //   transform: skew(y-skew, x-skew);
+  // }
+  // 100% {
+  //   transform: skew(-1 * x-skew, -1 * y-skew);
+  // }
 }
+
+
+// 
+// .orbit, .orbit-line, .orbit-shadow {
+//   absolute: left 50% top 50%;
+//   margin: -0.5 * orbit-diameter 0 0 -0.5 * orbit-diameter;
+//   
+//   width: orbit-diameter;
+//   height: orbit-diameter;
+//   border-radius: orbit-diameter;
+//   
+//   transform: orbit-skew;
+// }
+// 
+// .orbit-line {
+//   border: border-width dashed white;
+// }
+// 
+// .orbit-shadow {
+//   width: orbit-diameter - border-width;
+//   height: orbit-diameter - border-width;
+//   background-color: rgba(2, 16, 55, 0.5);
+//   border: none;
+//   margin-top: -0.5 * orbit-diameter +2px;
+// }
+// 
+// .orbit {
+//   width: orbit-diameter + border-width * 2;
+//   height: orbit-diameter + border-width;
+//   z-index: 1;
+//   border-top: border-width solid white;
+//   
+//   animation: rotate 30000ms linear 0 infinite;
+//   .spaceship {
+//     absolute: top (1 - cos40) * 50% left (1 - sin40) * 50%;
+//     margin: -2.5 * dot-diameter 0 0 -2.5 * dot-diameter;
+//     width: dot-diameter * 5;
+//     height: dot-diameter * 5;
+//     border-radius: dot-diameter * 5;
+//     overflow: hidden;
+//     
+//     transform: reverse-orbit-skew;
+//     
+//     .rings {
+//       background: -webkit-repeating-radial-gradient(
+//         50% 50%, rgba(23, 93, 143, 0.1) 0, rgba(23, 93, 143, 1.0) 20%
+//       );
+//       animation: pulse 1000ms linear 0 infinite;
+//     }
+//     
+//     .dot {
+//       centered(dot-diameter, dot-diameter);
+//       border-radius: dot-diameter;
+//       background: red;
+//     }
+//   }
+// }
+// 
+// @keyframes rotate {
+//   from {
+//     transform: orbit-skew rotateZ(0);
+//   }
+//   to {
+//     transform:  orbit-skew rotateZ(-360deg);
+//   }
+// }
+// 
+// @keyframes pulse {
+//   from {
+//     width: 50%;
+//     height: 50%;
+//     border-radius: 100%;
+//     margin: 25% 25%;
+//   }
+//   to {
+//     width: 100%;
+//     height: 100%;
+//     border-radius: 100%;
+//   }
+// }

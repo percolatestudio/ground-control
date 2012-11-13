@@ -19,14 +19,20 @@
       <a class="btn cta" href="http://github.com/percolatestudio/ground-control">Github</a>
     </div>
     
-    <div class="orbit">
-      <div class="spaceship">
-        <div class="rings"></div>
-        <div class="dot"></div>
-      </div>
-    </div>
-    <div class="orbit-line"></div>
-    <div class="orbit-shadow"></div>
+    <svg class="drawing" width="1500" height="500">
+      <g class="orbitGroup">
+        <circle class="orbit" r="200"></circle>
+        
+        <g class="rotatingGroup">
+          <path d="M -200 0 a 200 200 0 0 1 200 -200" class="trail"></path>
+        
+          <g class="spaceshipGroup">
+            <circle class="dot" r="3" cx="0" cy="-200"></circle>
+            <circle class="rings"></svg>
+          </g>
+        </g>
+      </g>
+    </svg>
     
     <div id="footer">
       <a href="http://meteor.com">Meteor</a>
