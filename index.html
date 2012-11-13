@@ -19,16 +19,27 @@
       <a class="btn cta" href="http://github.com/percolatestudio/ground-control">Github</a>
     </div>
     
-    <svg class="drawing" width="1500" height="500">
+    <svg class="drawing" width="1500" height="1000">
+      <defs>
+        <radialGradient id="pulse" cx="50%" cy="50%" r="50%">
+          <stop stop-color="rgb(23, 93, 143)" stop-opacity="0.1" offset="0.25"/>
+          <stop stop-color="rgb(23, 93, 143)" offset="0.5"/>
+          <stop stop-color="rgb(23, 93, 143)" stop-opacity="0.1" offset="0.5"/>
+          <stop stop-color="rgb(23, 93, 143)" stop-opacity="0.75" offset="0.75"/>
+          <stop stop-color="rgb(23, 93, 143)" stop-opacity="0.1" offset="0.75"/>
+          <stop stop-color="rgb(23, 93, 143)" stop-opacity="0.5" offset="1"/>
+        </radialGradient>
+      </defs>
+        
       <g class="orbitGroup">
         <circle class="orbit" r="200"></circle>
         
         <g class="rotatingGroup">
-          <path d="M -200 0 a 200 200 0 0 1 200 -200" class="trail"></path>
+          <path d="M 0 200 a 200 200 0 0 0 0 -400" class="trail"></path>
         
           <g class="spaceshipGroup">
+            <circle class="rings" r="12" cx="0" cy="-200" fill="url(#pulse)"></circle>
             <circle class="dot" r="3" cx="0" cy="-200"></circle>
-            <circle class="rings"></svg>
           </g>
         </g>
       </g>

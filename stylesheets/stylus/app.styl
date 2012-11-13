@@ -35,7 +35,7 @@ h1 {
 
 // ORBIT STYLES
 svg-width= 1500px;
-svg-height= 500px;
+svg-height= 1000px;
 orbit-diameter = 500px;
 orbit-stroke = 1px;
 x-skew = -70deg;
@@ -50,6 +50,9 @@ dot-diameter = 3px;
 cos40 = 0.76604444311;
 sin40 = 0.64278760968;
 
+.drawing {
+  absolute: left -10% top 10%;
+}
 
 .orbitGroup {
   transform: translate(svg-width/2, svg-height/2) skew(x-skew, y-skew);
@@ -75,10 +78,20 @@ sin40 = 0.64278760968;
   fill: none;
 }
 
-.dot {
-  fill: red;
+.spaceshipGroup {
   transform-origin: 0 -200px;
   animation: unskew animation-time linear 0 infinite;
+}
+
+.dot {
+  fill: red;
+}
+
+.rings {
+  // fill: blue;
+
+  //       background: -webkit-repeating-radial-gradient(
+  //         50% 50%, rgba(23, 93, 143, 0.1) 0, rgba(23, 93, 143, 1.0) 20%
 }
 
 @keyframes rotate {
@@ -86,7 +99,7 @@ sin40 = 0.64278760968;
     transform: rotateZ(0);
   }
   to {
-    transform:  rotateZ(360deg);
+    transform:  rotateZ(-360deg);
   }
 }
 
@@ -95,23 +108,8 @@ sin40 = 0.64278760968;
     transform: rotateZ(0) skew(-1 * x-skew, -1 * y-skew);
   }
   to {
-    transform: rotateZ(-360deg) skew(-1 * x-skew, -1 * y-skew);
+    transform: rotateZ(360deg) skew(-1 * x-skew, -1 * y-skew);
   }
-  // 0% {
-  //   transform: skew(-1 * x-skew, -1 * y-skew);
-  // }
-  // 25% {
-  //   transform: skew(y-skew, x-skew);
-  // }
-  // 50% {
-  //   transform: skew(-1 * x-skew, -1 * y-skew);
-  // }
-  // 75% {
-  //   transform: skew(y-skew, x-skew);
-  // }
-  // 100% {
-  //   transform: skew(-1 * x-skew, -1 * y-skew);
-  // }
 }
 
 
