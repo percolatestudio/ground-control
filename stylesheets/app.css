@@ -139,11 +139,11 @@ h1 {
   fill: none;
 }
 .spaceshipGroup {
-  -webkit-transform-origin: 0 -200px;
-  -moz-transform-origin: 0 -200px;
-  -o-transform-origin: 0 -200px;
-  -ms-transform-origin: 0 -200px;
-  transform-origin: 0 -200px;
+  -webkit-transform-origin: 200px 0px;
+  -moz-transform-origin: 200px 0px;
+  -o-transform-origin: 200px 0px;
+  -ms-transform-origin: 200px 0px;
+  transform-origin: 200px 0px;
   -webkit-animation: unskew 30000ms linear 0 infinite;
   -moz-animation: unskew 30000ms linear 0 infinite;
   -o-animation: unskew 30000ms linear 0 infinite;

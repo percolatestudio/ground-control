@@ -79,7 +79,7 @@ sin40 = 0.64278760968;
 }
 
 .spaceshipGroup {
-  transform-origin: 0 -200px;
+  transform-origin: 200px 0px;
   animation: unskew animation-time linear 0 infinite;
 }
 
@@ -104,10 +104,10 @@ sin40 = 0.64278760968;
 }
 
 @keyframes unskew {
-  from {
+  0% {
     transform: rotateZ(0) skew(-1 * x-skew, -1 * y-skew);
   }
-  to {
+  100% {
     transform: rotateZ(360deg) skew(-1 * x-skew, -1 * y-skew);
   }
 }
