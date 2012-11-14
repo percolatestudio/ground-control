@@ -91,6 +91,10 @@
     min-height: 0;
     transition: all ease-out 800ms;
   }
+  #controls .top {
+    opacity: 1;
+    transition: opacity ease-out 800ms;
+  }
   &.scrolledEnough,
   &.single {
     #controls {
@@ -105,6 +109,10 @@
       min-height: 0;
       height: 3em;
       transition: all ease-out 800ms;
+    }
+    // top button is invisible when we haven't scrolled yet.
+    &:not(.scrolledEnough) #controls .top {
+      opacity: 0;
     }
   }
 }
