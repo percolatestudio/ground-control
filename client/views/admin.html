@@ -1,8 +1,39 @@
 <template name="admin">
   <h1>Admin</h1>
-  {{#if loggedIn}}{{redirectToHome}}{{/if}}
+  {{#if loggedIn}}
+    {{> adminUsersList}}
+    {{> adminPostsList}}
+  {{else}}
+    <p>Please setup your google app and login here. If you can't login, ensure you've set the correct email filter in <code>server/configuration.js</code>.</p>
   
-  <p>Please setup your google app and login here. If you can't login, ensure you've set the correct email filter in <code>server/configuration.js</code>.</p>
-  
-  {{loginButtons}}
+    {{loginButtons}}
+  {{/if}}
+</template>
+
+<template name="adminUsersList">
+</template>
+
+<template name="adminPostsList">
+  <table class="adminPosts">
+    <thead>
+      <tr>
+        <th>Post Title</th>
+        <th>Post Author</th>
+        <th>Published?</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each posts}}
+      <tr>
+        <td>{{title}}</td>
+        <td>{{author}}</td>
+        <td><a href="#" class="toggle-published">Yes</a></td>
+        <td><a href="{{editPostUrl this}}">Edit</a></td>
+        <td><a href="#" class="delete">Delete</a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </template>

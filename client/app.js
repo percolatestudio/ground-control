@@ -1,4 +1,5 @@
 Meteor.subscribe('posts');
+Meteor.subscribe('users');
 
 Meteor.startup(function() {
   Meteor.call('noUsers', function(err, none) {
