@@ -17,11 +17,11 @@
   stroke-dasharray: 5 3;
 }
 .rotatingGroup {
-  -webkit-animation: rotate 30000ms linear 0 infinite;
-  -moz-animation: rotate 30000ms linear 0 infinite;
-  -o-animation: rotate 30000ms linear 0 infinite;
-  -ms-animation: rotate 30000ms linear 0 infinite;
-  animation: rotate 30000ms linear 0 infinite;
+  -webkit-animation: rotate 120s linear 0 infinite;
+  -moz-animation: rotate 120s linear 0 infinite;
+  -o-animation: rotate 120s linear 0 infinite;
+  -ms-animation: rotate 120s linear 0 infinite;
+  animation: rotate 120s linear 0 infinite;
 }
 .trail {
   stroke: #fff;
@@ -34,11 +34,11 @@
   -o-transform-origin: 200px 0px;
   -ms-transform-origin: 200px 0px;
   transform-origin: 200px 0px;
-  -webkit-animation: unskew 30000ms linear 0 infinite;
-  -moz-animation: unskew 30000ms linear 0 infinite;
-  -o-animation: unskew 30000ms linear 0 infinite;
-  -ms-animation: unskew 30000ms linear 0 infinite;
-  animation: unskew 30000ms linear 0 infinite;
+  -webkit-animation: unskew 120s linear 0 infinite;
+  -moz-animation: unskew 120s linear 0 infinite;
+  -o-animation: unskew 120s linear 0 infinite;
+  -ms-animation: unskew 120s linear 0 infinite;
+  animation: unskew 120s linear 0 infinite;
 }
 .dot {
   fill: #f00;
