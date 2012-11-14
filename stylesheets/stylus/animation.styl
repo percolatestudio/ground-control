@@ -1,0 +1,86 @@
+animating = true;
+skewed = ture;
+
+// ORBIT STYLES
+svg-width= 1500px;
+svg-height= 1000px;
+orbit-diameter = 500px;
+orbit-stroke = 1px;
+x-skew = -70deg;
+y-skew = 30deg;
+
+tan70 = 2.74747;
+tan30 = 0.57735;
+
+animation-time = 30000ms;
+
+dot-diameter = 3px;
+cos40 = 0.76604444311;
+sin40 = 0.64278760968;
+
+.drawing {
+  absolute: left -10% top 10%;
+}
+
+.orbitGroup {
+  if skewed {
+    transform: translate(svg-width/2, svg-height/2) skew(x-skew, y-skew);
+  } else {
+    transform: translate(svg-width/2, svg-height/2);
+  }
+}
+
+.orbit {
+  fill: none;
+  stroke: white;
+  stroke-width: orbit-stroke;
+  stroke-dasharray: 5 3;
+}
+
+.rotatingGroup {
+  if animating {
+    animation: rotate animation-time linear 0 infinite;
+  }
+}
+
+.trail {
+  stroke: white;
+  stroke-width: orbit-stroke;
+  fill: none;
+}
+
+.spaceshipGroup {
+  transform-origin: 200px 0px;
+  if skewed {
+    if animating {
+      animation: unskew animation-time linear 0 infinite;
+    } else {
+      transform: skew(-1 * x-skew, -1 * y-skew);
+    }
+  }
+}
+
+.dot {
+  fill: red;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateZ(0);
+  }
+  to {
+    transform:  rotateZ(-360deg);
+  }
+}
+
+@keyframes unskew {
+  0% {
+    transform: rotateZ(0) skew(-1 * x-skew, -1 * y-skew) scale(1);
+  }
+  50% {
+    transform: rotateZ(180deg) skew(-1 * x-skew, -1 * y-skew) scale(0.5);
+  }
+  100% {
+    transform: rotateZ(360deg) skew(-1 * x-skew, -1 * y-skew) scale(1);
+  }
+}
