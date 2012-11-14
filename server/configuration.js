@@ -5,4 +5,3 @@ _.extend(GroundControlConfig, {
   // load up some test data from meteor.com/blog when the page first loads
   loadFixtures: true
 });
-
