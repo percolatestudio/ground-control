@@ -87,13 +87,6 @@ sin40 = 0.64278760968;
   fill: red;
 }
 
-.rings {
-  // fill: blue;
-
-  //       background: -webkit-repeating-radial-gradient(
-  //         50% 50%, rgba(23, 93, 143, 0.1) 0, rgba(23, 93, 143, 1.0) 20%
-}
-
 @keyframes rotate {
   from {
     transform: rotateZ(0);
@@ -105,10 +98,13 @@ sin40 = 0.64278760968;
 
 @keyframes unskew {
   0% {
-    transform: rotateZ(0) skew(-1 * x-skew, -1 * y-skew);
+    transform: rotateZ(0) skew(-1 * x-skew, -1 * y-skew) scale(1);
+  }
+  50% {
+    transform: rotateZ(180deg) skew(-1 * x-skew, -1 * y-skew) scale(0.5);
   }
   100% {
-    transform: rotateZ(360deg) skew(-1 * x-skew, -1 * y-skew);
+    transform: rotateZ(360deg) skew(-1 * x-skew, -1 * y-skew) scale(1);
   }
 }
 
