@@ -23,9 +23,3 @@ Posts.deny({
     return _.contain(fields, 'slug');
   }
 })
-
-// you can only see users if you are logged in
-Meteor.publish('users', function() {
-  if (this.userId)
-    return Users.find();
-})

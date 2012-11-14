@@ -1,19 +1,29 @@
 <template name="admin">
-  <h1>Admin</h1>
   {{#if loggedIn}}
     {{> adminUsersList}}
     {{> adminPostsList}}
   {{else}}
-    <p>Please setup your google app and login here. If you can't login, ensure you've set the correct email filter in <code>server/configuration.js</code>.</p>
-  
-    {{loginButtons}}
+    {{> setupWizard}}
   {{/if}}
 </template>
 
+<template name="setupWizard">
+  
+  
+  <p>Please setup your google app and login here. If you can't login, ensure you've set the correct email filter in <code>server/configuration.js</code>.</p>
+    
+  <div class="login">
+    {{loginButtons align="left"}}
+  </div>
+</template>
+
 <template name="adminUsersList">
+  <h2>Admins</h2>
+  <p>
 </template>
 
 <template name="adminPostsList">
+  <h2>Posts</h2>
   <table class="adminPosts">
     <thead>
       <tr>

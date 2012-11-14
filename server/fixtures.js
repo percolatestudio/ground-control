@@ -2,7 +2,7 @@
 // XXX: is there some way to tell if you are in development?
 //  - ideally we'd have some kind of script runner to load this
 Meteor.startup(function() {
-  if (GroundControlConfig.loadFixtures && Posts.find().count() === 0) {
+  if (DefaultSettings.loadFixtures && Posts.find().count() === 0) {
     var title;
     
     Posts.insert({

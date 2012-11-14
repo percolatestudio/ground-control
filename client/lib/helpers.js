@@ -7,7 +7,7 @@ Handlebars.registerHelper('formatDateShort', function(date) {
 });
 
 Handlebars.registerHelper('blogName', function() {
-  return GroundControlConfig.blogName;
+  return getSetting('blogName');
 });
 
 
