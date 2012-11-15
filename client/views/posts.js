@@ -132,8 +132,7 @@ Template.editPost.events({
       return Session.set('postForm.errors', errors);
     
     Posts.update(this._id, {$set: changes});
-    Meteor.Router.navigate(Routes.postUrl(this));
-    setEditing(this, false);
+    Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
   }
 });
 
@@ -167,9 +166,7 @@ Template.newPost.events({
         // XXX: what errors are possible here?
         console.log(err.reason);
       } else {
-        Meteor.Router.navigate(Routes.postUrl(self));
-        Session.set('creatingNew', false);
-        setOpen(self, true);
+        Meteor.Router.navigate(Routes.postUrl(self), {trigger: true});
       }
     })
   }
