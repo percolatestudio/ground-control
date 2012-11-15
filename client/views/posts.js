@@ -80,18 +80,17 @@ Template.post.helpers({
 });
 
 Template.post.events({
-  'click .title, click .post:not(.open)': function(event) {
-    console.log('in here');
+  'click .title, click .post:not(.open):not(.selected)': function(event) {
     event.preventDefault();
     Meteor.Router.navigate(Routes.postUrl(this), {trigger: true});
     $.smoothScroll({scrollTarget: 0});
   },
   
   'click .edit': function(event) {
-    console.log('here');
     event.preventDefault();
     Meteor.Router.navigate(Routes.editPostUrl(this), {trigger: true});
     $.smoothScroll({scrollTarget: 0});
+    return false;
   },
   
   'click .delete': function() {
