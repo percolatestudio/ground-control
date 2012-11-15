@@ -1,17 +1,32 @@
 <template name="admin">
   {{#if loggedIn}}
-    {{> adminUsersList}}
-    {{> adminPostsList}}
+    {{#if currentUserVerified}}
+      {{> adminUsersList}}
+      {{> adminPostsList}}
+    {{else}}
+      {{> unverifiedInfo}}
+    {{/if}}
   {{else}}
-    {{> setupWizard}}
+    {{#if sessionGet "noUsers"}}
+      {{> setupWizard}}
+    {{else}}
+      {{> login}}
+    {{/if}}
   {{/if}}
 </template>
 
 <template name="setupWizard">
+  <h1>Welcome to {{blogName}}!</h1>
   
+  <p>Please take a moment to set up your Google Apps settings and to create
+    the initial admininstrator account. 
+    The site is open until this account has been created; once you've done so it will be locked down and you can invite more admins to contribute.
+  </p>
   
-  <p>Please setup your google app and login here. If you can't login, ensure you've set the correct email filter in <code>server/configuration.js</code>.</p>
-    
+  {{> login}}
+</template>
+
+<template name="login">
   <div class="login">
     {{loginButtons align="left"}}
   </div>
@@ -46,4 +61,9 @@
       {{/each}}
     </tbody>
   </table>
+</template>
+
+<template name="unverifiedInfo">
+  <h2>Your account is unverified</h2>
+  <p>Please click the verification link in the email that was sent to your address. Have a nice day.</p>
 </template>

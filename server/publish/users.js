@@ -19,21 +19,36 @@ userEmail = function(user) {
   }
 }
 
-// user account validation. Set this value in server/configuration.js
+// New user account validation. We check that one of:
+//   A. They are the first user to be created.
+//   B. They have been invited.
+//   C. Their email address has the correct domain (if the domain setting is used)
+//
+//   Note that in cases B. & C. the user cannot properly login until they
+//   have verified their email address.
 Accounts.validateNewUser(function(proposedUser) {
+  if (Meteor.call('noUsers'))
+    return true;
+    
   var email = userEmail(proposedUser);
+  
+  var invited = Users.findOne({email: email, invited: true});
+  if (invited) {
+    // delete the invited user. XXX: is this the right point to do this?
+    Users.remove({email: email, invited: true});
+    return true;
+  }
   
   function endsWith(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
   }
   
-  if (_.isRegExp(GroundControlConfig.allowedEmails))
-    return GroundControlConfig.allowedEmails.test(email);
-  else
-    return endsWith(email, GroundControlConfig.allowedEmails);
+  var emailDomain = getSetting('emailDomain');
+  return emailDomain && 
+    (endsWith(email, '.' + emailDomain) || endsWith(email, '@' + emailDomain));
 });
 
-// calculate a gravatar hash from the user's email address
+// When a user is being created, we save down their gravatar hash from their email.
 Accounts.onCreateUser(function(options, user) {
   user.profile = options.profile || {};
   user.profile.gravatarHash = Gravatar.hashFromEmail(userEmail(user));
