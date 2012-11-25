@@ -1,5 +1,5 @@
 <head>
-  <title>A Ground Control Blog</title>
+  <title>The Percolate Studio Blog</title>
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml"/>
 </head>
 
@@ -29,7 +29,7 @@
 <template name="header">
   <div id="header" class="{{scrolledEnoughClass}}{{#if anySelected}} single{{/if}}">
     <div id="banner">
-      <h1 class="alt-type"><a href="/">Meteor Blog</a></h1>
+      <h1 class="alt-type"><a href="/">Percolate Blog</a></h1>
       <img src="/img/satellite-940x480.jpg" alt="ground control to major tom" width="940" height="480" />
     </div>
 
@@ -52,20 +52,26 @@
 <template name="sidebar">
   <div id="sidebar" class="alt-type">
     <div class="links">
-      <a href="http://meteor.com" alt="website"><span class="icon-globe"></span></a>
-      <a href="https://twitter.com/meteorjs" alt="twitter"><span class="icon-twitter"></span></a>
-      <a href="https://github.com/meteor/meteor" alt="github"><span class="icon-github"></span></a>
+      <a href="http://percolatestudio.com" alt="website"><span class="icon-globe"></span></a>
+      <a href="https://twitter.com/bindleme" alt="twitter"><span class="icon-twitter"></span></a>
+      <a href="https://github.com/percolatestudio" alt="github"><span class="icon-github"></span></a>
     </div>
 
     <div class="about">
       <h3>About</h3>
-      <p><a href="http://meteor.com" alt="website">Meteor</a> is an open-source platform for building top-quality web apps in a fraction of the time, whether you're an expert developer or just getting started.</p>
+      <p><a href="http://percolatestudio.com" alt="website">
+        Percolate Studio</a> is online application development shop.
+      </p>
+      <p>
+        We blog here about our experiences building applications in Meteor JS and Ruby on Rails.
+      </p>
     </div>
-
-    <form class="join">
-      <p>Join the mailing list</p>
-      <input name="email" placeholder="Your email address"></input>
-    </form>
+    
+    <div class="about">
+      <h3>Ground Control</h3>
+      <p>This blog was created with <a href="http://percolatestudio.github.com/ground-control/">Ground Control</a>, an open source blogging package built expressely for <a href="http://meteor.com">Meteor</a>.</p>
+      <p>Want to learn more about building applications in Meteor? We're writing a <a href="http://telesc.pe">book</a>.</p>
+    </div>
 
     <div class="attribution">Created with <b>Ground Control</b></div>
   </div>
