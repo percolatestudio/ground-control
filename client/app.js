@@ -8,7 +8,7 @@ Meteor.startup(function() {
       
       Meteor.Router.navigate('/admin', {trigger: true});
     } 
-  })
+  });
 });
 
 Template.body.events({

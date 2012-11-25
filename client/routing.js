@@ -21,6 +21,8 @@ var Router = Backbone.Router.extend({
   },
   
   home: function() {
+    setMetaTags({title: GroundControlConfig.blogName});
+
     Session.set('currentPage', 'allPosts')
     Session.set('selected-post-slug', null);
     // wait for the posts to load, then open up the first three
@@ -43,6 +45,15 @@ var Router = Backbone.Router.extend({
     Session.set('selected-post-slug', slug);
     Session.set('editing-post', false);
     Session.set('creating-post', false);
+    
+    // ensure the post is loaded
+    var handle = Meteor.autorun(function() {
+      var post = getSelected();
+      if (post) {
+        setMetaTags({title: post.title, description: post.body});
+        handle.stop();
+      }
+    })
   },
   
   editPost: function(year, day, month, slug) {
