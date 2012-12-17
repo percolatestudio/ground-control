@@ -1,29 +1,9 @@
-// Template.allPosts.rendered = function() { 
-//   if (allPosts().count() > 0) {
-//     Meteor.setTimeout(function() {
-//       Session.set('animationBegun', true)
-//     }, 0);
-//   }
-// }
-
-Template.allPosts.helpers({
-  posts: function() {
-    return allPosts();
-  },
-  anySelected: function() {
-    return anySelected();
-  },
-  anySelectedClass: function() {
-    return anySelected() || Session.get('creating-post') ? 'anySelected' : '';
-  },
-  animatingClass: function() { 
-    return Session.get('animationBegun') ? 'animating' : ''; 
-  },
-  creatingNew: function() {
-    return Session.get('creating-post');
+Template.singlePost.helpers({
+  selectedPost: function() {
+    return getSelected();
   },
   showNav: function() {
-    return anySelected() && ! inEditMode();
+    return ! inEditMode();
   },
   nextPost: function() {
     var current = getSelected(), next, found = false;
@@ -53,8 +33,7 @@ Template.allPosts.helpers({
     prev && (prev._isPrev = true);
     return prev;
   }
-});
-
+})
 
 Template.post.preserve(['.post', '.post .header', '.post .header .slider', '.post .body']);
 
@@ -63,7 +42,7 @@ Template.post.helpers({
     return isOpen(this);
   },
   openClass: function() {
-    return isOpen(this) && ! this._isPrev && ! this._isNext ? 'open' : '';
+    return isOpen(this) ? 'open' : '';
   },
   selectedClass: function() {
     return isSelected(this) ? 'selected' : '';

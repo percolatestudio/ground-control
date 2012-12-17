@@ -1,6 +1,8 @@
 // OPEN
 var isOpen = function(post) {
-  return Session.equals('post-opened-' + post.slug, true);
+  var opened = Session.equals('post-opened-' + post.slug, true);
+  
+  return (isSelected(post) || opened) && ! post._isPrev && ! post._isNext;
 }
 
 var setOpen = function(post, value) {

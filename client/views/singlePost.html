@@ -1,13 +1,5 @@
-<template name="allPosts">
-  {{#if creatingNew}}
-  {{> newPost}}
-  {{/if}}
-  <ul class="posts {{animatingClass}} {{anySelectedClass}}">
-    {{#each posts}}
-      {{> post}}
-    {{/each}}
-  </ul>
-
+<template name="singlePost">
+  {{> post selectedPost}}
   {{#if showNav}}
     <ul class="single-nav">
       {{> post prevPost}}
@@ -30,10 +22,13 @@
       <div class="slider"></div>
       {{> postMeta}}
     </div>
-    {{! XXX: only render the body if the post is visible}}
+    
+    {{#if open}}
     <div class="body">
       {{#markdown}}{{{body}}}{{/markdown}}
     </div>
+    {{/if}}
+    
     {{/if}}
   </li>
   {{/if}}
