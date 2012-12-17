@@ -124,7 +124,7 @@ Template.newPost.helpers({
 Template.newPost.events({
   'click .cancel': function(e) {
     e.preventDefault();
-    Session.set('creatingNew', false);
+    Meteor.Router.navigate('/', {trigger: true});
   },
     
   'submit form': function(e, template) {

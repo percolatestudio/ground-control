@@ -1,7 +1,4 @@
 <template name="postList">
-  {{#if creatingNew}}
-  {{> newPost}}
-  {{/if}}
   <ul class="posts {{animatingClass}} {{anySelectedClass}}">
     {{#each posts}}
       {{> post}}

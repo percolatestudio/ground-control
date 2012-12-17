@@ -25,6 +25,7 @@ var Router = Backbone.Router.extend({
 
     Session.set('currentPage', 'postList')
     Session.set('selected-post-slug', null);
+    Session.set('creating-post', false);
     // wait for the posts to load, then open up the first three
     Meteor.autorun(function() {
       var posts = allPosts().fetch();
@@ -35,7 +36,7 @@ var Router = Backbone.Router.extend({
   },
   
   newPost: function() {
-    Session.set('currentPage', 'singlePost')
+    Session.set('currentPage', 'newPost')
     Session.set('selected-post-slug', null);
     Session.set('creating-post', true);
   },
