@@ -7,7 +7,7 @@ Handlebars.registerHelper('sessionGet', function(key) {
 });
 
 Handlebars.registerHelper('currentUserVerified', function() {
-  return Meteor.userLoaded() && userVerified(Meteor.user());
+  return !Meteor.loggingIn() && Meteor.user() && userVerified(Meteor.user());
 })
 
 Handlebars.registerHelper('formatDate', function(date) {
@@ -19,7 +19,7 @@ Handlebars.registerHelper('formatDateShort', function(date) {
 });
 
 Handlebars.registerHelper('blogName', function() {
-  return getSetting('blogName');
+  return GroundControlConfig.blogName;
 });
 
 
