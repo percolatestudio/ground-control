@@ -1,6 +1,7 @@
 <template name="admin">
   {{#if loggedIn}}
     {{#if currentUserVerified}}
+      {{> adminSettings}}
       {{> adminUsersList}}
       {{> adminPostsList}}
     {{else}}
@@ -32,13 +33,26 @@
   </div>
 </template>
 
+<template name="adminSettings">
+  <h3>Settings</h3>
+  <form class="settings-form">
+    <label for="emailDomain">Email Domain for Admins</label>
+    <input type="text" name="emailDomain" placeholder="enter a domain" value="{{emailDomain}}"></input>
+    <button type="submit" class="btn">Change</button>
+  </form>
+    
+    <p class="info">
+      Any user with a email address from this domain will be able to login to the site. Leave this field empty to disable this feature.
+    </p>
+</template>
+
 <template name="adminUsersList">
-  <h2>Admins</h2>
-  <p>
+  <h3>Admins</h3>
+  <p></p>
 </template>
 
 <template name="adminPostsList">
-  <h2>Posts</h2>
+  <h3>Posts</h3>
   <table class="adminPosts">
     <thead>
       <tr>
