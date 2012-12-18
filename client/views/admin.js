@@ -1,6 +1,6 @@
 Template.admin.helpers({
   loggedIn: function() {
-    return Meteor.userLoaded() && Meteor.user();
+    return ! Meteor.loggingIn() && Meteor.user();
   }
 });
 

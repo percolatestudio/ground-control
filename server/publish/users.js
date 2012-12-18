@@ -32,7 +32,7 @@ Accounts.validateNewUser(function(proposedUser) {
     
   var email = userEmail(proposedUser);
   
-  var invited = Users.findOne({email: email, invited: true});
+  var invited = Meteor.users.findOne({email: email, invited: true});
   if (invited) {
     // delete the invited user. XXX: is this the right point to do this?
     Users.remove({email: email, invited: true});
@@ -52,6 +52,10 @@ Accounts.validateNewUser(function(proposedUser) {
 Accounts.onCreateUser(function(options, user) {
   user.profile = options.profile || {};
   user.profile.gravatarHash = Gravatar.hashFromEmail(userEmail(user));
+  
+  // don't need to verify the very first user
+  if (user.emails[0] && Meteor.call('noUsers')) 
+    user.emails[0].verified = true;
 
   return user;
 });
