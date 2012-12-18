@@ -48,7 +48,15 @@
 
 <template name="adminUsersList">
   <h3>Admins</h3>
-  <p></p>
+  <ul>
+    {{#each admins}}
+      <li>
+        {{email}}
+        <span class="state">{{state}}</span>
+        {{#unless isCurrentUser}}<a class="delete">-Delete-</a>{{/unless}}
+      </li>
+    {{/each}}
+  </ul>
 </template>
 
 <template name="adminPostsList">

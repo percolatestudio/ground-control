@@ -11,14 +11,6 @@ Meteor.methods({
   }
 });
 
-userEmail = function(user) {
-  if (_.isUndefined(user.services.google)) {
-    return email = user.emails[0].address;
-  } else {
-    return email = user.services.google.email;
-  }
-}
-
 // New user account validation. We check that one of:
 //   A. They are the first user to be created.
 //   B. They have been invited.

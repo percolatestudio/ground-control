@@ -18,6 +18,21 @@ Template.adminSettings.events({
   }
 })
 
+Template.adminUsersList.helpers({
+  admins: function() {
+    return Meteor.users.find();
+  },
+  email: function() {
+    return userEmail(this);
+  },
+  state: function() {
+    return userState(this);
+  },
+  isCurrentUser: function() {
+    return Meteor.user()._id === this._id;
+  }
+});
+
 Template.adminPostsList.helpers({
   posts: function() {
     return allPosts();
