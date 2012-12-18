@@ -1,0 +1,128 @@
+@import '../include/all';
+
+textarea{
+  // font-size: $font-size * 1px;
+  stdform();
+  resize: none;
+  overflow: auto;
+  height: 600px;
+  display: block;
+    &.new{
+      color: #AA5959;
+    }
+}
+
+input{
+  stdform();
+  margin: .4em auto;
+  padding:.35em .5em;
+  line-height: 1em;
+  height: 2.2em;//hack for strange lineheight rendering in chrome and FF
+  font-size: $font-size * 1px;
+  &[type=checkbox]{
+    width: auto;
+    margin: 0 6px 0 0 ;
+    height: 1.5em;//hack for line-heights
+    vertical-align: bottom;
+  }
+}
+label{
+  color: #666;
+  font-weight: bold;
+  display: inline-block;
+}
+
+form{
+  text-align: left;
+  clearfix();
+  label {
+    float: left;
+    margin-right: 4px;
+  }
+  /* Exceptions */
+  input[type=checkbox] + label, input[type=radio] + label {
+    display: inline;
+    color: #333;
+    font-weight: normal;
+  }
+  textarea, .autoresize_wrapper, input, select{
+    float: left;
+    width: 100%;
+  }
+  select{
+    margin-bottom: 1.5em;
+  }
+  p{
+    margin-bottom: 1.5em;
+  }
+  .confirm_msg{
+    display: none;
+  }
+  &.confirm{
+    > *:not(.confirm_msg){
+      display:none;
+    }
+    .confirm_msg{
+      display: block;
+      clear: both;
+    }
+  }
+  .field_with_errors{    
+    label{display: inline;}
+    input{display:inherit;}
+    textarea{display: inherit;}
+  }
+  .formError{
+    float: left;
+    color: #ffcc00;
+    font-style: italic;
+  }
+  &.disabled {
+    > * {
+      opacity: .5;
+    }
+    button{
+      opacity: 1;
+    }
+  }    
+  .double_input{
+    >li{
+      float: right;
+      width: 48%;
+      &:first-child{
+        float:left;
+      }
+    }
+  }
+  .double_btn{
+    text-align: right;
+    a, button{
+      width: 48%;
+      float: right;
+    }
+    &>:first-child{
+      float: left;
+    }
+  }
+  .freestyle_btn{
+    a{
+      float: left;
+      line-height: 1em;
+      margin-right: 10px;
+      padding-top: 5px;
+    }
+    input[type=checkbox] + label, input[type=radio] + label, input[type=checkbox], input[type=radio] {
+      margin-bottom: 0px;
+    }
+    button[type=submit]{
+      float: right;
+    }
+  }
+  .buttons {
+    clear: both;
+    text-align: right;
+    button, a {
+      display: inline-block;
+    }
+  }
+}

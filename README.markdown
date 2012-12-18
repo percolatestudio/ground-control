@@ -20,13 +20,13 @@ You can login to Ground Control at `/admin` using a Google Account. Currently, a
 
 ### Further customization
 
-To do any meaningful customization, fork this repository and have fun! Pull Requests will be appreciated! 
+To do any meaningful customization, fork this repository and have fun! For example, take a look at the `percolate` branch for an example of the changes made for the Percolate Studio Blog.
+
+Pull Requests will be appreciated! 
 
 ### TODO
 
 Ground Control is very much a work in progress. In the near future, expect to see:
 
-1. RSS, SEO support, and other server side assets
-2. A richer user experience in the default theme.
-3. More configuration options.
-4. Theming / pages support
+1. More configuration options.
+2. Theming / pages support

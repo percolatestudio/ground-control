@@ -1,0 +1,8 @@
+<template name="postList">
+  <ul class="posts {{animatingClass}} {{anySelectedClass}}">
+    {{#each posts}}
+      {{> post}}
+    {{/each}}
+  </ul>
+</template>
+

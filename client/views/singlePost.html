@@ -1,13 +1,5 @@
-<template name="allPosts">
-  {{#if creatingNew}}
-  {{> newPost}}
-  {{/if}}
-  <ul class="posts {{animatingClass}} {{anySelectedClass}}">
-    {{#each posts}}
-      {{> post}}
-    {{/each}}
-  </ul>
-
+<template name="singlePost">
+  {{> post selectedPost}}
   {{#if showNav}}
     <ul class="single-nav">
       {{> post prevPost}}
@@ -30,10 +22,13 @@
       <div class="slider"></div>
       {{> postMeta}}
     </div>
-    {{! XXX: only render the body if the post is visible}}
+    
+    {{#if open}}
     <div class="body">
       {{#markdown}}{{{body}}}{{/markdown}}
     </div>
+    {{/if}}
+    
     {{/if}}
   </li>
   {{/if}}
@@ -68,20 +63,20 @@
   <div class="header"><div class="slider"></div></div>
   <form>
     <label for="title">Title</label>
-    <div class="field_error">{{errors.title}}</div>
+    <div class="formError">{{errors.title}}</div>
     <input type="text" name="title" value="{{title}}"></input>
 
     <label for="author">Author</label>
-    <div class="field_error">{{errors.author}}</div>
+    <div class="formError">{{errors.author}}</div>
     <input type="text" name="author" value="{{author}}"></input>
 
     <label for="body">Body (Markdown)</label>
-    <div class="field_error">{{errors.body}}</div>
+    <div class="formError">{{errors.body}}</div>
     <textarea name="body">{{body}}</textarea>
 
     <div class="buttons">
-      <a class="cancel">Cancel</a>
-      <button class="save" type="submit">Save</button>
+      <a class="cancel btn">Cancel</a>
+      <button class="save btn" type="submit">Save</button>
     </div>
   </form>
 </template>
