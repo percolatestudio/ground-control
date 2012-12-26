@@ -33,6 +33,16 @@ Template.adminUsersList.helpers({
   }
 });
 
+Template.adminUsersList.events({
+  'submit form': function(e, template) {
+    e.preventDefault();
+    
+    var email = template.find('[name=email]').value;
+    // XXX: validation?
+    Meteor.call('inviteUser', email);
+  }
+})
+
 Template.adminPostsList.helpers({
   posts: function() {
     return allPosts();

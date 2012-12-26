@@ -48,6 +48,14 @@
 
 <template name="adminUsersList">
   <h3>Admins</h3>
+  
+  <form class="user-form">
+    <label for="email">Add a new Admin</label>
+    <input type="text" name="email" placeholder="enter an email address" ></input>
+    <button type="submit" class="btn">Create user</button>
+  </form>
+  
+  <h4>Current Admins</h4>
   <ul>
     {{#each admins}}
       <li>
