@@ -14,26 +14,112 @@ centered(width, height) {
 }
 
 html {
+  height: 100%;
 }
 
 body {
   color: white;
-  height: 650px;
-  box-shadow: rgba(black, .6) 0 -100px 0 0 inset;
+  background: transparent;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+  Helvetica, Arial, "Lucida Grande", sans-serif;
   #main {
-    max-width: 800px;
-    margin: 0px auto;
+    box-sizing: border-box;
+    position: relative;
     padding-top: 200px;
+    width: 100%;
+    .panel {
+      width: 800px;
+      margin: 0px auto;
+      h1 {
+        color: #eee;
+        font-family: 'PT Sans Narrow', sans-serif;
+        font-size: 96px;
+        font-weight: bold;
+        text-shadow: rgba(black, .3) 0 4px 0, rgba(white, 1) 0 1px 0;
+      }
+      .tagline {
+        font-size: 24px;
+        line-height: 36px;
+      }
+      .button-wrapper {
+        background: rgba(black, .5);
+        border-bottom: 1px solid rgba(white, .3);
+        border-radius: 4px;
+        box-shadow: rgba(black, .3) 0 1px 5px 0 inset;
+        display: inline-block;
+        margin-top: 24px;
+        padding: 3px 3px 5px;
+        .btn {
+          display: inline-block;
+          height: 54px;
+          line-height: 54px;
+          font-size: 24px;
+          font-family: 'PT Sans Narrow', sans-serif;
+          padding: 0 40px;
+          position: relative;
+          top: -3px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          border-radius: 4px;
+          box-shadow: rgba(white, .3) 0 0 0 1px inset, rgba(white, 1) 0 1px 0 0 inset, rgba(#721209, 1) 0 5px 0 0;
+
+        }
+      }
+    }
+  }
+  .orbit-wrapper {
+    height: 650px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: -1;
+    .drawing {
+      position: absolute;
+      left: -20%;
+    }
   }
 
 }
 a {
   color: white;
+  text-decoration: none;
 }
 
 
 #footer {
-  absolute: bottom right;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  >* {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .meteor {
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: rgba(black, .3) 0 1px 0;
+  }
+  .join {
+    font-weight: lighter;
+    font-size: 32px;
+    padding: 0 16px;
+  }
+  .percolate {
+    bottom: -3px;
+    display: inline-block;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 16px;
+    line-height: 16px;
+    position: relative;
+    text-transform: uppercase;
+    text-shadow: rgba(black, .3) 0 1px 0;
+    img {
+      float: left;
+      margin-top: -4px;
+      margin-right: 10px;
+    }
+  }
 }
 
 h1 {

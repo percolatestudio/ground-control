@@ -1,8 +1,3 @@
-.drawing {
-  position: absolute;
-  left: -10%;
-  top: 10%;
-}
 .orbitGroup {
   -webkit-transform: translate(750px, 500px) skew(-70deg, 30deg);
   -moz-transform: translate(750px, 500px) skew(-70deg, 30deg);
@@ -344,24 +339,113 @@ td {
 a img {
   border: none;
 }
+html {
+  height: 100%;
+}
 body {
   color: #fff;
-  height: 650px;
-  -webkit-box-shadow: rgba(0,0,0,0.6) 0 -100px 0 0 inset;
-  box-shadow: rgba(0,0,0,0.6) 0 -100px 0 0 inset;
+  background: transparent;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 body #main {
-  max-width: 800px;
-  margin: 0px auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
   padding-top: 200px;
+  width: 100%;
+}
+body #main .panel {
+  width: 800px;
+  margin: 0px auto;
+}
+body #main .panel h1 {
+  color: #eee;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 96px;
+  font-weight: bold;
+  text-shadow: rgba(0,0,0,0.3) 0 4px 0, #fff 0 1px 0;
+}
+body #main .panel .tagline {
+  font-size: 24px;
+  line-height: 36px;
+}
+body #main .panel .button-wrapper {
+  background: rgba(0,0,0,0.5);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: rgba(0,0,0,0.3) 0 1px 5px 0 inset;
+  box-shadow: rgba(0,0,0,0.3) 0 1px 5px 0 inset;
+  display: inline-block;
+  margin-top: 24px;
+  padding: 3px 3px 5px;
+}
+body #main .panel .button-wrapper .btn {
+  display: inline-block;
+  height: 54px;
+  line-height: 54px;
+  font-size: 24px;
+  font-family: 'PT Sans Narrow', sans-serif;
+  padding: 0 40px;
+  position: relative;
+  top: -3px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: rgba(255,255,255,0.3) 0 0 0 1px inset, #fff 0 1px 0 0 inset, #721209 0 5px 0 0;
+  box-shadow: rgba(255,255,255,0.3) 0 0 0 1px inset, #fff 0 1px 0 0 inset, #721209 0 5px 0 0;
+}
+body .orbit-wrapper {
+  height: 650px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+body .orbit-wrapper .drawing {
+  position: absolute;
+  left: -20%;
 }
 a {
   color: #fff;
+  text-decoration: none;
 }
 #footer {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 20px;
+  right: 20px;
+}
+#footer >* {
+  display: inline-block;
+  vertical-align: top;
+}
+#footer .meteor {
+  font-size: 32px;
+  font-weight: bold;
+  text-shadow: rgba(0,0,0,0.3) 0 1px 0;
+}
+#footer .join {
+  font-weight: lighter;
+  font-size: 32px;
+  padding: 0 16px;
+}
+#footer .percolate {
+  bottom: -3px;
+  display: inline-block;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 16px;
+  line-height: 16px;
+  position: relative;
+  text-transform: uppercase;
+  text-shadow: rgba(0,0,0,0.3) 0 1px 0;
+}
+#footer .percolate img {
+  float: left;
+  margin-top: -4px;
+  margin-right: 10px;
 }
 h1 {
   text-transform: uppercase;
