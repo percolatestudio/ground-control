@@ -7,6 +7,7 @@
     <meta name="description" content="Ground Control : A next generation blogging platform, built with Meteor" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/app.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/gradients/gradients.css">
 
     <title>Ground Control</title>
   </head>
@@ -17,60 +18,58 @@
       <p class="tagline">An open source blogging package built expressly for MeteorJS</p>
       <p class="tagline">Write posts in markdown and deploy in seconds</p>
       <a class="btn cta" href="http://github.com/percolatestudio/ground-control">Github</a>
-    </div>
-    
-    <svg class="drawing" width="1500" height="1000">
-      <defs>
-        <linearGradient id="fade">
-          <stop offset="0" stop-color="white" stop-opacity="0.5"/>
-          <stop offset="1" stop-color="white" stop-opacity="1"/>
-        </linearGradient>
-        <mask id="fadeaway">
-          <rect x="-250" y="-250" width="500" height="500" fill="url(#fade)"/>
-        </mask>
-        <mask id="pathfade">
-          <rect x="0" y="0" width="200" height="200" fill="url(#fade)"/>
-        </mask>
-        
-        <radialGradient id="pulse" cx="50%" cy="50%" r="50%">
-          <stop stop-color="rgb(23, 93, 143)" stop-opacity="0.1" offset="0"/>
-          <stop stop-color="rgb(23, 93, 143)" stop-opacity="0.4" offset="1"/>
-        </radialGradient>
-      </defs>
-        
-      <g class="orbitGroup" mask="url(#fadeaway)">
-        <circle class="orbit" r="200" mask="url(#fadeaway)"></circle>
-        
-        <g class="rotatingGroup">
-          <path d="M 0 200 a 200 200 0 0 0 200 -200" class="trail" mask="url(#pathfade)"></path>
-        
-          <g class="spaceshipGroup">
-            
-            <circle class="rings" r="3" cx="200" cy="0" fill="url(#pulse)">
-              <animate attributeName="r" from="3" to="6" dur="5s" repeatCount="indefinite" />
-            </circle>
-            <circle class="rings" r="6" cx="200" cy="0" fill="url(#pulse)">
-              <animate attributeName="r" from="6" to="9" dur="5s" repeatCount="indefinite" />
-              <animate attributeName="opacity" from="1" to="0.8" dur="5s" repeatCount="indefinite" />
-            </circle>
-            <circle class="rings" r="9" cx="200" cy="0" fill="url(#pulse)">
-              <animate attributeName="r" from="9" to="12" dur="5s" repeatCount="indefinite" />
-              <animate attributeName="opacity" from="0.8" to="0.6" dur="5s" repeatCount="indefinite" />
-            </circle>
-            <circle class="rings" r="12" cx="200" cy="0" fill="url(#pulse)">
-              <animate attributeName="r" from="12" to="15" dur="5s" repeatCount="indefinite" />
-              <animate attributeName="opacity" from="0.6" to="0" dur="5s" repeatCount="indefinite" />
-            </circle>
-            
-            
-            <circle class="dot" r="3" cx="200" cy="0">
-              <animate attributeName="opacity" values="1;0.5;1" dur="5s" repeatCount="indefinite" />              
-            </circle>
+      <svg class="drawing" width="1500" height="1000">
+        <defs>
+          <linearGradient id="fade">
+            <stop offset="0" stop-color="white" stop-opacity="0.5"/>
+            <stop offset="1" stop-color="white" stop-opacity="1"/>
+          </linearGradient>
+          <mask id="fadeaway">
+            <rect x="-250" y="-250" width="500" height="500" fill="url(#fade)"/>
+          </mask>
+          <mask id="pathfade">
+            <rect x="0" y="0" width="200" height="200" fill="url(#fade)"/>
+          </mask>
+
+          <radialGradient id="pulse" cx="50%" cy="50%" r="50%">
+            <stop stop-color="rgb(23, 93, 143)" stop-opacity="0.1" offset="0"/>
+            <stop stop-color="rgb(23, 93, 143)" stop-opacity="0.4" offset="1"/>
+          </radialGradient>
+        </defs>
+
+        <g class="orbitGroup" mask="url(#fadeaway)">
+          <circle class="orbit" r="200" mask="url(#fadeaway)"></circle>
+
+          <g class="rotatingGroup">
+            <path d="M 0 200 a 200 200 0 0 0 200 -200" class="trail" mask="url(#pathfade)"></path>
+
+            <g class="spaceshipGroup">
+
+              <circle class="rings" r="3" cx="200" cy="0" fill="url(#pulse)">
+                <animate attributeName="r" from="3" to="6" dur="5s" repeatCount="indefinite" />
+              </circle>
+              <circle class="rings" r="6" cx="200" cy="0" fill="url(#pulse)">
+                <animate attributeName="r" from="6" to="9" dur="5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="1" to="0.8" dur="5s" repeatCount="indefinite" />
+              </circle>
+              <circle class="rings" r="9" cx="200" cy="0" fill="url(#pulse)">
+                <animate attributeName="r" from="9" to="12" dur="5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="0.8" to="0.6" dur="5s" repeatCount="indefinite" />
+              </circle>
+              <circle class="rings" r="12" cx="200" cy="0" fill="url(#pulse)">
+                <animate attributeName="r" from="12" to="15" dur="5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="0.6" to="0" dur="5s" repeatCount="indefinite" />
+              </circle>
+
+
+              <circle class="dot" r="3" cx="200" cy="0">
+                <animate attributeName="opacity" values="1;0.5;1" dur="5s" repeatCount="indefinite" />
+              </circle>
+            </g>
           </g>
         </g>
-      </g>
-    </svg>
-    
+      </svg>
+    </div>
     <div id="footer">
       <a href="http://meteor.com">Meteor</a>
       <span class="join">+</span>

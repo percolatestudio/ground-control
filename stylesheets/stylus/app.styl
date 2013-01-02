@@ -1,6 +1,7 @@
 @import 'nib';
 @import './animation';
 
+
 background-blue = rgb(2, 16, 55);
 
 global-reset()
@@ -12,10 +13,13 @@ centered(width, height) {
   margin: -0.5 * width -0.5 * height;
 }
 
+html {
+}
 
 body {
   color: white;
-  background: background-blue;
+  background: transparent;
+  height: 650px;
 }
 a {
   color: white;
@@ -23,7 +27,8 @@ a {
 
 #main {
   max-width: 800px;
-  margin: 200px auto 0;
+  margin: 0px auto;
+  padding-top: 200px;
 }
 
 #footer {

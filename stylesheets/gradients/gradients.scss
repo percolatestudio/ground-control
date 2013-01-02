@@ -1,0 +1,8 @@
+@import 'compass/css3';
+body {
+  @include background(
+  	linear-gradient(right top, rgba(#df06ff, .13), rgba(#df06ff, 0) 75%, rgba(#b400ff, .13)), 
+  	linear-gradient(top, #1b2835, #010f34), 
+  	url('../images/bg_noise_80x80.png')
+	);
+}

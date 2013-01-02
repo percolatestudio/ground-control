@@ -346,14 +346,16 @@ a img {
 }
 body {
   color: #fff;
-  background: #021037;
+  background: transparent;
+  height: 650px;
 }
 a {
   color: #fff;
 }
 #main {
   max-width: 800px;
-  margin: 200px auto 0;
+  margin: 0px auto;
+  padding-top: 200px;
 }
 #footer {
   position: absolute;
