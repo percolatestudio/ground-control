@@ -346,16 +346,17 @@ a img {
 }
 body {
   color: #fff;
-  background: transparent;
   height: 650px;
+  -webkit-box-shadow: rgba(0,0,0,0.6) 0 -100px 0 0 inset;
+  box-shadow: rgba(0,0,0,0.6) 0 -100px 0 0 inset;
 }
-a {
-  color: #fff;
-}
-#main {
+body #main {
   max-width: 800px;
   margin: 0px auto;
   padding-top: 200px;
+}
+a {
+  color: #fff;
 }
 #footer {
   position: absolute;

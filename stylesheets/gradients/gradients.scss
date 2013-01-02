@@ -1,8 +1,12 @@
 @import 'compass/css3';
 body {
   @include background(
+  	url('../../images/texture-rect-grid-22x32.png') repeat,
+  	url('../../images/texture-starfield-400x700.png') repeat,
+  	url('../../images/bg_noise_80x80.png') repeat,
   	linear-gradient(right top, rgba(#df06ff, .13), rgba(#df06ff, 0) 75%, rgba(#b400ff, .13)), 
-  	linear-gradient(top, #1b2835, #010f34), 
-  	url('../images/bg_noise_80x80.png')
+  	linear-gradient(bottom, rgba(black,.6), rgba(black,0) 30%, rgba(black,0) 100%),
+  	radial-gradient(50% 75%, rgba(white, .1), rgba(white, 0) 70%),
+  	linear-gradient(bottom, #165567, #010f34)
 	);
 }
