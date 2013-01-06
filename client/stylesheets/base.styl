@@ -39,6 +39,11 @@ a {
   transition: all ease-out 200ms;
 }
 
+button {
+  border: none;
+  outline: none;
+}
+
 .btn{
   background: $c-medium;
   border-radius: 5px;
@@ -63,6 +68,18 @@ a {
     background: $c-medium-high;
     box-shadow: rgba(black, .2) 0 1px 3px 0 inset;
     color: white;
+  }
+  &.primary {
+    background: $c-primary;
+    &:hover {
+      background: lighten($c-primary, 10%);
+      color: white;
+    }
+    &:active {
+      background: lighten($c-primary, 10%);
+      box-shadow: rgba(black, .2) 0 1px 3px 0 inset;
+      color: white;
+    }
   }
 }
 
