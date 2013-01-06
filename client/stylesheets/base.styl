@@ -3,9 +3,8 @@
 body {
   color: $c-high;
   font-family: $f-primary;
-  font-size: 16px;
+  font-size: $font-size * 1px;
   line-height: 1.5;
-  font();
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -45,54 +44,17 @@ button {
   outline: none;
 }
 
-.btn{
-  background: $c-medium;
-  border-radius: 5px;
-  box-sizing: border-box;
-  color: white;
-  cursor: pointer;
-  font-size: $small * 1px;
-  font-family: $f-secondary;
-  line-height: 1em;
-  padding: 8px 10px;
-  [class^="icon-"]:before,
-  [class*=" icon-"]:before {
-    font-size: .7em;
-    line-height: 1em;
-    vertical-align: baseline;
-  }
-  &:hover {
-    background: $c-medium-high;
-    color: white;
-  }
-  &:active {
-    background: $c-medium-high;
-    box-shadow: rgba(black, .2) 0 1px 3px 0 inset;
-    color: white;
-  }
-  &.primary {
-    background: $c-primary;
-    &:hover {
-      background: lighten($c-primary, 10%);
-      color: white;
-    }
-    &:active {
-      background: lighten($c-primary, 10%);
-      box-shadow: rgba(black, .2) 0 1px 3px 0 inset;
-      color: white;
-    }
-  }
-}
-
 pre {
   background: #ebebf1;
   padding: 0 .5em;
 }
 code {
-  font-family: Monaco, monospace;
   background: #ebebf1;
+  display: inline-block;
+  font-family: Monaco, monospace;
   padding: 0 4px;
   text-shadow: rgba(white, .5) 0 1px 0;
+
 }
 
 pre > code {
