@@ -6,12 +6,12 @@
 .orbit {
   fill: none;
   stroke: #fff;
-  stroke-width: 1px;
-  stroke-dasharray: 5 3;
+  stroke-width: 2px;
+  stroke-dasharray: 5 5;
 }
 .trail {
   stroke: #fff;
-  stroke-width: 1px;
+  stroke-width: 2px;
   fill: none;
 }
 .dot {
