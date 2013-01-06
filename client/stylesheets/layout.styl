@@ -14,10 +14,10 @@ body {
 
 #wrapper {
   margin: 0 auto;
-  max-width: wrapperMaxWidth;
+  width: wrapperMaxWidth;
   position: relative;
   #content {
-    max-width: contentMaxWidth;
+    width: contentMaxWidth;
     overflow: hidden;
   }
   #header #controls {
@@ -29,11 +29,15 @@ body {
   }
   #sidebar {
     box-sizing: border-box;
-    padding: 0em 1.5em;
-    positioning(fixed, 0, 0, auto, 50%, (wrapperMaxWidth - contentMaxWidth) , 100%);
     margin-left: (wrapperMaxWidth - contentMaxWidth);
+    overflow: auto;
+    padding: 0em 1.5em;
+    positioning(absolute, 0, 0, auto, auto , (wrapperMaxWidth - contentMaxWidth) , auto);
     .attribution {
       positioning(absolute, auto, auto, .75em, 1.5em);
+    }
+    .join {
+      margin: .75em 0;
     }
   }
 }
