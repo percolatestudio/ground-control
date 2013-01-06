@@ -46,14 +46,14 @@
 
 <template name="sidebar">
   <div id="sidebar" class="alt-type">
-    <div class="admin">
-      {{#if currentUser}}
-        {{loginButtons}}
-      {{/if}}
-    </div>
-    <div class="admin">
-      <button class="newPost btn primary">New post</button>
-    </div>
+    {{#if currentUser}}
+      <div class="admin">
+          {{loginButtons}}
+      </div>
+      <div class="admin">
+        <button class="newPost btn primary">New post</button>
+      </div>
+    {{/if}}
     <div class="links">
       <a href="http://meteor.com" alt="website"><span class="icon-globe"></span></a>
       <a href="https://twitter.com/meteorjs" alt="twitter"><span class="icon-twitter"></span></a>
