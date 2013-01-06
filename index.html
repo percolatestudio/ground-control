@@ -38,34 +38,47 @@
         </radialGradient>
       </defs>
         
-      <g class="orbitGroup" mask="url(#fadeaway)">
+      <g class="orbitGroup" mask="url(#fadeaway)" transform="translate(750 500) skewX(-60)">
         <circle class="orbit" r="200" mask="url(#fadeaway)"></circle>
         
         <g class="rotatingGroup">
+          <animateTransform
+            attributeName="transform"
+            type="rotate" dur="120s"
+            from="360" to="0"
+            repeatCount="indefinite" />
+          
           <path d="M 0 200 a 200 200 0 0 0 200 -200" class="trail" mask="url(#pathfade)"></path>
-        
-          <g class="spaceshipGroup">
+          
+          <!-- undo the rotation -->
+          <g><animateTransform
+                attributeName="transform"
+                type="rotate" dur="120s"
+                from="0 200 0" to="360 200 0"
+                repeatCount="indefinite" />
             
-            <circle class="rings" r="3" cx="200" cy="0" fill="url(#pulse)">
-              <animate attributeName="r" from="3" to="6" dur="5s" repeatCount="indefinite" />
-            </circle>
-            <circle class="rings" r="6" cx="200" cy="0" fill="url(#pulse)">
-              <animate attributeName="r" from="6" to="9" dur="5s" repeatCount="indefinite" />
-              <animate attributeName="opacity" from="1" to="0.8" dur="5s" repeatCount="indefinite" />
-            </circle>
-            <circle class="rings" r="9" cx="200" cy="0" fill="url(#pulse)">
-              <animate attributeName="r" from="9" to="12" dur="5s" repeatCount="indefinite" />
-              <animate attributeName="opacity" from="0.8" to="0.6" dur="5s" repeatCount="indefinite" />
-            </circle>
-            <circle class="rings" r="12" cx="200" cy="0" fill="url(#pulse)">
-              <animate attributeName="r" from="12" to="15" dur="5s" repeatCount="indefinite" />
-              <animate attributeName="opacity" from="0.6" to="0" dur="5s" repeatCount="indefinite" />
-            </circle>
+            <!-- undo the skew -->
+            <g class="spaceshipGroup" transform="translate(200 0) skewX(60) translate(-200 0)">
+              <circle class="rings" r="3" cx="200" cy="0" fill="url(#pulse)">
+                <animate attributeName="r" from="3" to="6" dur="5s" repeatCount="indefinite" />
+              </circle>
+              <circle class="rings" r="6" cx="200" cy="0" fill="url(#pulse)">
+                <animate attributeName="r" from="6" to="9" dur="5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="1" to="0.8" dur="5s" repeatCount="indefinite" />
+              </circle>
+              <circle class="rings" r="9" cx="200" cy="0" fill="url(#pulse)">
+                <animate attributeName="r" from="9" to="12" dur="5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="0.8" to="0.6" dur="5s" repeatCount="indefinite" />
+              </circle>
+              <circle class="rings" r="12" cx="200" cy="0" fill="url(#pulse)">
+                <animate attributeName="r" from="12" to="15" dur="5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="0.6" to="0" dur="5s" repeatCount="indefinite" />
+              </circle>
             
-            
-            <circle class="dot" r="3" cx="200" cy="0">
-              <animate attributeName="opacity" values="1;0.5;1" dur="5s" repeatCount="indefinite" />              
-            </circle>
+              <circle class="dot" r="3" cx="200" cy="0">
+                <animate attributeName="opacity" values="1;0.5;1" dur="5s" repeatCount="indefinite" />              
+              </circle>
+            </g>
           </g>
         </g>
       </g>
