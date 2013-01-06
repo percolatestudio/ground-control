@@ -41,16 +41,19 @@
       <span class="control-title">{{blogName}}</span>
       <div class="shadow"></div>
     </div>
-
-    {{#if currentUser}}
-      <button class="newPost">New Post</button>
-      {{loginButtons}}
-    {{/if}}
   </div>
 </template>
 
 <template name="sidebar">
   <div id="sidebar" class="alt-type">
+    <div class="admin">
+      {{#if currentUser}}
+        {{loginButtons}}
+      {{/if}}
+    </div>
+    <div class="admin">
+      <a class="newPost btn">New post</a>
+    </div>
     <div class="links">
       <a href="http://meteor.com" alt="website"><span class="icon-globe"></span></a>
       <a href="https://twitter.com/meteorjs" alt="twitter"><span class="icon-twitter"></span></a>
@@ -63,7 +66,7 @@
     </div>
 
     <form class="join">
-      <p>Join the mailing list</p>
+      <label>Join the mailing list</label>
       <input name="email" placeholder="Your email address"></input>
     </form>
 
