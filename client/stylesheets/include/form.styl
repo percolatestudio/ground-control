@@ -1,16 +1,16 @@
 stdform_bg(){
-  box-shadow: rgba(0, 0, 0, .3) 0px 1px 3px 0px inset;
-  // background-image: linear-gradient(top, rgba(249, 249, 249, 1), rgba(255, 255, 255, 1) 50%));
+  box-shadow: rgba(0, 0, 0, .15) 0px 1px 3px 0px inset;
+  background: linear-gradient(top, rgba(249, 249, 249, .5), rgba(255, 255, 255, .5) 50%);
   box-sizing: border-box;
   border-radius: 3px;
   background-size: auto;
   transition: border-color 1s ease;
   margin: 0 0 10px 0;
   padding: 5px 5px;
-  border-top: 1px solid #999;
-  border-bottom: 1px solid white;
-  border-right: 1px solid #ccc;
-  border-left: 1px solid #ccc;
+  border-top: 1px solid #aaa !important; //important needed to overwrite the un-namespaced Meteor auth styles
+  border-bottom: 1px solid #eee !important;
+  border-right: 1px solid #ccc !important;
+  border-left: 1px solid #ccc !important;
   outline: none;
   position: relative;
   &:focus{
@@ -22,7 +22,7 @@ stdform_txt(){
   // stdtype();
   &:-moz-placeholder {
     color: #999;
-  } 
+  }
   &::-webkit-input-placeholder{
     color: #999;
   }

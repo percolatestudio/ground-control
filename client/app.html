@@ -41,16 +41,20 @@
       <span class="control-title">{{blogName}}</span>
       <div class="shadow"></div>
     </div>
-
-    {{#if currentUser}}
-      <button class="newPost">New Post</button>
-      {{loginButtons}}
-    {{/if}}
   </div>
 </template>
 
 <template name="sidebar">
   <div id="sidebar" class="alt-type">
+    {{#if currentUser}}
+      <div class="admin">
+        <span><img class="avatar" src="{{gravatarURL currentUserGravatarHash size="20"}}"/>{{author}}</span>
+          {{loginButtons}}
+      </div>
+      <div class="admin">
+        <button class="newPost btn primary">New post</button>
+      </div>
+    {{/if}}
     <div class="links">
       <a href="http://percolatestudio.com" alt="website"><span class="icon-globe"></span></a>
       <a href="https://twitter.com/bindleme" alt="twitter"><span class="icon-twitter"></span></a>

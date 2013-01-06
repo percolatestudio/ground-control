@@ -70,3 +70,10 @@ Template.header.events({
     Meteor.Router.navigate('/', {trigger: true});
   }
 })
+
+Template.sidebar.helpers({
+  currentUserGravatarHash: function() {
+    if (! Meteor.loggingIn())
+      return Meteor.user().profile.gravatarHash;
+  }
+})

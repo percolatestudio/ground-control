@@ -50,13 +50,6 @@
       margin: 1em -24px 0;
       padding: 0 24px;
       text-transform: uppercase;
-      .avatar {
-        display: inline-block;
-        height: 20px;
-        margin-right: 8px;
-        vertical-align: text-bottom;
-        width: 20px;
-      }
       >span {
         color: $c-medium-high;
         margin-right: 32px;
@@ -65,10 +58,23 @@
           color: $c-medium;
         }
       }
+      .avatar {
+        display: inline-block;
+        height: 20px;
+        margin-right: 8px;
+        vertical-align: text-bottom;
+        width: 20px;
+      }
+      .btn {
+        float: right;
+        margin-top: 10px;
+        text-transform: none;
+      }
     }
   }
   .body {
     box-sizing: border-box;
+    padding: 1.5em 1.5em 3em 1.5em;
   }
 
   /* Transitions/state */
@@ -97,7 +103,6 @@
       height: 100%;
       min-height: 100%;
       opacity: 1;
-      padding: .5em 1.5em 3em 1.5em;
       overflow: auto;
     }
   }
@@ -186,7 +191,10 @@
 
 
 .post form {
-  padding: 20px;
+  padding: 0 20px 3em;
+  textarea {
+    max-height: 12em;
+  }
 }
 
 
@@ -205,31 +213,66 @@ with-slider(color) {
   }
 }
 
-.post:nth-child(4n + 1) .header {
+.post.color-0 .header {
   with-slider: $c-1;
 }
-.post:nth-child(4n + 2) .header {
+.post.color-1 .header {
   with-slider: $c-2;
 }
-.post:nth-child(4n + 3) .header {
+.post.color-2 .header {
   with-slider: $c-3;
 }
-.post:nth-child(4n + 4) .header {
+.post.color-3 .header {
   with-slider: $c-4;
 }
-.post:nth-child(4n + 5) .header {
+.post.color-4 .header {
   with-slider: $c-5;
 }
-.post:nth-child(4n + 5) .header {
+.post.color-5 .header {
   with-slider: $c-6;
 }
 
 
 /* Post typography */
 .post .body{
+  &.admin {
+    padding-bottom: 9em;
+  }
+  /* offset heading sizes */
+  h1, h2, h3, h4 {
+    font-weight: bold;
+  }
+  h1 {
+    h3();
+  }
+  h2, h3, h4 {
+    h4();
+  }
+  p, ul, ol, pre, code {
+    & + h1, & + h2, & + h3, & + h4 {
+      margin-top: 2em;
+      /* margin-bottom: 1em; */
+    }
+  }
+  h1, h2, h3, h4 {
+    & + p, & + pre, & + code {
+      margin-top: 0;
+    }
+  }
+  p {
+    & + ul, & + ol {
+      margin-top: 0;
+    }
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
   /* lists */
   ul, ol {
-    padding: 0 1.5em;
+    margin: .75em 1.5em;
+    & + p {
+      margin-top: 0;
+    }
     li {
       list-style-position: outside;
     }

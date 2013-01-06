@@ -110,7 +110,7 @@
       height: 3em;
       transition: all ease-out 800ms;
     }
-    // top button is invisible when we haven't scrolled yet.
+    // top button is invisible when we havent scrolled yet.
     &:not(.scrolledEnough) #controls .top {
       opacity: 0;
     }
@@ -131,6 +131,13 @@
       font-family: $f-primary;
     }
   }
+  .admin {
+    border-bottom: 1px solid $c-low;
+    box-sizing: border-box;
+    margin: 0 -1.5em ;
+    padding: 0 1.5em;
+    line-height: 47px;
+  }
   .links {
     border-bottom: 1px solid $c-low;
     box-sizing: border-box;
@@ -140,8 +147,8 @@
       color: $c-medium-high;
       display: inline-block;
       font-size: 24px;
-      line-height: 48px;
-      height: 48px;
+      line-height: 47px;
+      height: 47px;
       + a {
         margin-left: .5em;
       }
