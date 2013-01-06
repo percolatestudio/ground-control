@@ -22,13 +22,13 @@
       <div class="slider"></div>
       {{> postMeta}}
     </div>
-    
+
     {{#if open}}
     <div class="body">
       {{#markdown}}{{{body}}}{{/markdown}}
     </div>
     {{/if}}
-    
+
     {{/if}}
   </li>
   {{/if}}
@@ -39,13 +39,12 @@
 
   <h2 class="title">{{title}}</h2>
 
-  {{#if currentUser}}
-    <a class="edit btn"><span class="icon-pencil"></span>Edit</a>
-  {{/if}}
-
   <div class="metadata alt-type">
     <span><img class="avatar" src="{{gravatarURL authorGravatarHash size="20"}}"/>{{author}}</span>
     <span><span class="icon-clock"></span> {{formatDate publishedAt}}</span>
+    {{#if currentUser}}
+      <a class="edit btn"><span class="icon-pencil"></span> Edit</a>
+    {{/if}}
   </div>
 </template>
 
