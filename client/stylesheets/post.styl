@@ -106,7 +106,6 @@
       overflow: auto;
     }
   }
-  // XXX: cant this just go above?
   &:not(.open):not(.selected) {
     cursor: pointer;
     margin-bottom: 1px;
@@ -151,7 +150,7 @@
   }
 }
 
-// next / before links on individual post page
+/* Post navigation on the bottom of the post page */
 .single-nav {
   background: $c-low;
   height: 10.5em;
@@ -189,7 +188,7 @@
 
 
 
-
+// post editing
 .post form {
   padding: 0 20px 3em;
   textarea {
@@ -198,7 +197,7 @@
 }
 
 
-// colors
+/* Post colors */
 with-slider(color) {
   & .slider {
     positioning(absolute, 0, 0, auto, 0, 100%);
