@@ -1,28 +1,27 @@
 @import '../include/all';
 
-textarea{
-  // font-size: $font-size * 1px;
+textarea {
   stdform();
   resize: none;
   overflow: auto;
   height: 600px;
   display: block;
-    &.new{
-      color: #AA5959;
-    }
+  &.new{
+    color: #AA5959;
+  }
 }
 
-input{
+input {
   stdform();
+  font-size: $font-size * 1px;
+  height: 2.2em; //for strange lineheight rendering in chrome and FF
+  line-height: 1em;
   margin: .4em auto;
   padding:.35em .5em;
-  line-height: 1em;
-  height: 2.2em;//hack for strange lineheight rendering in chrome and FF
-  font-size: $font-size * 1px;
   &[type=checkbox]{
     width: auto;
     margin: 0 6px 0 0 ;
-    height: 1.5em;//hack for line-heights
+    height: 1.5em;
     vertical-align: bottom;
   }
 }
@@ -49,6 +48,7 @@ form{
   textarea, .autoresize_wrapper, input, select{
     float: left;
     width: 100%;
+    margin-bottom: 1em;
   }
   select{
     margin-bottom: 1.5em;
