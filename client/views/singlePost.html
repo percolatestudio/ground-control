@@ -10,7 +10,7 @@
 
 <template name="post">
   {{#if this}}
-  <li class="post {{openClass}} {{selectedClass}} {{nextPrev}}">
+  <li class="post color-{{color}} {{openClass}} {{selectedClass}} {{nextPrev}}">
     {{#if editing}}
     {{> editPost}}
 
@@ -53,9 +53,11 @@
 </template>
 
 <template name="newPost">
-  <li class="post open animating">
-    {{> postForm newPost}}
-  </li>
+  {{#with newPost}}
+    <li class="post color-{{color}} open animating">
+      {{> postForm}}
+    </li>
+  {{/with}}
 </template>
 
 <template name="postForm">

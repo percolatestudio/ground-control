@@ -8,16 +8,18 @@ Meteor.startup(function() {
     Posts.insert({
       title: title = 'Meteor 0.5.0: authentication, user accounts, new screencast',
       slug: titleToSlug(title),
+      color: 0,
       author: 'Matt DeBergalis',
       authorGravatarHash: '182ca8f6769f9e589ccfe4c15b9a130a',
       publishedAt: new Date(2012, 9, 19),
-      body: "\n\nFor the past six months we've been hard at work on an authentication and\nuser accounts system for Meteor. Today is the day that it all comes\ntogether. Meteor 0.5.0, available today, allows you to write secure\nrealtime client-server applications in pure JavaScript. It's the only\nsystem of its kind in the world.\n\nWe're also releasing [a new screencast](/authcast)\nthat shows off what it's like to develop with these powerful new\ntools. If you liked the first Meteor screencast you should definitely\ncheck this one out. We hope you'll share it with your friends and\ncoworkers too.\n\nWe are thankful for the immense amount of support that we received in putting\ntogether this release &mdash; from those of you on\n[meteor-core](http://groups.google.com/group/meteor-core) and\n[meteor-talk](http://groups.google.com/group/meteor-talk), from those of you who\nare already using Meteor in commercial environments or making money from Meteor\nconsulting, from everyone who sent pull requests, from those of you that have\nbeen giving awesome conference talks and religiously answering questions on\nStack Overflow and Quora. Without this support there would be no Meteor. In\nfact, 0.5.0 contains more community patches than every previous Meteor release\ncombined.\n\nToday's release includes everything necessary to build and deploy\nsecure applications using Meteor:\n\n * New authentication APIs on the server: a\n   [`Meteor.allow`](http://docs.meteor.com/#allow) API that controls which data\n   a Meteor client is allowed to change in the database, and hooks that give the\n   Meteor server control over what data it sends to each client.  These core\n   APIs operate at the wire protocol layer, so they establish a strong\n   foundation for security.\n\n * [Meteor Accounts](http://docs.meteor.com/#accounts_api), a state-of-the-art\n   user account system built on top of the core Meteor authentication APIs.\n   Accounts provides a set of high-level APIs to manage user accounts, which are\n   stored in the [`Meteor.users`](http://docs.meteor.com/#meteor_users)\n   collection.\n\n * Support for the [Secure Remote Password\n   protocol](http://en.wikipedia.org/wiki/Secure_Remote_Password_protocol).\n   Developed at Stanford, SRP lets a user securely log in to a server without\n   ever sending that server their unencrypted password.  The kind of\n   high-profile security breaches at LinkedIn and Pandora earlier this year are\n   impossible with SRP.  Instead of asking every application developer to safely\n   store passwords, we've baked the very best technology right into Meteor\n   Accounts.\n\n * Smart packages for major OAuth login services, including Google,\n   Facebook, Twitter, GitHub, and Weibo.  Packages for additional\n   providers are also available on Atmosphere, a repository for\n   community packages.\n\n * [Accounts UI](http://docs.meteor.com/#accountsui), a set of login, signup,\n   and password reset forms that drop right into an application with one line of\n   code.  Accounts UI also provides configuration wizards for each of the OAuth\n   login packages.\n\nAll the parts of Meteor work together.  Subscriptions automatically\nrerun when the current user changes, so it's very easy to publish more\ndocuments or extra document fields to authenticated users.  The UI\nwidgets automatically reconfigure themselves as you add new login\nservices.  Password-based accounts include a password recovery link, and\nif you deploy to our servers with `meteor deploy` there's absolutely no\nconfiguration required to send the reset email.  The\n[screencast](/authcast) demonstrates each of these,\nso we hope you'll take a moment to watch.\n\n"
+        body: "\n\nFor the past six months we've been hard at work on an authentication and\nuser accounts system for Meteor. Today is the day that it all comes\ntogether. Meteor 0.5.0, available today, allows you to write secure\nrealtime client-server applications in pure JavaScript. It's the only\nsystem of its kind in the world.\n\nWe're also releasing [a new screencast](/authcast)\nthat shows off what it's like to develop with these powerful new\ntools. If you liked the first Meteor screencast you should definitely\ncheck this one out. We hope you'll share it with your friends and\ncoworkers too.\n\nWe are thankful for the immense amount of support that we received in putting\ntogether this release &mdash; from those of you on\n[meteor-core](http://groups.google.com/group/meteor-core) and\n[meteor-talk](http://groups.google.com/group/meteor-talk), from those of you who\nare already using Meteor in commercial environments or making money from Meteor\nconsulting, from everyone who sent pull requests, from those of you that have\nbeen giving awesome conference talks and religiously answering questions on\nStack Overflow and Quora. Without this support there would be no Meteor. In\nfact, 0.5.0 contains more community patches than every previous Meteor release\ncombined.\n\nToday's release includes everything necessary to build and deploy\nsecure applications using Meteor:\n\n * New authentication APIs on the server: a\n   [`Meteor.allow`](http://docs.meteor.com/#allow) API that controls which data\n   a Meteor client is allowed to change in the database, and hooks that give the\n   Meteor server control over what data it sends to each client.  These core\n   APIs operate at the wire protocol layer, so they establish a strong\n   foundation for security.\n\n * [Meteor Accounts](http://docs.meteor.com/#accounts_api), a state-of-the-art\n   user account system built on top of the core Meteor authentication APIs.\n   Accounts provides a set of high-level APIs to manage user accounts, which are\n   stored in the [`Meteor.users`](http://docs.meteor.com/#meteor_users)\n   collection.\n\n * Support for the [Secure Remote Password\n   protocol](http://en.wikipedia.org/wiki/Secure_Remote_Password_protocol).\n   Developed at Stanford, SRP lets a user securely log in to a server without\n   ever sending that server their unencrypted password.  The kind of\n   high-profile security breaches at LinkedIn and Pandora earlier this year are\n   impossible with SRP.  Instead of asking every application developer to safely\n   store passwords, we've baked the very best technology right into Meteor\n   Accounts.\n\n * Smart packages for major OAuth login services, including Google,\n   Facebook, Twitter, GitHub, and Weibo.  Packages for additional\n   providers are also available on Atmosphere, a repository for\n   community packages.\n\n * [Accounts UI](http://docs.meteor.com/#accountsui), a set of login, signup,\n   and password reset forms that drop right into an application with one line of\n   code.  Accounts UI also provides configuration wizards for each of the OAuth\n   login packages.\n\nAll the parts of Meteor work together.  Subscriptions automatically\nrerun when the current user changes, so it's very easy to publish more\ndocuments or extra document fields to authenticated users.  The UI\nwidgets automatically reconfigure themselves as you add new login\nservices.  Password-based accounts include a password recovery link, and\nif you deploy to our servers with `meteor deploy` there's absolutely no\nconfiguration required to send the reset email.  The\n[screencast](/authcast) demonstrates each of these,\nso we hope you'll take a moment to watch.\n\n"
     });
     
     
     Posts.insert({
       title: title = 'Meteor 0.4.2: iOS 6 compatibility!',
       slug: titleToSlug(title),
+      color: 5,
       author: 'Matt DeBergalis',
       authorGravatarHash: '182ca8f6769f9e589ccfe4c15b9a130a',
       publishedAt: new Date(2012, 9, 2),
@@ -27,7 +29,7 @@ Meteor.startup(function() {
     Posts.insert({
       title: title = 'Meteor 0.4.1: Sending email and Node 0.8',
       slug: titleToSlug(title),
-      // XXX: we'll need to figure out authorId when we actually use it
+      color: 4,
       author: 'Matt DeBergalis',
       authorGravatarHash: '182ca8f6769f9e589ccfe4c15b9a130a',
       publishedAt: new Date(2012, 8, 24),
@@ -43,6 +45,7 @@ Meteor.startup(function() {
     Posts.insert({
       title: title = 'Introducing Spark: a new live page update engine',
       slug: titleToSlug(title),
+      color: 3,
       author: 'David Greenspan',
       authorGravatarHash: '696549174910acff6ad306a38ed8c1fc',
       publishedAt: new Date(2012, 8, 0),
@@ -61,6 +64,7 @@ Meteor.startup(function() {
     Posts.insert({
       title: title = 'Search engine optimization',
       slug: titleToSlug(title),
+      color: 2,
       author: 'Matt DeBergalis',
       authorGravatarHash: '182ca8f6769f9e589ccfe4c15b9a130a',
       publishedAt: new Date(2012, 7, 8),
@@ -70,6 +74,7 @@ Meteor.startup(function() {
     Posts.insert({
       title: title = 'SSL support, Handlebars extensions',
       slug: titleToSlug(title),
+      color: 1,
       author: 'Matt DeBergalis',
       authorGravatarHash: '182ca8f6769f9e589ccfe4c15b9a130a',
       publishedAt: new Date(2012, 6, 12),
@@ -80,6 +85,7 @@ Meteor.startup(function() {
     Posts.insert({
       title: title = 'Building out live page updates',
       slug: titleToSlug(title),
+      color: 0,
       author: 'Matt DeBergalis',
       authorGravatarHash: '182ca8f6769f9e589ccfe4c15b9a130a',
       publishedAt: new Date(2012, 6, 12),

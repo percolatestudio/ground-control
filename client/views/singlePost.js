@@ -120,7 +120,10 @@ Template.editPost.events({
 
 Template.newPost.helpers({
   newPost: function() { 
-    return {author: Meteor.user().profile && Meteor.user().profile.name};
+    return {
+      author: Meteor.user().profile && Meteor.user().profile.name,
+      color: nextPostColor()
+    };
   }
 });
 
