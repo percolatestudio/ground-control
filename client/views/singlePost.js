@@ -79,7 +79,10 @@ Template.post.events({
 });
 
 Template.postMeta.helpers({
-  editing: function() { return isEditing(this); }
+  editing: function() { return isEditing(this); },
+  postLink: function() {
+    return Routes.postUrl(this);
+  }
 })
 
 /////// edit/new post stuff
