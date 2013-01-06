@@ -10,7 +10,7 @@
 
 <template name="post">
   {{#if this}}
-  <li class="post {{openClass}} {{selectedClass}} {{nextPrev}}">
+  <li class="post color-{{color}} {{openClass}} {{selectedClass}} {{nextPrev}}">
     {{#if editing}}
     {{> editPost}}
 
@@ -22,30 +22,29 @@
       <div class="slider"></div>
       {{> postMeta}}
     </div>
-    
+
     {{#if open}}
     <div class="body">
       {{#markdown}}{{{body}}}{{/markdown}}
     </div>
     {{/if}}
-    
+
     {{/if}}
   </li>
   {{/if}}
 </template>
 
 <template name="postMeta">
-  <a class="permalink"><span class="icon-link"></span></a>
+  <a class="permalink" href="{{postLink}}"><span class="icon-link"></span></a>
 
   <h2 class="title">{{title}}</h2>
-
-  {{#if currentUser}}
-    <a class="edit btn"><span class="icon-pencil"></span>Edit</a>
-  {{/if}}
 
   <div class="metadata alt-type">
     <span><img class="avatar" src="{{gravatarURL authorGravatarHash size="20"}}"/>{{author}}</span>
     <span><span class="icon-clock"></span> {{formatDate publishedAt}}</span>
+    {{#if currentUser}}
+      <a class="edit btn"><span class="icon-pencil"></span> Edit</a>
+    {{/if}}
   </div>
 </template>
 
@@ -54,9 +53,11 @@
 </template>
 
 <template name="newPost">
-  <li class="post open animating">
-    {{> postForm newPost}}
-  </li>
+  {{#with newPost}}
+    <li class="post color-{{color}} open animating">
+      {{> postForm}}
+    </li>
+  {{/with}}
 </template>
 
 <template name="postForm">
@@ -76,7 +77,7 @@
 
     <div class="buttons">
       <a class="cancel btn">Cancel</a>
-      <button class="save btn" type="submit">Save</button>
+      <button class="save btn primary" type="submit">Save</button>
     </div>
   </form>
 </template>

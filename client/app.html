@@ -41,16 +41,22 @@
       <span class="control-title">{{blogName}}</span>
       <div class="shadow"></div>
     </div>
-
-    {{#if currentUserVerified}}
-      <button class="newPost">New Post</button>
-    {{loginButtons}}
-    {{/if}}
   </div>
 </template>
 
 <template name="sidebar">
   <div id="sidebar" class="alt-type">
+    {{#if currentUser}}
+      <div class="admin">
+        <span><img class="avatar" src="{{gravatarURL currentUserGravatarHash size="20"}}"/>{{author}}</span>
+          {{loginButtons}}
+      </div>
+    {{/if}}
+    {{#if currentUserVerified}}
+      <div class="admin">
+        <button class="newPost btn primary">New post</button>
+      </div>
+    {{/if}}
     <div class="links">
       <a href="http://meteor.com" alt="website"><span class="icon-globe"></span></a>
       <a href="https://twitter.com/meteorjs" alt="twitter"><span class="icon-twitter"></span></a>
@@ -63,8 +69,8 @@
     </div>
 
     <form class="join">
-      <p>Join the mailing list</p>
-      <input name="email" placeholder="Your email address"></input>
+      <label>Join the mailing list</label>
+      <input type="email" name="email" placeholder="Your email address"></input>
     </form>
 
     <div class="attribution">Created with <a href="http://percolatestudio.github.com/ground-control/"><b>Ground Control</b><a/></div>

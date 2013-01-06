@@ -79,7 +79,10 @@ Template.post.events({
 });
 
 Template.postMeta.helpers({
-  editing: function() { return isEditing(this); }
+  editing: function() { return isEditing(this); },
+  postLink: function() {
+    return Routes.postUrl(this);
+  }
 })
 
 /////// edit/new post stuff
@@ -117,7 +120,10 @@ Template.editPost.events({
 
 Template.newPost.helpers({
   newPost: function() { 
-    return {author: Meteor.user().profile && Meteor.user().profile.name};
+    return {
+      author: Meteor.user().profile && Meteor.user().profile.name,
+      color: nextPostColor()
+    };
   }
 });
 
