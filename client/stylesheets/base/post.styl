@@ -1,4 +1,4 @@
-@import 'include/all';
+@import '../include/all';
 
 .post {
   background: #fff;
@@ -78,20 +78,12 @@
   }
 
   /* Transitions/state */
-  .slider,
-  .body,
-  .metadata span,
-  .edit,
-  .permalink {
-    // transition: all ease-out 300ms;
-  }
   &.open, &.selected {
     .slider {
       height: .5em;
       min-height: .5em;
     }
-    .edit,
-    .permalink {
+    .edit, .permalink {
       opacity: 1;
     }
     .metadata {
@@ -188,7 +180,7 @@
 
 
 
-// post editing
+/* Post editing */
 .post form {
   padding: 0 20px 3em;
   textarea {

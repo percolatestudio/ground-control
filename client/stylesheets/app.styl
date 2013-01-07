@@ -30,14 +30,14 @@
   }
   #controls {
     background: white;
-    height: 3em;
-    text-align: center;
-    line-height: 3em;
     border-bottom: 1px solid $c-low;
+    height: 3em;
+    line-height: 3em;
+    text-align: center;
     &:before,
     &:after {
-      content: '';
       background: $c-low;
+      content: '';
     }
     &:before {
       positioning(absolute, 0, auto, 0, 0, 1px);
@@ -46,8 +46,8 @@
       positioning(absolute, 0, 0, 0, auto, 1px);
     }
     .control-title {
-      font-size: 32px;
       font-family: $f-secondary;
+      font-size: 32px;
       text-transform: uppercase;
       a {
         color: black;
@@ -76,8 +76,8 @@
       text-transform: uppercase;
     }
     .shadow {
-      positioning(absolute, 100%, 0, auto, 0, auto, 1em);
       background-image: linear-gradient(top, rgba(black, .1), transparent 100% );
+      positioning(absolute, 100%, 0, auto, 0, auto, 1em);
     }
   }
 
@@ -162,8 +162,11 @@
       }
     }
   }
-  form {
-    clear: left;
+  .join {
+    margin: .75em 0;
+    form {
+      clear: left;
+    }
   }
   .attribution{
     color: $c-medium-low;
