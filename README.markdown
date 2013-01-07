@@ -16,7 +16,7 @@ Simply run `meteor`.
 
 ### Creating the initial user
 
-When you first browse to your Ground Control install, you'll be prompted to set it up with google accounts (the only supported sign-in method right now) and sign in with a google account.
+When you first browse to your Ground Control install, you'll be prompted to configure the google oauth provider (the only supported sign-in method right now) and sign in with a google account.
 
 ### Creating Posts
 
