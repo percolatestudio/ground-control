@@ -30,14 +30,14 @@
   }
   #controls {
     background: white;
-    height: 3em;
-    text-align: center;
-    line-height: 3em;
     border-bottom: 1px solid $c-low;
+    height: 3em;
+    line-height: 3em;
+    text-align: center;
     &:before,
     &:after {
-      content: '';
       background: $c-low;
+      content: '';
     }
     &:before {
       positioning(absolute, 0, auto, 0, 0, 1px);
@@ -46,8 +46,8 @@
       positioning(absolute, 0, 0, 0, auto, 1px);
     }
     .control-title {
-      font-size: 32px;
       font-family: $f-secondary;
+      font-size: 32px;
       text-transform: uppercase;
       a {
         color: black;
@@ -56,6 +56,7 @@
     .btn.back {
       positioning(absolute, 8px, auto, auto, 24px);
       text-transform: uppercase;
+      transition: none;
       &:after {
         border-color: transparent $c-medium transparent transparent;
         border-style: solid;
@@ -75,8 +76,8 @@
       text-transform: uppercase;
     }
     .shadow {
-      positioning(absolute, 100%, 0, auto, 0, auto, 1em);
       background-image: linear-gradient(top, rgba(black, .1), transparent 100% );
+      positioning(absolute, 100%, 0, auto, 0, auto, 1em);
     }
   }
 
@@ -87,8 +88,8 @@
 
   /* controls are hidden until the header isn't visible or we're on a single page */
   #controls {
-    opacity:0;
     min-height: 0;
+    opacity:0;
     transition: all ease-out 800ms;
   }
   #controls .top {
@@ -98,16 +99,16 @@
   &.scrolledEnough,
   &.single {
     #controls {
-      opacity: 1;
       min-height: auto;
+      opacity: 1;
       transition: opacity ease-out 800ms;
     }
   }
   &.single{
     #banner {
-      opacity:0;
-      min-height: 0;
       height: 3em;
+      min-height: 0;
+      opacity:0;
       transition: all ease-out 800ms;
     }
     // top button is invisible when we havent scrolled yet.
@@ -120,13 +121,13 @@
 #sidebar {
   position: relative;
   &:after {
-    content: '';
     background: $c-low;
+    content: '';
     positioning(absolute, 0, 0, 0, auto, 1px);
   }
   .about {
-    color: #666;
     border-bottom: 1px solid $c-low;
+    color: #666;
     p {
       font-family: $f-primary;
     }
@@ -134,9 +135,16 @@
   .admin {
     border-bottom: 1px solid $c-low;
     box-sizing: border-box;
+    line-height: 47px;
     margin: 0 -1.5em ;
     padding: 0 1.5em;
-    line-height: 47px;
+    .avatar {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    #login-buttons-logout{
+      positioning(absolute, 8px, 24px, auto, auto);
+    }
   }
   .links {
     border-bottom: 1px solid $c-low;
@@ -154,8 +162,11 @@
       }
     }
   }
-  form {
-    clear: left;
+  .join {
+    margin: .75em 0;
+    form {
+      clear: left;
+    }
   }
   .attribution{
     color: $c-medium-low;
@@ -163,8 +174,8 @@
 }
 
 #footer {
-  margin: 20px 0;
   border-top: 2px solid #aaa;
+  margin: 20px 0;
 }
 
 #header, #footer {
