@@ -1,0 +1,133 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/0.8.10/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'stylus',
+1 verbose cli   'and',
+1 verbose cli   'nib' ]
+2 info using npm@1.1.62
+3 info using node@v0.8.10
+4 verbose read json /usr/local/share/npm/lib/package.json
+5 verbose read json /usr/local/share/npm/lib/package.json
+6 verbose cache add [ 'stylus', null ]
+7 silly cache add name=undefined spec="stylus" args=["stylus",null]
+8 verbose parsed url { pathname: 'stylus', path: 'stylus', href: 'stylus' }
+9 verbose cache add [ 'and', null ]
+10 silly cache add name=undefined spec="and" args=["and",null]
+11 verbose parsed url { pathname: 'and', path: 'and', href: 'and' }
+12 verbose cache add [ 'nib', null ]
+13 silly cache add name=undefined spec="nib" args=["nib",null]
+14 verbose parsed url { pathname: 'nib', path: 'nib', href: 'nib' }
+15 silly lockFile 27c0f414-stylus stylus
+16 verbose lock stylus /Users/Dominic/.npm/27c0f414-stylus.lock
+17 silly lockFile cffa50a3-and and
+18 verbose lock and /Users/Dominic/.npm/cffa50a3-and.lock
+19 silly lockFile ae909a05-nib nib
+20 verbose lock nib /Users/Dominic/.npm/ae909a05-nib.lock
+21 silly lockFile 27c0f414-stylus stylus
+22 silly lockFile cffa50a3-and and
+23 silly lockFile ae909a05-nib nib
+24 verbose addNamed [ 'stylus', '' ]
+25 verbose addNamed [ null, '' ]
+26 silly lockFile 5140332e-stylus stylus@
+27 verbose lock stylus@ /Users/Dominic/.npm/5140332e-stylus.lock
+28 verbose addNamed [ 'and', '' ]
+29 verbose addNamed [ null, '' ]
+30 silly lockFile 80e23998-and and@
+31 verbose lock and@ /Users/Dominic/.npm/80e23998-and.lock
+32 verbose addNamed [ 'nib', '' ]
+33 verbose addNamed [ null, '' ]
+34 silly lockFile 30a48e40-nib nib@
+35 verbose lock nib@ /Users/Dominic/.npm/30a48e40-nib.lock
+36 silly addNameRange { name: 'stylus', range: '', hasData: false }
+37 silly addNameRange { name: 'and', range: '', hasData: false }
+38 silly addNameRange { name: 'nib', range: '', hasData: false }
+39 verbose url raw and
+40 verbose url resolving [ 'https://registry.npmjs.org/', './and' ]
+41 verbose url resolved https://registry.npmjs.org/and
+42 info trying registry request attempt 1 at 17:02:35
+43 http GET https://registry.npmjs.org/and
+44 verbose url raw stylus
+45 verbose url resolving [ 'https://registry.npmjs.org/', './stylus' ]
+46 verbose url resolved https://registry.npmjs.org/stylus
+47 info trying registry request attempt 1 at 17:02:35
+48 verbose etag "5KJ6WI4BLDAFVECRE2B2QAJ8C"
+49 http GET https://registry.npmjs.org/stylus
+50 verbose url raw nib
+51 verbose url resolving [ 'https://registry.npmjs.org/', './nib' ]
+52 verbose url resolved https://registry.npmjs.org/nib
+53 info trying registry request attempt 1 at 17:02:35
+54 verbose etag "9DBTQGJV1XZCLGR28WSIKHPY7"
+55 http GET https://registry.npmjs.org/nib
+56 http 200 https://registry.npmjs.org/nib
+57 silly registry.get cb [ 200,
+57 silly registry.get   { vary: 'Accept',
+57 silly registry.get     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+57 silly registry.get     etag: '"A7CT0DCW1O1HH5VDU96QHBZV1"',
+57 silly registry.get     date: 'Mon, 07 Jan 2013 01:01:20 GMT',
+57 silly registry.get     'content-type': 'application/json',
+57 silly registry.get     'content-length': '44711' } ]
+58 silly addNameRange number 2 { name: 'nib', range: '', hasData: true }
+59 silly addNameRange versions [ 'nib',
+59 silly addNameRange   [ '0.0.1',
+59 silly addNameRange     '0.0.2',
+59 silly addNameRange     '0.0.3',
+59 silly addNameRange     '0.0.4',
+59 silly addNameRange     '0.0.5',
+59 silly addNameRange     '0.0.6',
+59 silly addNameRange     '0.0.7',
+59 silly addNameRange     '0.0.8',
+59 silly addNameRange     '0.1.0',
+59 silly addNameRange     '0.2.0',
+59 silly addNameRange     '0.3.0',
+59 silly addNameRange     '0.3.1',
+59 silly addNameRange     '0.3.2',
+59 silly addNameRange     '0.4.0',
+59 silly addNameRange     '0.4.1',
+59 silly addNameRange     '0.5.0',
+59 silly addNameRange     '0.6.0',
+59 silly addNameRange     '0.7.0',
+59 silly addNameRange     '0.7.1',
+59 silly addNameRange     '0.8.1',
+59 silly addNameRange     '0.8.2',
+59 silly addNameRange     '0.9.0',
+59 silly addNameRange     '0.9.1' ] ]
+60 verbose addNamed [ 'nib', '0.9.1' ]
+61 verbose addNamed [ '0.9.1', '0.9.1' ]
+62 silly lockFile b7317574-nib-0-9-1 nib@0.9.1
+63 verbose lock nib@0.9.1 /Users/Dominic/.npm/b7317574-nib-0-9-1.lock
+64 silly lockFile b6b64aef-stry-npmjs-org-nib-nib-0-9-1-tgz https://registry.npmjs.org/nib/-/nib-0.9.1.tgz
+65 verbose lock https://registry.npmjs.org/nib/-/nib-0.9.1.tgz /Users/Dominic/.npm/b6b64aef-stry-npmjs-org-nib-nib-0-9-1-tgz.lock
+66 verbose addRemoteTarball [ 'https://registry.npmjs.org/nib/-/nib-0.9.1.tgz',
+66 verbose addRemoteTarball   '1dd2be2f3bb4fe86451020604b6e56f04ca7f13c' ]
+67 info retry fetch attempt 1 at 17:02:36
+68 verbose fetch to= /var/folders/g2/ftxp9dqd2c57njvk1cct6h1c0000gn/T/npm-55101/1357520556487-0.3429372182581574/tmp.tgz
+69 http GET https://registry.npmjs.org/nib/-/nib-0.9.1.tgz
+70 http 304 https://registry.npmjs.org/stylus
+71 silly registry.get cb [ 304,
+71 silly registry.get   { server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+71 silly registry.get     etag: '"5KJ6WI4BLDAFVECRE2B2QAJ8C"',
+71 silly registry.get     date: 'Mon, 07 Jan 2013 01:01:21 GMT',
+71 silly registry.get     'content-length': '0' } ]
+72 verbose etag stylus from cache
+73 http 404 https://registry.npmjs.org/and
+74 silly registry.get cb [ 404,
+74 silly registry.get   { server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+74 silly registry.get     date: 'Mon, 07 Jan 2013 01:01:21 GMT',
+74 silly registry.get     'content-type': 'application/json',
+74 silly registry.get     'content-length': '52',
+74 silly registry.get     'cache-control': 'must-revalidate' } ]
+75 silly lockFile 80e23998-and and@
+76 error 404 'and' is not in the npm registry.
+76 error 404 You should bug the author to publish it
+76 error 404
+76 error 404 Note that you can also install from a
+76 error 404 tarball, folder, or http url, or git url.
+77 error System Darwin 11.4.2
+78 error command "/usr/local/Cellar/node/0.8.10/bin/node" "/usr/local/bin/npm" "install" "-g" "stylus" "and" "nib"
+79 error cwd /Users/Dominic/Sites/App_GroundControl
+80 error node -v v0.8.10
+81 error npm -v 1.1.62
+82 error code E404
+83 verbose exit [ 1, true ]

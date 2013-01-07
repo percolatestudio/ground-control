@@ -34,6 +34,7 @@ body {
   background: transparent;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
   Helvetica, Arial, "Lucida Grande", sans-serif;
+  overflow: hidden;
   #main {
     box-sizing: border-box;
     position: relative;
@@ -80,15 +81,16 @@ body {
     }
   }
   .orbit-wrapper {
-    bottom: 0;
     height: 650px;
-    overflow: hidden;
-    position: absolute;
-    width: 100%;
+    width: 980px;
     z-index: -1;
+    position: absolute;
+    top: 0;
+    margin-left: -480px;
+    left: 50%;
     .drawing {
-      position: absolute;
-      left: -20%;
+      position: relative;
+      left: -200px;
     }
   }
 

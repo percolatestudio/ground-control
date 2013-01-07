@@ -36,40 +36,40 @@
             <stop offset="1" stop-color="white" stop-opacity="1"/>
           </linearGradient>
           <mask id="fadeaway">
-            <rect x="-300" y="-300" width="600" height="600" fill="url(#fade)"/>
+            <rect x="-600" y="-600" width="1200" height="1200" fill="url(#fade)"/>
           </mask>
           <mask id="pathfade">
-            <rect x="0" y="0" width="250" height="250" fill="url(#fade)"/>
+            <rect x="0" y="0" width="350" height="350" fill="url(#fade)"/>
           </mask>
-        
+
           <radialGradient id="pulse" cx="50%" cy="50%" r="50%">
             <stop stop-color="rgb(23, 93, 143)" stop-opacity="0.1" offset="0"/>
             <stop stop-color="rgb(23, 93, 143)" stop-opacity="0.4" offset="1"/>
           </radialGradient>
         </defs>
-        
+
         <g class="orbitGroup" mask="url(#fadeaway)" transform="translate(650 350) rotate(10) skewX(-50)">
-          <circle class="orbit" r="250" mask="url(#fadeaway)"></circle>
-          
-        
+          <circle class="orbit" r="350" mask="url(#fadeaway)"></circle>
+
+
           <g class="rotatingGroup">
             <animateTransform
               attributeName="transform"
               type="rotate" dur="120s"
               from="360" to="0"
               repeatCount="indefinite" />
-          
-            <path d="M 0 250 a 250 250 0 0 0 250 -250" class="trail" mask="url(#pathfade)"></path>
-          
+
+            <path d="M 0 350 a 350 350 0 0 0 350 -350" class="trail" mask="url(#pathfade)"></path>
+
             <!-- undo the rotation -->
             <g><animateTransform
                   attributeName="transform"
                   type="rotate" dur="120s"
-                  from="0 250 0" to="360 250 0"
+                  from="0 350 0" to="360 350 0"
                   repeatCount="indefinite" />
-            
+
               <!-- undo the skew -->
-              <g class="spaceshipGroup" transform="translate(250 0) skewX(50) translate(-250 0)">
+              <g class="spaceshipGroup" transform="translate(350 0) skewX(50) translate(-250 0)">
                 <circle class="rings" r="5" cx="250" cy="0" fill="url(#pulse)">
                   <animate attributeName="r" from="5" to="10" dur="5s" repeatCount="indefinite" />
                 </circle>
@@ -85,14 +85,14 @@
                   <animate attributeName="r" from="20" to="25" dur="5s" repeatCount="indefinite" />
                   <animate attributeName="opacity" from="0.6" to="0" dur="5s" repeatCount="indefinite" />
                 </circle>
-            
+
                 <circle class="dot" r="5" cx="250" cy="0">
-                  <animate attributeName="opacity" values="1;0.5;1" dur="5s" repeatCount="indefinite" />              
+                  <animate attributeName="opacity" values="1;0.5;1" dur="5s" repeatCount="indefinite" />
                 </circle>
               </g>
             </g>
           </g>
-          
+
         </g>
       </svg>
     </div>
