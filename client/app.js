@@ -28,6 +28,9 @@ Template.body.events({
       href = href.substring(prefix.length);
     
     if (href && ! /^\w+:/.exec(href)) {
+      if (href === '/feed.xml')
+        return;
+      
       e.preventDefault();
       
       if (href !== document.location.pathname)
