@@ -13,6 +13,7 @@ body {
 
 #wrapper {
   margin: 0 auto;
+  min-height: 27em;
   position: relative;
   width: wrapperMaxWidth;
   #content {
@@ -27,8 +28,7 @@ body {
   }
   #sidebar {
     box-sizing: border-box;
-    margin-left: (wrapperMaxWidth - contentMaxWidth);
-    overflow: auto;
+    overflow: hidden;
     padding: 0em 1.5em;
     positioning(absolute, 0, 0, auto, auto , (wrapperMaxWidth - contentMaxWidth) , 100%);
     .attribution {
