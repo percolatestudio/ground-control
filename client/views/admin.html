@@ -58,7 +58,7 @@
       <li>
         {{email}}
         <span class="state">{{state}}</span>
-        {{#unless isCurrentUser}}<a class="delete">-Delete-</a>{{/unless}}
+        {{#unless isCurrentUser}}<a href="#" class="delete">-Delete-</a>{{/unless}}
       </li>
     {{/each}}
   </ul>
@@ -87,9 +87,9 @@
         <td>{{author}}</td>
         <td>
           {{#if published}}
-            <a class="unpublish">Un-Publish</a>
+            <a href="#" class="unpublish">Un-Publish</a>
           {{else}}
-            <a class="publish">Publish</a>
+            <a href="#" class="publish">Publish</a>
           {{/if}}
         </td>
         <td>

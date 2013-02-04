@@ -37,7 +37,7 @@
 </template>
 
 <template name="postMeta">
-  <a class="permalink" href="{{postLink}}"><span class="icon-link"></span></a>
+  <a href="{{postLink}}" class="permalink"><span class="icon-link"></span></a>
 
   <h2 class="title">{{title}}</h2>
 
@@ -45,7 +45,7 @@
     <span><img class="avatar" src="{{gravatarURL authorGravatarHash size="20"}}"/>{{author}}</span>
     <span><span class="icon-clock"></span> {{formatDate publishedAt}}</span>
     {{#if currentUser}}
-      <a class="edit btn"><span class="icon-pencil"></span> Edit</a>
+      <a href="#" class="edit btn"><span class="icon-pencil"></span> Edit</a>
     {{/if}}
   </div>
 </template>
@@ -80,14 +80,14 @@
     <div class="buttons">
       {{#if _id}}
         {{#if published}}
-          <a class="unpublish btn">Un-Publish</a>
+          <button class="unpublish btn">Un-Publish</button>
         {{else}}
-          <a class="publish btn">Publish</a>
+          <button class="publish btn">Publish</button>
         {{/if}}
-        <a class="cancel btn">Cancel</a>
-        <button class="save btn primary" type="submit">Save</button>
+        <a href="#" class="cancel btn">Cancel</a>
+        <a href="#" class="save btn primary" type="submit">Save</a>
       {{else}}
-        <a class="cancel btn">Cancel</a>
+        <a href="#" class="cancel btn">Cancel</a>
         <button class="save btn primary" type="submit">Save to Drafts</button>
         <button class="save btn primary" type="submit">Save and Publish</button>
       {{/if}}
