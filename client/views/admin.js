@@ -47,4 +47,14 @@ Template.adminPostsList.helpers({
   posts: function() {
     return allPosts();
   }
+});
+
+Template.adminPostsList.events({
+  'click .publish': function() {
+    Posts.update(this._id, {$set: {published: true}});
+  },
+  
+  'click .unpublish': function() {
+    Posts.update(this._id, {$set: {published: false}});
+  }
 })

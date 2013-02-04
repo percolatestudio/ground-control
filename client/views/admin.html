@@ -80,7 +80,6 @@
       <tr>
         <th>Post Title</th>
         <th>Post Author</th>
-        <th>Published?</th>
         <th></th>
         <th></th>
       </tr>
@@ -90,8 +89,16 @@
       <tr>
         <td>{{title}}</td>
         <td>{{author}}</td>
-        <td><a class="toggle-published">Yes</a></td>
-        <td><a href="{{editPostUrl this}}">Edit</a></td>
+        <td>
+          {{#if published}}
+            <a class="unpublish btn">Un-Publish</a>
+          {{else}}
+            <a class="publish btn">Publish</a>
+          {{/if}}
+        </td>
+        <td>
+          <a class="btn" href="{{editPostUrl this}}">Edit</a>
+        </td>
       </tr>
       {{/each}}
     </tbody>

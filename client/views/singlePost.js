@@ -102,6 +102,14 @@ Template.editPost.events({
     e.preventDefault();
     Meteor.Router.navigate(Routes.postUrl(this), trigger = true);
   },
+  
+  'click .publish': function(e) {
+    Posts.update(this._id, {$set: {published: true}});
+  },
+  
+  'click .unpublish': function(e) {
+    Posts.update(this._id, {$set: {published: false}});
+  },
     
   'submit form': function(e, template) {
     e.preventDefault();
