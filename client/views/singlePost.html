@@ -1,5 +1,7 @@
 <template name="singlePost">
-  {{> post selectedPost}}
+  <ul class="posts">
+    {{> post selectedPost}}
+  </ul>
   {{#if showNav}}
     <ul class="single-nav">
       {{> post prevPost}}

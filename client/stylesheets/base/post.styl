@@ -1,4 +1,4 @@
-@import 'include/all';
+@import '../include/all';
 
 .post {
   background: #fff;
@@ -74,23 +74,16 @@
   }
   .body {
     box-sizing: border-box;
+    padding: 1.5em 1.5em 3em 1.5em;
   }
 
   /* Transitions/state */
-  .slider,
-  .body,
-  .metadata span,
-  .edit,
-  .permalink {
-    // transition: all ease-out 300ms;
-  }
   &.open, &.selected {
     .slider {
       height: .5em;
       min-height: .5em;
     }
-    .edit,
-    .permalink {
+    .edit, .permalink {
       opacity: 1;
     }
     .metadata {
@@ -102,11 +95,9 @@
       height: 100%;
       min-height: 100%;
       opacity: 1;
-      padding: .5em 1.5em 3em 1.5em;
       overflow: auto;
     }
   }
-  // XXX: cant this just go above?
   &:not(.open):not(.selected) {
     cursor: pointer;
     margin-bottom: 1px;
@@ -151,7 +142,7 @@
   }
 }
 
-// next / before links on individual post page
+/* Post navigation on the bottom of the post page */
 .single-nav {
   background: $c-low;
   height: 10.5em;
@@ -189,16 +180,16 @@
 
 
 
-
+/* Post editing */
 .post form {
-  padding: 0 20px;
+  padding: 0 20px 3em;
   textarea {
-    max-height: 300px;
+    max-height: 12em;
   }
 }
 
 
-// colors
+/* Post colors */
 with-slider(color) {
   & .slider {
     positioning(absolute, 0, 0, auto, 0, 100%);
@@ -235,9 +226,44 @@ with-slider(color) {
 
 /* Post typography */
 .post .body{
+  &.admin {
+    padding-bottom: 9em;
+  }
+  /* offset heading sizes */
+  h1, h2, h3, h4 {
+    font-weight: bold;
+  }
+  h1 {
+    h3();
+  }
+  h2, h3, h4 {
+    h4();
+  }
+  p, ul, ol, pre, code {
+    & + h1, & + h2, & + h3, & + h4 {
+      margin-top: 2em;
+      /* margin-bottom: 1em; */
+    }
+  }
+  h1, h2, h3, h4 {
+    & + p, & + pre, & + code {
+      margin-top: 0;
+    }
+  }
+  p {
+    & + ul, & + ol {
+      margin-top: 0;
+    }
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
   /* lists */
   ul, ol {
-    padding: 0 1.5em;
+    margin: .75em 1.5em;
+    & + p {
+      margin-top: 0;
+    }
     li {
       list-style-position: outside;
     }

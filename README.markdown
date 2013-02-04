@@ -14,9 +14,13 @@ Customization is fairly limited at this point. Edit `lib/configuration.js` and `
 
 Simply run `meteor`.
 
+### Creating the initial user
+
+When you first browse to your Ground Control install, you'll be prompted to configure the google oauth provider (the only supported sign-in method right now) and sign in with a google account.
+
 ### Creating Posts
 
-You can login to Ground Control at `/admin` using a Google Account. Currently, access is limited to a set of allowed emails defined in `server/configuration.js`.
+Later, you (or others) can login to Ground Control at `/admin` using a Google Account. Currently, access is limited to a set of allowed emails defined in `server/configuration.js`.
 
 ### Further customization
 
@@ -24,9 +28,16 @@ To do any meaningful customization, fork this repository and have fun! For examp
 
 Pull Requests will be appreciated! 
 
-### TODO
+### Coming soon
 
 Ground Control is very much a work in progress. In the near future, expect to see:
 
-1. More configuration options.
+1. Password Based Sign in
+2. User / Post management
+3. More configuration options.
+
+And further down the line, things like:
+1. Real time viewing stats
 2. Theming / pages support
+
+Feel free to make any contributions that you like!

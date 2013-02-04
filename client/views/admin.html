@@ -1,19 +1,25 @@
 <template name="admin">
-  {{#if loggedIn}}
-    {{#if currentUserVerified}}
-      {{> adminSettings}}
-      {{> adminUsersList}}
-      {{> adminPostsList}}
-    {{else}}
-      {{> unverifiedInfo}}
-    {{/if}}
-  {{else}}
-    {{#if sessionGet "noUsers"}}
-      {{> setupWizard}}
-    {{else}}
-      {{> login}}
-    {{/if}}
-  {{/if}}
+  <ul class="posts">
+    <li class="post open">
+      <div class="body admin">
+        {{#if loggedIn}}
+          {{#if currentUserVerified}}
+            {{> adminSettings}}
+            {{> adminUsersList}}
+            {{> adminPostsList}}
+          {{else}}
+            {{> unverifiedInfo}}
+          {{/if}}
+        {{else}}
+          {{#if sessionGet "noUsers"}}
+            {{> setupWizard}}
+          {{else}}
+            {{> login}}
+          {{/if}}
+        {{/if}}
+      </div>
+    </li>
+  </ul>
 </template>
 
 <template name="setupWizard">

@@ -2,13 +2,10 @@
 
 textarea {
   stdform();
-  resize: none;
-  overflow: auto;
-  height: 600px;
   display: block;
-  &.new{
-    color: #AA5959;
-  }
+  height: 600px;
+  overflow: auto;
+  resize: none;
 }
 
 input {
@@ -18,105 +15,55 @@ input {
   line-height: 1em;
   margin: .4em auto;
   padding:.35em .5em;
-  &[type=checkbox]{
-    width: auto;
-    margin: 0 6px 0 0 ;
+  &[type=checkbox] {
     height: 1.5em;
+    margin: 0 6px 0 0 ;
     vertical-align: bottom;
+    width: auto;
   }
 }
-label{
+label {
   color: #666;
-  font-weight: bold;
   display: inline-block;
+  font-weight: bold;
 }
 
-form{
-  text-align: left;
+form {
   clearfix();
   font-family: $f-secondary;
+  text-align: left;
   label {
     float: left;
     margin-right: 4px;
   }
   /* Exceptions */
   input[type=checkbox] + label, input[type=radio] + label {
-    display: inline;
     color: #333;
+    display: inline;
     font-weight: normal;
   }
-  textarea, .autoresize_wrapper, input, select{
+  textarea, input, select {
     float: left;
-    width: 100%;
     margin-bottom: 1em;
+    width: 100%;
   }
-  select{
+  select {
     margin-bottom: 1.5em;
   }
-  p{
+  p {
     margin-bottom: 1.5em;
   }
-  .confirm_msg{
-    display: none;
-  }
-  &.confirm{
-    > *:not(.confirm_msg){
-      display:none;
-    }
-    .confirm_msg{
-      display: block;
-      clear: both;
-    }
-  }
-  .field_with_errors{
-    label{display: inline;}
-    input{display:inherit;}
-    textarea{display: inherit;}
-  }
-  .formError{
-    float: left;
+  .formError {
     color: #ffcc00;
+    float: left;
     font-style: italic;
   }
-  &.disabled {
+  &.disabled, &[disabled] {
     > * {
       opacity: .5;
     }
-    button{
+    button {
       opacity: 1;
-    }
-  }
-  .double_input{
-    >li{
-      float: right;
-      width: 48%;
-      &:first-child{
-        float:left;
-      }
-    }
-  }
-  .double_btn{
-    text-align: right;
-    a, button{
-      width: 48%;
-      float: right;
-    }
-    &>:first-child{
-      float: left;
-    }
-  }
-  .freestyle_btn{
-    a{
-      float: left;
-      line-height: 1em;
-      margin-right: 10px;
-      padding-top: 5px;
-    }
-    input[type=checkbox] + label, input[type=radio] + label, input[type=checkbox], input[type=radio] {
-      margin-bottom: 0px;
-    }
-    button[type=submit]{
-      float: right;
     }
   }
   .buttons {

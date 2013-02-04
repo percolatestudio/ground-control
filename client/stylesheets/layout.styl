@@ -1,6 +1,5 @@
 @import 'include/all';
 
-// layout
 wrapperMaxWidth = 960px
 contentMaxWidth = 720px;
 
@@ -14,30 +13,26 @@ body {
 
 #wrapper {
   margin: 0 auto;
-  width: wrapperMaxWidth;
+  min-height: 27em;
   position: relative;
+  width: wrapperMaxWidth;
   #content {
-    width: contentMaxWidth;
     overflow: hidden;
+    width: contentMaxWidth;
   }
   #header #controls {
     position: fixed;
     top: 0;
-    width: 100%
-    max-width: contentMaxWidth;
+    width: contentMaxWidth;
     z-index: 2;
   }
   #sidebar {
     box-sizing: border-box;
-    margin-left: (wrapperMaxWidth - contentMaxWidth);
-    overflow: auto;
+    overflow: hidden;
     padding: 0em 1.5em;
     positioning(absolute, 0, 0, auto, auto , (wrapperMaxWidth - contentMaxWidth) , 100%);
     .attribution {
       positioning(absolute, auto, auto, .75em, 1.5em);
-    }
-    .join {
-      margin: .75em 0;
     }
   }
 }
