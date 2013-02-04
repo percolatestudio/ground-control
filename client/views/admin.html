@@ -2,21 +2,21 @@
   <ul class="posts">
     <li class="post open">
       <div class="body admin">
-        {{#if loggedIn}}
-          {{#if currentUserVerified}}
-            {{> adminSettings}}
-            {{> adminUsersList}}
-            {{> adminPostsList}}
-          {{else}}
-            {{> unverifiedInfo}}
-          {{/if}}
+      {{#if loggedIn}}
+        {{#if currentUserVerified}}
+          {{> adminUsersList}}
+          {{> adminSettings}}
+          {{> adminPostsList}}
         {{else}}
-          {{#if sessionGet "noUsers"}}
-            {{> setupWizard}}
-          {{else}}
-            {{> login}}
-          {{/if}}
+          {{> unverifiedInfo}}
         {{/if}}
+      {{else}}
+        {{#if sessionGet "noUsers"}}
+          {{> setupWizard}}
+        {{else}}
+          {{> login}}
+        {{/if}}
+      {{/if}}
       </div>
     </li>
   </ul>
@@ -24,12 +24,12 @@
 
 <template name="setupWizard">
   <h1>Welcome to {{blogName}}!</h1>
-  
+
   <p>Please take a moment to set up your Google Apps settings and to create
-    the initial admininstrator account. 
+    the initial admininstrator account.
     The site is open until this account has been created; once you've done so it will be locked down and you can invite more admins to contribute.
   </p>
-  
+
   {{> login}}
 </template>
 
@@ -40,28 +40,19 @@
 </template>
 
 <template name="adminSettings">
-  <h3>Settings</h3>
+  <h3>Login by domain</h3>
+  <p class="info">
+    Any user with a email address from this domain will be able to login to the site. Leave this field empty to disable this feature.
+  </p>
   <form class="settings-form">
     <label for="emailDomain">Email Domain for Admins</label>
     <input type="text" name="emailDomain" placeholder="enter a domain" value="{{emailDomain}}"></input>
     <button type="submit" class="btn">Change</button>
   </form>
-    
-    <p class="info">
-      Any user with a email address from this domain will be able to login to the site. Leave this field empty to disable this feature.
-    </p>
 </template>
 
 <template name="adminUsersList">
-  <h3>Admins</h3>
-  
-  <form class="user-form">
-    <label for="email">Add a new Admin</label>
-    <input type="text" name="email" placeholder="enter an email address" ></input>
-    <button type="submit" class="btn">Create user</button>
-  </form>
-  
-  <h4>Current Admins</h4>
+  <h3>Current Admins</h3>
   <ul>
     {{#each admins}}
       <li>
@@ -71,6 +62,11 @@
       </li>
     {{/each}}
   </ul>
+  <form class="user-form">
+    <label for="email">Add a new Admin</label>
+    <input type="text" name="email" placeholder="enter an email address" ></input>
+    <button type="submit" class="btn">Create user</button>
+  </form>
 </template>
 
 <template name="adminPostsList">
@@ -91,13 +87,13 @@
         <td>{{author}}</td>
         <td>
           {{#if published}}
-            <a class="unpublish btn">Un-Publish</a>
+            <a class="unpublish">Un-Publish</a>
           {{else}}
-            <a class="publish btn">Publish</a>
+            <a class="publish">Publish</a>
           {{/if}}
         </td>
         <td>
-          <a class="btn" href="{{editPostUrl this}}">Edit</a>
+          <a href="{{editPostUrl this}}">Edit</a>
         </td>
       </tr>
       {{/each}}

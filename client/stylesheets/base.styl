@@ -69,9 +69,32 @@ li {
   font-family: $f-secondary;
 }
 
-// not sure what's going on with the styles - T
-.settings-form button, .user-form button {
-  display: block;
-  clear: both;
+table {
+  margin: .75em 0;
+  thead {
+    @extend .alt-type;
+    border-bottom: 1px solid $c-medium-low;
+    border-top: 1px solid $c-medium-low;
+    text-transform: uppercase;
+    th:first-child {
+      padding-left: .5em;
+    }
+  }
+  tbody {
+    tr {
+      & + tr {
+        border-top: 1px solid $c-low;
+      }
+      &:nth-child(odd) {
+        background: $c-empty;
+      }
+      td {
+        padding: .5em 1em .5em 0;
+        small();
+        &:first-child {
+          padding-left: .5em;
+        }
+      }
+    }
+  }
 }
- 
