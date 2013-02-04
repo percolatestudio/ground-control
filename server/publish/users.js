@@ -59,7 +59,7 @@ Accounts.onCreateUser(function(options, user) {
   user.profile.gravatarHash = Gravatar.hashFromEmail(userEmail(user));
   
   // don't need to verify the very first user
-  if (user.emails[0] && Meteor.call('noUsers')) 
+  if (user.emails && user.emails[0] && Meteor.call('noUsers')) 
     user.emails[0].verified = true;
   
   return user;
