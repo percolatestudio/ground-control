@@ -21,6 +21,7 @@ Template.body.events({
   'click [href]': function(e) {
     // code stolen from pages branch, not really complete
     if (e.shiftKey || e.ctrlKey || e.metaKey) return true;
+    if (e.defaultPrevented) return false;
     
     var href = $(e.target).attr('href')
     

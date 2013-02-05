@@ -104,10 +104,12 @@ Template.editPost.events({
   },
   
   'click .publish': function(e) {
+    e.preventDefault();
     Posts.update(this._id, {$set: {published: true}});
   },
   
   'click .unpublish': function(e) {
+    e.preventDefault();
     Posts.update(this._id, {$set: {published: false}});
   },
     
@@ -139,6 +141,16 @@ Template.newPost.events({
   'click .cancel': function(e) {
     e.preventDefault();
     Meteor.Router.navigate('/', {trigger: true});
+  },
+  
+  'click .publish': function(e) {
+    e.preventDefault();
+    this.published = true;
+  },
+  
+  'click .unpublish': function(e) {
+    e.preventDefault();
+    this.published = false;
   },
     
   'submit form': function(e, template) {

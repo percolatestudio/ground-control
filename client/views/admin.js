@@ -50,11 +50,13 @@ Template.adminPostsList.helpers({
 });
 
 Template.adminPostsList.events({
-  'click .publish': function() {
+  'click .publish': function(e) {
+    e.preventDefault();
     Posts.update(this._id, {$set: {published: true}});
   },
   
-  'click .unpublish': function() {
+  'click .unpublish': function(e) {
+    e.preventDefault();
     Posts.update(this._id, {$set: {published: false}});
   }
 })
