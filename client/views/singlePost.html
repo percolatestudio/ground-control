@@ -78,13 +78,13 @@
     <textarea name="body">{{body}}</textarea>
 
     <div class="buttons">
-      {{#if published}}
+      {{#if isPublished}}
         <button class="unpublish btn">Un-Publish</button>
       {{else}}
         <button class="publish btn">Publish</button>
       {{/if}}
       <a href="#" class="cancel btn">Cancel</a>
-      <a href="#" class="save btn primary" type="submit">Save</a>
+      <input class="save btn primary" type="submit" value="Save"></input>
     </div>
   </form>
 </template>

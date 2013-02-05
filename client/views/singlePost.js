@@ -145,12 +145,12 @@ Template.newPost.events({
   
   'click .publish': function(e) {
     e.preventDefault();
-    this.published = true;
+    Session.set('newPostPublished', true);
   },
   
   'click .unpublish': function(e) {
     e.preventDefault();
-    this.published = false;
+    Session.set('newPostPublished', false);
   },
     
   'submit form': function(e, template) {
@@ -161,10 +161,13 @@ Template.newPost.events({
     var changes = readPostForm(template);
     _.extend(self, changes);
     
+    // set published-ness from the session
+    self.published = Session.get('newPostPublished');
+    
     var errors = validatePost(self);
     if (! _.isEmpty(errors))
       return Session.set('postForm.errors', errors);
-    
+      
     // XXX: show a spinner
     Meteor.call('post', self, function(err) {
       if (err) {
@@ -183,5 +186,13 @@ Template.postForm.created = function() {
 Template.postForm.helpers({
   errors: function() {
     return Session.get('postForm.errors')
+  },
+  isPublished: function() {
+    if (this._id) {
+      return this.published;
+    } else {
+      return Session.get('newPostPublished');
+    }
   }
+  
 })

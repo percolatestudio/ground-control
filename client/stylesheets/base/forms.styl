@@ -72,8 +72,12 @@ form {
   .buttons {
     clear: both;
     text-align: right;
-    button, a {
+    button, a, input[type=submit] {
       display: inline-block;
+    }
+    input[type=submit] {
+      width: auto;
+      float: none;
     }
   }
 }

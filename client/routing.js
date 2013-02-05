@@ -39,6 +39,7 @@ var Router = Backbone.Router.extend({
     Session.set('currentPage', 'newPost')
     Session.set('selected-post-slug', null);
     Session.set('creating-post', true);
+    Session.set('newPostPublished', false);
   },
   
   post: function(year, day, month, slug) {
