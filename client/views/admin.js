@@ -40,6 +40,13 @@ Template.adminUsersList.events({
     var email = template.find('[name=email]').value;
     // XXX: validation?
     Meteor.call('inviteUser', email);
+  },
+  
+  'click .delete': function(e) {
+    e.preventDefault();
+    
+    if (confirm("Are you sure you want to delete the user with email <" + userEmail(this) + "> ?"))
+      Meteor.users.remove(this._id);
   }
 })
 

@@ -1,3 +1,8 @@
+// users can be deleted
+Meteor.users.allow({
+  remove: function(userId) { return !! userId; }
+})
+
 // you can only see users if you are logged in
 Meteor.publish('users', function() {
   if (this.userId)
