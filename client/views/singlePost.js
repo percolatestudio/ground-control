@@ -194,5 +194,4 @@ Template.postForm.helpers({
       return Session.get('newPostPublished');
     }
   }
-  
-})
+});

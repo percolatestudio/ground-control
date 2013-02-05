@@ -76,13 +76,18 @@
     <label for="body">Body (Markdown)</label>
     <div class="formError">{{errors.body}}</div>
     <textarea name="body">{{body}}</textarea>
-
+    
     <div class="buttons">
       {{#if isPublished}}
         <button class="unpublish btn">Un-Publish</button>
       {{else}}
         <button class="publish btn">Publish</button>
       {{/if}}
+      
+      {{#if _id}}
+        <button class="delete btn">Delete</button>
+      {{/if}}
+      
       <a href="#" class="cancel btn">Cancel</a>
       <input class="save btn primary" type="submit" value="Save"></input>
     </div>
