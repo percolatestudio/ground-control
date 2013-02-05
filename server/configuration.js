@@ -4,7 +4,7 @@ Accounts.config({
 
 DefaultSettings = {
   // Set the email domain (or regexp) that signing up users must conform to
-  emailDomain: 'percolatestudo.com'
+  emailDomain: 'percolatestudio.com'
 }
 
 // load all the default settings into the database
