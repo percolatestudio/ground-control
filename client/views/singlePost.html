@@ -67,15 +67,15 @@
   <form>
     <label for="title">Title</label>
     <div class="formError">{{errors.title}}</div>
-    <input type="text" name="title" value="{{title}}"></input>
+    <input type="text" name="title" value="{{title}}" placeholder="Post title"></input>
 
     <label for="author">Author</label>
     <div class="formError">{{errors.author}}</div>
-    <input type="text" name="author" value="{{author}}"></input>
+    <input type="text" name="author" value="{{author}}" placeholder="Authors name"></input>
 
     <label for="body">Body (Markdown)</label>
     <div class="formError">{{errors.body}}</div>
-    <textarea name="body">{{body}}</textarea>
+    <textarea name="body" placeholder="Ideas formatted in Markdown">{{body}}</textarea>
 
     <div class="buttons">
       {{#if _id}}
