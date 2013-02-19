@@ -15,7 +15,7 @@ var isSelected = function(post) {
 }
 
 var anySelected = function() {
-  return !! Session.get('selected-post-slug');
+  return !! Session.get('selected-post-slug') || Session.get('creating-post');
 }
 
 var setSelected = function(post) {
