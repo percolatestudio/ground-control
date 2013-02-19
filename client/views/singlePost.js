@@ -107,8 +107,10 @@ Template.editPost.events({
     this.published = true;
   },
   
+  // the un-publish button doesn't save an existing post
   'click .unpublish': function(e) {
-    this.published = false;
+    e.preventDefault();
+    Posts.update(this._id, {$set: {published: false}});
   },
     
   'submit form': function(e, template) {
@@ -147,6 +149,7 @@ Template.newPost.events({
     this.published = true;
   },
   
+  // this isn't possible, but just in case
   'click .unpublish': function(e) {
     this.published = false;
   },
