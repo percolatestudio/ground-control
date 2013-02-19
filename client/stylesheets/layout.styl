@@ -12,8 +12,9 @@ body {
 }
 
 #wrapper {
+  height: 100%;
   margin: 0 auto;
-  min-height: 27em;
+  min-height: 33em;
   position: relative;
   width: wrapperMaxWidth;
   #content {
@@ -21,7 +22,10 @@ body {
     width: contentMaxWidth;
   }
   #header #controls {
-    position: fixed;
+    @media screen and (min-width: 960px) {
+      position: fixed;
+    }
+    position:absolute;
     top: 0;
     width: contentMaxWidth;
     z-index: 2;
