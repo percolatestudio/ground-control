@@ -76,19 +76,21 @@
     <label for="body">Body (Markdown)</label>
     <div class="formError">{{errors.body}}</div>
     <textarea name="body">{{body}}</textarea>
-    
+
     <div class="buttons">
       {{#if _id}}
         <button class="delete btn">Delete</button>
       {{/if}}
-      
+
       <a href="#" class="cancel btn">Cancel</a>
       {{#if isPublished}}
         <button class="unpublish btn">Un-Publish</button>
+        <input class="save btn primary" type="submit" value="Save"/>
       {{else}}
-        <button class="publish btn">Save and Publish</button>
+        <input class="save btn" type="submit" value="Save"/>
+        <input class="publish btn primary" type="submit" value="Save and Publish"/>
       {{/if}}
-      <input class="save btn primary" type="submit" value="Save"></input>
+
     </div>
   </form>
 </template>
