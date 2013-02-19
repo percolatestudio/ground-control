@@ -57,6 +57,7 @@
     <thead>
       <tr>
         <th>Admin</th>
+        <th>Email</th>
         <th>State</th>
         <th></th>
       </tr>
@@ -64,10 +65,27 @@
     <tbody>
       {{#each admins}}
       <tr>
+        <td>
+          {{#if editing}}
+            <input name="name" value="{{profile.name}}"></input>
+          {{else}}
+            {{#if profile.name}}
+              {{profile.name}}
+            {{else}}
+              <a href="#" class="edit">set this users name</a>
+            {{/if}}
+          {{/if}}
+        </td>
         <td>{{email}}</td>
         <td><span class="state">{{state}}</span></td>
         <td>
           {{#unless isCurrentUser}}<a href="#" class="delete">Delete</a>{{/unless}}
+          
+          {{#if editing}}
+            <a href="#" class="done">Done</a>
+          {{else}}
+            <a href="#" class="edit">Edit</a>
+          {{/if}}
         </td>
       </tr>
       {{/each}}

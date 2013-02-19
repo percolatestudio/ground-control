@@ -30,6 +30,9 @@ Template.adminUsersList.helpers({
   },
   isCurrentUser: function() {
     return Meteor.user()._id === this._id;
+  },
+  editing: function() {
+    return Session.equals('editing-user-' + this._id, true);
   }
 });
 
@@ -47,6 +50,16 @@ Template.adminUsersList.events({
     
     if (confirm("Are you sure you want to delete the user with email <" + userEmail(this) + "> ?"))
       Meteor.users.remove(this._id);
+  },
+  
+  'click .edit': function(e) {
+    e.preventDefault();
+    Session.set('editing-user-' + this._id, true);
+  },
+
+  'click .done': function(e) {
+    e.preventDefault();
+    Session.set('editing-user-' + this._id, false);
   }
 })
 
