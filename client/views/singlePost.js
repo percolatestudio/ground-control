@@ -104,19 +104,19 @@ Template.editPost.events({
   },
   
   'click .publish': function(e) {
-    e.preventDefault();
-    Posts.update(this._id, {$set: {published: true}});
+    this.published = true;
   },
   
   'click .unpublish': function(e) {
-    e.preventDefault();
-    Posts.update(this._id, {$set: {published: false}});
+    this.published = false;
   },
     
   'submit form': function(e, template) {
     e.preventDefault();
       
     var changes = readPostForm(template);
+    // this one is set when you hit the publish button
+    changes.published = this.published;
     _.extend(this, changes);
     
     var errors = validatePost(this);
@@ -144,13 +144,11 @@ Template.newPost.events({
   },
   
   'click .publish': function(e) {
-    e.preventDefault();
-    Session.set('newPostPublished', true);
+    this.published = true;
   },
   
   'click .unpublish': function(e) {
-    e.preventDefault();
-    Session.set('newPostPublished', false);
+    this.published = false;
   },
     
   'submit form': function(e, template) {
@@ -160,9 +158,6 @@ Template.newPost.events({
       
     var changes = readPostForm(template);
     _.extend(self, changes);
-    
-    // set published-ness from the session
-    self.published = Session.get('newPostPublished');
     
     var errors = validatePost(self);
     if (! _.isEmpty(errors))

@@ -78,17 +78,16 @@
     <textarea name="body">{{body}}</textarea>
     
     <div class="buttons">
-      {{#if isPublished}}
-        <button class="unpublish btn">Un-Publish</button>
-      {{else}}
-        <button class="publish btn">Publish</button>
-      {{/if}}
-      
       {{#if _id}}
         <button class="delete btn">Delete</button>
       {{/if}}
       
       <a href="#" class="cancel btn">Cancel</a>
+      {{#if isPublished}}
+        <button class="unpublish btn">Save and Un-Publish</button>
+      {{else}}
+        <button class="publish btn">Save and Publish</button>
+      {{/if}}
       <input class="save btn primary" type="submit" value="Save"></input>
     </div>
   </form>
