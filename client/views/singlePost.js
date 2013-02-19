@@ -8,7 +8,7 @@ Template.singlePost.helpers({
   nextPost: function() {
     var current = getSelected(), next, found = false;
     
-    allPosts().forEach(function(post) {
+    publishedPosts().forEach(function(post) {
       if (found && ! next)
         next = post;
         
@@ -22,7 +22,7 @@ Template.singlePost.helpers({
   prevPost: function() {
     var current = getSelected(), prev, found = false;
     
-    allPosts().forEach(function(post) {
+    publishedPosts().forEach(function(post) {
       if (post._id === current._id)
         found = true;
         
