@@ -53,15 +53,26 @@
 
 <template name="adminUsersList">
   <h3>Current Admins</h3>
-  <ul>
-    {{#each admins}}
-      <li>
-        {{email}}
-        <span class="state">{{state}}</span>
-        {{#unless isCurrentUser}}<a href="#" class="delete">-Delete-</a>{{/unless}}
-      </li>
-    {{/each}}
-  </ul>
+  <table class="adminPosts">
+    <thead>
+      <tr>
+        <th>Admin</th>
+        <th>State</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each admins}}
+      <tr>
+        <td>{{email}}</td>
+        <td><span class="state">{{state}}</span></td>
+        <td>
+          {{#unless isCurrentUser}}<a href="#" class="delete">Delete</a>{{/unless}}
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
   <form class="user-form">
     <label for="email">Add a new Admin</label>
     <input type="text" name="email" placeholder="enter an email address" ></input>
@@ -83,7 +94,7 @@
     <tbody>
       {{#each posts}}
       <tr>
-        <td>{{title}}</td>
+        <td><a href="{{postUrl this}}">{{title}}</a></td>
         <td>{{author}}</td>
         <td>
           {{#if published}}
