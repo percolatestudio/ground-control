@@ -60,6 +60,10 @@ Template.adminUsersList.events({
   'click .done': function(e) {
     e.preventDefault();
     Session.set('editing-user-' + this._id, false);
+  },
+  
+  'change [name*=name]': function(e) {
+    Meteor.users.update(this._id, {$set: {'profile.name': $(e.target).val()}});
   }
 })
 
