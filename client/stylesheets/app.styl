@@ -125,6 +125,11 @@
     content: '';
     positioning(absolute, 0, 0, 0, auto, 1px);
   }
+  &:before {
+    background: $c-low;
+    content: '';
+    positioning(absolute, 0, auto, 0, -1px, 1px);
+  }
   .about {
     border-bottom: 1px solid $c-low;
     color: #666;
