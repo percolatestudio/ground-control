@@ -53,12 +53,13 @@
 
 <template name="adminUsersList">
   <h3>Current Admins</h3>
-  <table class="adminPosts">
+  <table class="adminUsers">
     <thead>
       <tr>
         <th>Admin</th>
         <th>Email</th>
         <th>State</th>
+        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -79,13 +80,14 @@
         <td>{{email}}</td>
         <td><span class="state">{{state}}</span></td>
         <td>
-          {{#unless isCurrentUser}}<a href="#" class="delete">Delete</a>{{/unless}}
-          
           {{#if editing}}
             <a href="#" class="done">Done</a>
           {{else}}
             <a href="#" class="edit">Edit</a>
           {{/if}}
+        </td>
+        <td>
+          {{#unless isCurrentUser}}<a href="#" class="delete">Delete</a>{{/unless}}
         </td>
       </tr>
       {{/each}}
@@ -115,14 +117,14 @@
         <td><a href="{{postUrl this}}">{{title}}</a></td>
         <td>{{author}}</td>
         <td>
+          <a href="{{editPostUrl this}}">Edit</a>
+        </td>
+        <td>
           {{#if published}}
             <a href="#" class="unpublish">Un-Publish</a>
           {{else}}
             <a href="#" class="publish">Publish</a>
           {{/if}}
-        </td>
-        <td>
-          <a href="{{editPostUrl this}}">Edit</a>
         </td>
       </tr>
       {{/each}}
