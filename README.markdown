@@ -30,13 +30,7 @@ Pull Requests will be appreciated!
 
 ### Coming soon
 
-Ground Control is very much a work in progress. In the near future, expect to see:
-
-1. Password Based Sign in
-2. User / Post management
-3. More configuration options.
-
-And further down the line, things like:
+Ground Control is always a work in progress. Expect to see things like:
 1. Real time viewing stats
 2. Theming / pages support
 
