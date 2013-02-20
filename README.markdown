@@ -16,11 +16,13 @@ Simply run `meteor`.
 
 ### Creating the initial user
 
-When you first browse to your Ground Control install, you'll be prompted to configure the google oauth provider (the only supported sign-in method right now) and sign in with a google account.
+When you first browse to your Ground Control install, you'll be prompted to configure the google oauth provider, and sign in with a google account, or use an email address / password account.
 
 ### Creating Posts
 
-Later, you (or others) can login to Ground Control at `/admin` using a Google Account. Currently, access is limited to a set of allowed emails defined in `server/configuration.js`.
+Later, you (or others) can login to Ground Control at `/admin`. Admin account signup is limited to two options
+  - email address matching a domain set via the admin control panel.
+  - email addresses invited via the admin control panel.
 
 ### Further customization
 
