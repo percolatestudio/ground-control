@@ -68,7 +68,9 @@
       <tr>
         <td>
           {{#if editing}}
-            <input name="name" value="{{profile.name}}" placeholder="Admin name"></input>
+            <form class="name-form">
+              <input name="name" value="{{profile.name}}" placeholder="Admin name"></input>
+            </form>
           {{else}}
             {{#if profile.name}}
               {{profile.name}}

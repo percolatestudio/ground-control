@@ -36,8 +36,12 @@ Template.adminUsersList.helpers({
   }
 });
 
+var updateUser = function(user, $input) {
+  Meteor.users.update(user._id, {$set: {'profile.name': $input.val()}});
+  Session.set('editing-user-' + user._id, false);
+}
 Template.adminUsersList.events({
-  'submit form': function(e, template) {
+  'submit .user-form': function(e, template) {
     e.preventDefault();
     
     var email = template.find('[name=email]').value;
@@ -56,14 +60,13 @@ Template.adminUsersList.events({
     e.preventDefault();
     Session.set('editing-user-' + this._id, true);
   },
-
+  'submit .name-form': function(e) {
+    e.preventDefault()
+    updateUser(this, $(e.target).find('[name*=name]'));
+  },
   'click .done': function(e) {
     e.preventDefault();
-    Session.set('editing-user-' + this._id, false);
-  },
-  
-  'change [name*=name]': function(e) {
-    Meteor.users.update(this._id, {$set: {'profile.name': $(e.target).val()}});
+    updateUser(this, $(e.target).closest('tr').find('[name*=name]'));
   }
 })
 

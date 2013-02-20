@@ -1,5 +1,6 @@
-// users can be deleted
+// users can be deleted, or modified
 Meteor.users.allow({
+  update: function(userId) { return !! userId; },
   remove: function(userId) { return !! userId; }
 })
 
