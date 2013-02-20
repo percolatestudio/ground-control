@@ -33,6 +33,7 @@ Pull Requests will be appreciated!
 ### Coming soon
 
 Ground Control is always a work in progress. Expect to see things like:
+
 1. Real time viewing stats
 2. Theming / pages support
 
