@@ -2,13 +2,139 @@
   <ul class="posts">
     <li class="post open">
       <div class="body admin">
-        <h1>Admin</h1>
-        {{#if loggedIn}}{{redirectToHome}}{{/if}}
-
-        <p>Please setup your google app and login here. If you can't login, ensure you've set the correct email filter in <code>server/configuration.js</code>.</p>
-
-        {{loginButtons}}
+      {{#if loggedIn}}
+        {{#if currentUserVerified}}
+          {{> adminUsersList}}
+          {{> adminSettings}}
+          {{> adminPostsList}}
+        {{else}}
+          {{> unverifiedInfo}}
+        {{/if}}
+      {{else}}
+        {{#if sessionGet "noUsers"}}
+          {{> setupWizard}}
+        {{else}}
+          {{> login}}
+        {{/if}}
+      {{/if}}
       </div>
     </li>
   </ul>
+</template>
+
+<template name="setupWizard">
+  <h1>Welcome to {{blogName}}!</h1>
+
+  <p>Please take a moment to set up your Google Apps settings and to create
+    the initial admininstrator account.
+    The site is open until this account has been created; once you've done so it will be locked down and you can invite more admins to contribute.
+  </p>
+
+  {{> login}}
+</template>
+
+<template name="login">
+  <div class="login">
+    {{loginButtons align="left"}}
+  </div>
+</template>
+
+<template name="adminSettings">
+  <h3>Login by domain</h3>
+  <p class="info">
+    Any user with a email address from this domain will be able to login to the site. Leave this field empty to disable this feature.
+  </p>
+  <form class="settings-form">
+    <label for="emailDomain">Email Domain for Admins</label>
+    <input type="text" name="emailDomain" placeholder="Enter a domain" value="{{emailDomain}}"></input>
+    <button type="submit" class="btn">Change</button>
+  </form>
+</template>
+
+<template name="adminUsersList">
+  <h3>Current Admins</h3>
+  <table class="adminUsers">
+    <thead>
+      <tr>
+        <th>Admin</th>
+        <th>Email</th>
+        <th>State</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each admins}}
+      <tr>
+        <td>
+          {{#if editing}}
+            <form class="name-form">
+              <input name="name" value="{{profile.name}}" placeholder="Admin name"></input>
+            </form>
+          {{else}}
+            {{#if profile.name}}
+              {{profile.name}}
+            {{else}}
+              <a href="#" class="edit">set this users name</a>
+            {{/if}}
+          {{/if}}
+        </td>
+        <td>{{email}}</td>
+        <td><span class="state">{{state}}</span></td>
+        <td>
+          {{#if editing}}
+            <a href="#" class="done">Done</a>
+          {{else}}
+            <a href="#" class="edit">Edit</a>
+          {{/if}}
+        </td>
+        <td>
+          {{#unless isCurrentUser}}<a href="#" class="delete">Delete</a>{{/unless}}
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <form class="user-form">
+    <label for="email">Add a new Admin</label>
+    <input type="text" name="email" placeholder="Enter an email address" ></input>
+    <button type="submit" class="btn">Create user</button>
+  </form>
+</template>
+
+<template name="adminPostsList">
+  <h3>Posts</h3>
+  <table class="adminPosts">
+    <thead>
+      <tr>
+        <th>Post Title</th>
+        <th>Post Author</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each posts}}
+      <tr>
+        <td><a href="{{postUrl this}}">{{title}}</a></td>
+        <td>{{author}}</td>
+        <td>
+          <a href="{{editPostUrl this}}">Edit</a>
+        </td>
+        <td>
+          {{#if published}}
+            <a href="#" class="unpublish">Un-Publish</a>
+          {{else}}
+            <a href="#" class="publish">Publish</a>
+          {{/if}}
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="unverifiedInfo">
+  <h2>Your account is unverified</h2>
+  <p>Please click the verification link in the email that was sent to your address. Have a nice day.</p>
 </template>

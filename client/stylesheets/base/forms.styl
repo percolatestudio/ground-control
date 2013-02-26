@@ -47,6 +47,10 @@ form {
     margin-bottom: 1em;
     width: 100%;
   }
+  button {
+    float: left;
+    margin-right: 0.3em;
+  }
   select {
     margin-bottom: 1.5em;
   }
@@ -69,8 +73,12 @@ form {
   .buttons {
     clear: both;
     text-align: right;
-    button, a {
+    button, a, input[type=submit] {
       display: inline-block;
+    }
+    input[type=submit] {
+      width: auto;
+      float: none;
     }
   }
 }

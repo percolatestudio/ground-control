@@ -9,4 +9,5 @@ backbone
 accounts-ui
 stylus
 preserve-inputs
+accounts-password
 spiderable

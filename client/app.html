@@ -29,15 +29,15 @@
 <template name="header">
   <div id="header" class="{{scrolledEnoughClass}}{{#if anySelected}} single{{/if}}">
     <div id="banner">
-      <h1 class="alt-type"><a href="/">Percolate Blog</a></h1>
-      <img src="/img/satellite-940x480.jpg" alt="ground control to major tom" width="940" height="480" />
+      <h1 class="alt-type"><a href="/">{{blogName}}</a></h1>
+      <img src="/img/satellite-720x144.jpg" alt="Ground control image" width="720" height="144" />
     </div>
 
     <div id="controls">
       {{#if anySelected}}
-        <a class="btn back">Back</a>
+        <a href="#" class="btn back">Back</a>
       {{/if}}
-      <a class="btn top"><span class="icon-arrow-up"></span> Top</a>
+      <a href="#" class="btn top"><span class="icon-arrow-up"></span> Top</a>
       <span class="control-title">{{blogName}}</span>
       <div class="shadow"></div>
     </div>
@@ -51,8 +51,11 @@
         <img class="avatar" src="{{gravatarURL currentUserGravatarHash size="30"}}"/>
           {{loginButtons}}
       </div>
+    {{/if}}
+    {{#if currentUserVerified}}
       <div class="admin">
         <button class="newPost btn primary">New post</button>
+        <a href="/admin" class="btn">Admin</a>
       </div>
     {{/if}}
     <div class="links">

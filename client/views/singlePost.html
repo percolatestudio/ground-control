@@ -37,7 +37,7 @@
 </template>
 
 <template name="postMeta">
-  <a class="permalink" href="{{postLink}}"><span class="icon-link"></span></a>
+  <a href="{{postLink}}" class="permalink"><span class="icon-link"></span></a>
 
   <h2 class="title">{{title}}</h2>
 
@@ -45,7 +45,7 @@
     <span><img class="avatar" src="{{gravatarURL authorGravatarHash size="20"}}"/>{{author}}</span>
     <span><span class="icon-clock"></span> {{formatDate publishedAt}}</span>
     {{#if currentUser}}
-      <a class="edit btn"><span class="icon-pencil"></span> Edit</a>
+      <a href="#" class="edit btn"><span class="icon-pencil"></span> Edit</a>
     {{/if}}
   </div>
 </template>
@@ -67,19 +67,30 @@
   <form>
     <label for="title">Title</label>
     <div class="formError">{{errors.title}}</div>
-    <input type="text" name="title" value="{{title}}"></input>
+    <input type="text" name="title" value="{{title}}" placeholder="Post title"></input>
 
     <label for="author">Author</label>
     <div class="formError">{{errors.author}}</div>
-    <input type="text" name="author" value="{{author}}"></input>
+    <input type="text" name="author" value="{{author}}" placeholder="Authors name"></input>
 
     <label for="body">Body (Markdown)</label>
     <div class="formError">{{errors.body}}</div>
-    <textarea name="body">{{body}}</textarea>
+    <textarea name="body" placeholder="Ideas formatted in Markdown">{{body}}</textarea>
 
     <div class="buttons">
-      <a class="cancel btn">Cancel</a>
-      <button class="save btn primary" type="submit">Save</button>
+      {{#if _id}}
+        <button class="delete btn">Delete</button>
+      {{/if}}
+
+      <a href="#" class="cancel btn">Cancel</a>
+      {{#if isPublished}}
+        <button class="unpublish btn">Un-Publish</button>
+        <input class="save btn primary" type="submit" value="Save"/>
+      {{else}}
+        <input class="save btn" type="submit" value="Save"/>
+        <input class="publish btn primary" type="submit" value="Save and Publish"/>
+      {{/if}}
+
     </div>
   </form>
 </template>

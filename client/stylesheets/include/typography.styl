@@ -27,3 +27,37 @@ small(){
   font-size: ($small / $font-size) * 1em ;
   line-height: ($line / $small) * 1em;
 }
+
+
+/* post body specific font-sizes to normalize fonts in markdown */
+$h1-alt = $h3;
+$h2-alt = $h3 - 2;
+$h3-alt = $h3 - 4;
+$h4-alt = $h3 - 6;
+$h5-alt = $h4;
+$h6-alt = $small;
+
+h1-alt(){
+  font-size: ($h1-alt / $font-size) * 1em ;
+  line-height: ($line * 2) / $h1-alt * 1em;
+}
+h2-alt(){
+  font-size: ($h2-alt / $font-size) * 1em ;
+  line-height: ($line / $h2-alt)  * 1em;
+}
+h3-alt(){
+  font-size: ($h3-alt / $font-size) * 1em ;
+  line-height: ($line / $h3-alt) * 1em;
+}
+h4-alt(){
+  font-size: ($h4-alt / $font-size) * 1em;
+  line-height: ($line / $h4-alt) * 1em;
+}
+h5-alt(){
+  font-size: ($h5-alt / $font-size) * 1em;
+  line-height: ($line / $h5-alt) * 1em;
+}
+h6-alt(){
+  font-size: ($h6-alt / $font-size) * 1em;
+  line-height: ($line / $h6-alt) * 1em;
+}

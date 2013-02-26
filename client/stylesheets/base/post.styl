@@ -40,6 +40,7 @@
       margin-top: 0;
     }
     .title {
+      cursor: pointer;
       line-height: 32px;
       max-width: 85%;
       text-shadow: rgba(white, .5) 0 1px 0;
@@ -181,7 +182,7 @@
 
 
 /* Post editing */
-.post form {
+.post > form {
   padding: 0 20px 3em;
   textarea {
     max-height: 12em;
@@ -228,24 +229,45 @@ with-slider(color) {
 .post .body{
   &.admin {
     padding-bottom: 9em;
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: bold;
+      & + p {
+        margin-top: .75em;
+      }
+    }
+    form {
+      margin-bottom: 3em;
+    }
+    table {
+      width: 100%;
+    }
   }
   /* offset heading sizes */
-  h1, h2, h3, h4 {
-    font-weight: bold;
-  }
   h1 {
-    h3();
+    h1-alt();
   }
-  h2, h3, h4 {
-    h4();
+  h2 {
+    h2-alt();
+  }
+  h3 {
+    h3-alt();
+  }
+  h4 {
+    h4-alt();
+  }
+  h5 {
+    h5-alt();
+  }
+  h6 {
+    h6-alt();
   }
   p, ul, ol, pre, code {
-    & + h1, & + h2, & + h3, & + h4 {
+    & + h1, & + h2, & + h3, & + h4, & + h5, & + h6 {
       margin-top: 2em;
       /* margin-bottom: 1em; */
     }
   }
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, h5, h6 {
     & + p, & + pre, & + code {
       margin-top: 0;
     }

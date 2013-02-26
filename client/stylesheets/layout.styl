@@ -13,7 +13,7 @@ body {
 
 #wrapper {
   margin: 0 auto;
-  min-height: 27em;
+  min-height: 33em;
   position: relative;
   width: wrapperMaxWidth;
   #content {
@@ -21,14 +21,17 @@ body {
     width: contentMaxWidth;
   }
   #header #controls {
-    position: fixed;
+    @media screen and (min-width: 960px) {
+      position: fixed;
+    }
+    position:absolute;
     top: 0;
     width: contentMaxWidth;
     z-index: 2;
   }
   #sidebar {
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: visible;
     padding: 0em 1.5em;
     positioning(absolute, 0, 0, auto, auto , (wrapperMaxWidth - contentMaxWidth) , 100%);
     .attribution {

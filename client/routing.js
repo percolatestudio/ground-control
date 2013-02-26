@@ -1,6 +1,7 @@
 // a really basic router, based off backbone
 
 Session.set('currentPage', 'loading');
+N_VISIBLE_POSTS = 1;
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -28,8 +29,11 @@ var Router = Backbone.Router.extend({
     Session.set('creating-post', false);
     // wait for the posts to load, then open up the first three
     Meteor.autorun(function() {
-      var posts = allPosts().fetch();
-      posts[0] && setOpen(posts[0], true);
+      var posts = publishedPosts().fetch();
+      
+      _.each(posts, function(post, i) {
+        setOpen(posts[i], i < N_VISIBLE_POSTS);
+      });
     });
   },
   
@@ -37,6 +41,7 @@ var Router = Backbone.Router.extend({
     Session.set('currentPage', 'newPost')
     Session.set('selected-post-slug', null);
     Session.set('creating-post', true);
+    Session.set('newPostPublished', false);
   },
   
   post: function(year, day, month, slug) {

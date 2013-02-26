@@ -1,6 +1,6 @@
 Template.postList.helpers({
   posts: function() {
-    return allPosts();
+    return publishedPosts();
   },
   anySelected: function() {
     return anySelected();

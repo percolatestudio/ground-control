@@ -8,7 +8,7 @@ Template.singlePost.helpers({
   nextPost: function() {
     var current = getSelected(), next, found = false;
     
-    allPosts().forEach(function(post) {
+    publishedPosts().forEach(function(post) {
       if (found && ! next)
         next = post;
         
@@ -22,7 +22,7 @@ Template.singlePost.helpers({
   prevPost: function() {
     var current = getSelected(), prev, found = false;
     
-    allPosts().forEach(function(post) {
+    publishedPosts().forEach(function(post) {
       if (post._id === current._id)
         found = true;
         
@@ -102,11 +102,23 @@ Template.editPost.events({
     e.preventDefault();
     Meteor.Router.navigate(Routes.postUrl(this), trigger = true);
   },
+  
+  'click .publish': function(e) {
+    this.published = true;
+  },
+  
+  // the un-publish button doesn't save an existing post
+  'click .unpublish': function(e) {
+    e.preventDefault();
+    Posts.update(this._id, {$set: {published: false}});
+  },
     
   'submit form': function(e, template) {
     e.preventDefault();
       
     var changes = readPostForm(template);
+    // this one is set when you hit the publish button
+    changes.published = this.published;
     _.extend(this, changes);
     
     var errors = validatePost(this);
@@ -132,6 +144,15 @@ Template.newPost.events({
     e.preventDefault();
     Meteor.Router.navigate('/', {trigger: true});
   },
+  
+  'click .publish': function(e) {
+    this.published = true;
+  },
+  
+  // this isn't possible, but just in case
+  'click .unpublish': function(e) {
+    this.published = false;
+  },
     
   'submit form': function(e, template) {
     var self = this;
@@ -144,7 +165,7 @@ Template.newPost.events({
     var errors = validatePost(self);
     if (! _.isEmpty(errors))
       return Session.set('postForm.errors', errors);
-    
+      
     // XXX: show a spinner
     Meteor.call('post', self, function(err) {
       if (err) {
@@ -163,5 +184,12 @@ Template.postForm.created = function() {
 Template.postForm.helpers({
   errors: function() {
     return Session.get('postForm.errors')
+  },
+  isPublished: function() {
+    if (this._id) {
+      return this.published;
+    } else {
+      return Session.get('newPostPublished');
+    }
   }
-})
+});
