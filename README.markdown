@@ -26,7 +26,7 @@ Later, you (or others) can login to Ground Control at `/admin`. Admin account si
 
 ### Further customization
 
-To do any meaningful customization, fork this repository and have fun! For example, take a look at the `percolate` branch for an example of the changes made for the Percolate Studio Blog.
+To do any meaningful customization, fork this repository and have fun! For example, take a look at the `percolate` branch for an example of the changes made for the [Percolate Studio Blog](http://blog.percolatestudio.com).
 
 Pull Requests will be appreciated! 
 
