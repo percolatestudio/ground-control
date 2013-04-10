@@ -43,7 +43,7 @@ Template.body.events({
 })
 
 Template.header.preserve(['#header', '#controls', '#controls .top']);
-var checkBanner = function() {
+checkBanner = function() {
   // if the banner is no longer visible, we have scrolled enough
   var bannerBottom = $('#banner').offset().top + $('#banner').height();
   Session.set('scrolledEnough', $(window).scrollTop() > bannerBottom);
