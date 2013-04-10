@@ -3,7 +3,7 @@
 Session.set('currentPage', 'loading');
 N_VISIBLE_POSTS = 3;
 
-var Router = Backbone.Router.extend({
+Router = Backbone.Router.extend({
   routes: {
     '': 'home',
     'users': 'users',
