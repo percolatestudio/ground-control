@@ -172,6 +172,8 @@ Template.newPost.events({
         // XXX: what errors are possible here?
         console.log(err.reason);
       } else {
+        self.publishedAt = new Date();
+        self.slug = titleToSlug(self.title);
         Meteor.Router.navigate(Routes.postUrl(self), {trigger: true});
       }
     })
