@@ -39,3 +39,7 @@ Ground Control is always a work in progress. Expect to see things like:
 3. Commenting support
 
 Feel free to make any contributions that you like!
+
+## License 
+
+MIT. (c) Percolate Studio, maintained by Tom Coleman (@tmeasday).
